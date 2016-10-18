@@ -36,6 +36,7 @@ The following shows how import the controllers and use:
     <script src="scripts/Message360/Controllers/TranscriptionController.js"></script>
     <script src="scripts/Message360/Controllers/PhoneNumberController.js"></script>
     <script src="scripts/Message360/Controllers/UsageController.js"></script>
+    <script src="scripts/Message360/Controllers/EmailController.js"></script>
     <script src="scripts/Message360/Controllers/SMSController.js"></script>
     <script src="scripts/Message360/Controllers/AccountController.js"></script>
     <script src="scripts/Message360/Controllers/RecordingController.js"></script>
