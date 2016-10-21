@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -327,7 +327,7 @@ angular.module('Message360').factory('ConferenceController',function($q,Configur
          * @param {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
          * @param {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
          * @param {string|null} friendlyName    Optional parameter: Only return conferences with the specified FriendlyName
-         * @param {InterruptedCallStatusEnum|null} status    Optional parameter: Example: 
+         * @param {InterruptedCallStatus|null} status    Optional parameter: Example: 
          * @param {string|null} dateCreated    Optional parameter: Example: 
          * @param {string|null} dateUpdated    Optional parameter: Example: 
          * @param {string|null} responseType    Optional parameter: Response format, xml or json

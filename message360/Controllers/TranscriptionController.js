@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -11,7 +11,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
          * Get All transcriptions
          * @param {int|null} page    Optional parameter: Example: 
          * @param {int|null} pageSize    Optional parameter: Example: 
-         * @param {StatusEnum|null} status    Optional parameter: Example: 
+         * @param {Status|null} status    Optional parameter: Example: 
          * @param {string|null} dateTranscribed    Optional parameter: Example: 
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *

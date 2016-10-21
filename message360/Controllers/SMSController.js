@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -14,7 +14,7 @@ angular.module('Message360').factory('SMSController',function($q,Configuration,H
          * @param {int} tocountrycode    Required parameter: To country code
          * @param {string} to    Required parameter: Number to send the SMS to
          * @param {string} body    Required parameter: Text Message To Send
-         * @param {HttpMethodEnum|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once SMS sent.
+         * @param {HttpMethod|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once SMS sent.
          * @param {string|null} messagestatuscallback    Optional parameter: URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished.
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *

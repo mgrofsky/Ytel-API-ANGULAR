@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -86,11 +86,11 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
          * @param {string} toCountryCode    Required parameter: To cuntry code number
          * @param {string} to    Required parameter: To number
          * @param {string} url    Required parameter: URL requested once the call connects
-         * @param {HttpMethodEnum|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once call connects.
+         * @param {HttpMethod|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once call connects.
          * @param {string|null} statusCallBackUrl    Optional parameter: specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
-         * @param {HttpMethodEnum|null} statusCallBackMethod    Optional parameter: Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
+         * @param {HttpMethod|null} statusCallBackMethod    Optional parameter: Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
          * @param {string|null} fallBackUrl    Optional parameter: URL requested if the initial Url parameter fails or encounters an error
-         * @param {HttpMethodEnum|null} fallBackMethod    Optional parameter: Specifies the HTTP method used to request the required FallbackUrl once call connects.
+         * @param {HttpMethod|null} fallBackMethod    Optional parameter: Specifies the HTTP method used to request the required FallbackUrl once call connects.
          * @param {string|null} heartBeatUrl    Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed tim
          * @param {bool|null} heartBeatMethod    Optional parameter: Specifies the HTTP method used to request HeartbeatUrl.
          * @param {int|null} timeout    Optional parameter: Time (in seconds) Message360 should wait while the call is ringing before canceling the call
@@ -98,10 +98,10 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
          * @param {bool|null} hideCallerId    Optional parameter: Specifies if the caller id will be hidden
          * @param {bool|null} record    Optional parameter: Specifies if the call should be recorded
          * @param {string|null} recordCallBackUrl    Optional parameter: Recording parameters will be sent here upon completion
-         * @param {HttpMethodEnum|null} recordCallBackMethod    Optional parameter: Method used to request the RecordCallback URL.
+         * @param {HttpMethod|null} recordCallBackMethod    Optional parameter: Method used to request the RecordCallback URL.
          * @param {bool|null} transcribe    Optional parameter: Specifies if the call recording should be transcribed
          * @param {string|null} transcribeCallBackUrl    Optional parameter: Transcription parameters will be sent here upon completion
-         * @param {IfMachineEnum|null} ifMachine    Optional parameter: How Message360 should handle the receiving numbers voicemail machine
+         * @param {IfMachine|null} ifMachine    Optional parameter: How Message360 should handle the receiving numbers voicemail machine
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *
          * @return {promise<string>}
@@ -210,7 +210,7 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
         /**
          * Play Dtmf and send the Digit
          * @param {int} length    Required parameter: Time limit in seconds for audio play back
-         * @param {DirectionEnum} direction    Required parameter: The leg of the call audio will be played to
+         * @param {Direction} direction    Required parameter: The leg of the call audio will be played to
          * @param {bool} loop    Required parameter: Repeat audio playback indefinitely
          * @param {bool} mix    Required parameter: If false, all other audio will be muted
          * @param {string|null} callSid    Optional parameter: The unique identifier of each call resource
@@ -302,10 +302,10 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
          * Record a Call
          * @param {string} callSid    Required parameter: The unique identifier of each call resource
          * @param {bool} record    Required parameter: Set true to initiate recording or false to terminate recording
-         * @param {DirectionEnum|null} direction    Optional parameter: The leg of the call to record
+         * @param {Direction|null} direction    Optional parameter: The leg of the call to record
          * @param {int|null} timeLimit    Optional parameter: Time in seconds the recording duration should not exceed
          * @param {string|null} callBackUrl    Optional parameter: URL consulted after the recording completes
-         * @param {AudioFormatEnum|null} fileformat    Optional parameter: Format of the recording file. Can be .mp3 or .wav
+         * @param {AudioFormat|null} fileformat    Optional parameter: Format of the recording file. Can be .mp3 or .wav
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *
          * @return {promise<string>}
@@ -386,7 +386,7 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
         /**
          * Voice Effect
          * @param {string} callSid    Required parameter: Example: 
-         * @param {AudioDirectionEnum|null} audioDirection    Optional parameter: Example: 
+         * @param {AudioDirection|null} audioDirection    Optional parameter: Example: 
          * @param {double|null} pitchSemiTones    Optional parameter: value between -14 and 14
          * @param {double|null} pitchOctaves    Optional parameter: value between -1 and 1
          * @param {double|null} pitch    Optional parameter: value greater than 0
@@ -471,7 +471,7 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
          * Play Dtmf and send the Digit
          * @param {string} callSid    Required parameter: The unique identifier of each call resource
          * @param {string} playDtmf    Required parameter: DTMF digits to play to the call. 0-9, #, *, W, or w
-         * @param {DirectionEnum|null} playDtmfDirection    Optional parameter: The leg of the call DTMF digits should be sent to
+         * @param {Direction|null} playDtmfDirection    Optional parameter: The leg of the call DTMF digits should be sent to
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *
          * @return {promise<string>}
@@ -550,8 +550,8 @@ angular.module('Message360').factory('CallController',function($q,Configuration,
          * Interrupt the Call by Call Sid
          * @param {string} callSid    Required parameter: Call SId
          * @param {string|null} url    Optional parameter: URL the in-progress call will be redirected to
-         * @param {HttpMethodEnum|null} method    Optional parameter: The method used to request the above Url parameter
-         * @param {InterruptedCallStatusEnum|null} status    Optional parameter: Status to set the in-progress call to
+         * @param {HttpMethod|null} method    Optional parameter: The method used to request the above Url parameter
+         * @param {InterruptedCallStatus|null} status    Optional parameter: Status to set the in-progress call to
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *
          * @return {promise<string>}
