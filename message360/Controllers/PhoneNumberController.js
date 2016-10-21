@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -376,17 +376,17 @@ angular.module('Message360').factory('PhoneNumberController',function($q,Configu
          * @param {string} phoneNumber    Required parameter: Example: 
          * @param {string|null} friendlyName    Optional parameter: Example: 
          * @param {string|null} voiceUrl    Optional parameter: URL requested once the call connects
-         * @param {HttpMethodEnum|null} voiceMethod    Optional parameter: Example: 
+         * @param {HttpMethod|null} voiceMethod    Optional parameter: Example: 
          * @param {string|null} voiceFallbackUrl    Optional parameter: URL requested if the voice URL is not available
-         * @param {HttpMethodEnum|null} voiceFallbackMethod    Optional parameter: Example: 
+         * @param {HttpMethod|null} voiceFallbackMethod    Optional parameter: Example: 
          * @param {string|null} hangupCallback    Optional parameter: Example: 
-         * @param {HttpMethodEnum|null} hangupCallbackMethod    Optional parameter: Example: 
+         * @param {HttpMethod|null} hangupCallbackMethod    Optional parameter: Example: 
          * @param {string|null} heartbeatUrl    Optional parameter: URL requested once the call connects
-         * @param {HttpMethodEnum|null} heartbeatMethod    Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time
+         * @param {HttpMethod|null} heartbeatMethod    Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time
          * @param {string|null} smsUrl    Optional parameter: URL requested when an SMS is received
-         * @param {HttpMethodEnum|null} smsMethod    Optional parameter: Example: 
+         * @param {HttpMethod|null} smsMethod    Optional parameter: Example: 
          * @param {string|null} smsFallbackUrl    Optional parameter: URL requested once the call connects
-         * @param {HttpMethodEnum|null} smsFallbackMethod    Optional parameter: URL requested if the sms URL is not available
+         * @param {HttpMethod|null} smsFallbackMethod    Optional parameter: URL requested if the sms URL is not available
          * @param {string|null} responseType    Optional parameter: Response format, xml or json
          *
          * @return {promise<string>}

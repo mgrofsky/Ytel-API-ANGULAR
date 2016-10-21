@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
   */
 
 'use strict';
@@ -11,7 +11,7 @@ angular.module('Message360').factory('EmailController',function($q,Configuration
          * Send out an email
          * @param {string} to    Required parameter: The to email address
          * @param {string} from    Required parameter: The from email address
-         * @param {string} type    Required parameter: email format type, html or text
+         * @param {SendEmailAs} type    Required parameter: email format type, html or text
          * @param {string} subject    Required parameter: Email subject
          * @param {string} message    Required parameter: The body of the email message
          * @param {string|null} cc    Optional parameter: CC Email address
@@ -66,7 +66,7 @@ angular.module('Message360').factory('EmailController',function($q,Configuration
             };
 
             //prepare form data
-            var _formDataDictionary = {
+            var _form = {
                 "to" : to,
                 "from" : from,
                 "type" : type,
@@ -78,7 +78,7 @@ angular.module('Message360').factory('EmailController',function($q,Configuration
             };
 
             //Remove null values
-            APIHelper.cleanObject(_formDataDictionary);
+            APIHelper.cleanObject(_form);
 
             //prepare and invoke the API call request to fetch the response
             var _config = {
@@ -87,7 +87,7 @@ angular.module('Message360').factory('EmailController',function($q,Configuration
                 headers: _headers,
                 username: Configuration.basicAuthUserName,
                 password: Configuration.basicAuthPassword,
-                formData : _formDataDictionary,
+                form : _form,
             };
             
             var _response = HttpClient(_config);
