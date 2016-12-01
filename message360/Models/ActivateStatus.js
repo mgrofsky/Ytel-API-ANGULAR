@@ -5,16 +5,13 @@
   */
 
 
-angular.module('Message360').factory('Status', function() {
+angular.module('Message360').factory('ActivateStatus', function() {
     return {
 
         //TODO: Write general description for this element    
-        INPROGRESS : "INPROGRESS",
+        ACTIVATE : 1,
 
         //TODO: Write general description for this element    
-        SUCCESS : "Success",
-
-        //TODO: Write general description for this element    
-        FAILURE : "Failure",
+        DE_ACTIVATE : 0,
     };
 });

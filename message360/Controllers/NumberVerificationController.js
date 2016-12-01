@@ -5,33 +5,44 @@
   */
 
 'use strict';
-angular.module('Message360').factory('UsageController',function($q,Configuration,HttpClient,APIHelper){
+angular.module('Message360').factory('NumberVerificationController',function($q,Configuration,HttpClient,APIHelper){
     return{
         /**
-         * Get all usage 
+         * Number Verification
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {ProductCode} productCode    Required parameter: Product Code
-         *     {string} startDate    Required parameter: Start Usage Date
-         *     {string} endDate    Required parameter: End Usage Date
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} phonenumber    Required parameter: Example: 
+         *     {string} type    Required parameter: Example: 
+         *     {string|null} responseType    Optional parameter: Response Type either json or xml
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createListUsage : function(input){
+        createVerifyNumber : function(input){
             //Assign default values
             input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
+            //validating required parameters
+            var _missingArgs = false;
+            if (input.phonenumber == null || input.phonenumber == undefined){
+                _deffered.reject({errorMessage: "The property 'phonenumber' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.type == null || input.type == undefined){
+                _deffered.reject({errorMessage: "The property 'type' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            }
+
+            if (_missingArgs)
+                return _deffered.promise
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/usage/listusage.{ResponseType}";
+            var _queryBuilder = _baseUri + "/verifycallerid/verifynumber.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
@@ -48,9 +59,8 @@ angular.module('Message360').factory('UsageController',function($q,Configuration
 
             //prepare form data
             var _form = {
-                "ProductCode" : input.productCode,
-                "startDate" : input.startDate,
-                "endDate" : input.endDate
+                "phonenumber" : input.phonenumber,
+                "type" : input.type
             };
 
             //Remove null values

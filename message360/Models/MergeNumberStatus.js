@@ -5,16 +5,13 @@
   */
 
 
-angular.module('Message360').factory('Status', function() {
+angular.module('Message360').factory('MergeNumberStatus', function() {
     return {
 
         //TODO: Write general description for this element    
-        INPROGRESS : "INPROGRESS",
+        MDELETE : 0,
 
         //TODO: Write general description for this element    
-        SUCCESS : "Success",
-
-        //TODO: Write general description for this element    
-        FAILURE : "Failure",
+        MERGE : 1,
     };
 });

@@ -5,13 +5,13 @@
   */
 
 
-angular.module('Message360').factory('AudioFormat', function() {
+angular.module('Message360').factory('HttpAction', function() {
     return {
 
-        //mp3 file    
-        MP_3 : "mp3",
+        //Get type    
+        GET : "GET",
 
-        //wav file    
-        WAV : "wav",
+        //Post Type    
+        POST : "POST",
     };
 });

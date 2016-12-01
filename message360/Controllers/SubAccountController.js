@@ -5,34 +5,48 @@
   */
 
 'use strict';
-angular.module('Message360').factory('RecordingController',function($q,Configuration,HttpClient,APIHelper){
+angular.module('Message360').factory('SubAccountController',function($q,Configuration,HttpClient,APIHelper){
     return{
         /**
-         * List out Recordings
+         * Create Sub account
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
-         *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
-         *     {string|null} dateCreated    Optional parameter: Example: 
-         *     {string|null} callSid    Optional parameter: Example: 
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} firstname    Required parameter: Example: 
+         *     {string} lastname    Required parameter: Example: 
+         *     {string} email    Required parameter: Example: 
+         *     {string|null} responseType    Optional parameter: ResponseType Format either json or xml
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createListRecording : function(input){
+        createSubAccount : function(input){
             //Assign default values
             input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
+            //validating required parameters
+            var _missingArgs = false;
+            if (input.firstname == null || input.firstname == undefined){
+                _deffered.reject({errorMessage: "The property 'firstname' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.lastname == null || input.lastname == undefined){
+                _deffered.reject({errorMessage: "The property 'lastname' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.email == null || input.email == undefined){
+                _deffered.reject({errorMessage: "The property 'email' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            }
+
+            if (_missingArgs)
+                return _deffered.promise
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/recording/listrecording.{ResponseType}";
+            var _queryBuilder = _baseUri + "/user/createsubaccount.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
@@ -49,10 +63,9 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
 
             //prepare form data
             var _form = {
-                "Page" : input.page,
-                "PageSize" : input.pageSize,
-                "DateCreated" : input.dateCreated,
-                "CallSid" : input.callSid
+                "firstname" : input.firstname,
+                "lastname" : input.lastname,
+                "email" : input.email
             };
 
             //Remove null values
@@ -82,18 +95,19 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
             return _deffered.promise;
         },
         /**
-         * Delete Recording Record
+         * Suspend or unsuspend
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {string} recordingSid    Required parameter: Unique Recording Sid to be delete
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} subaccountsid    Required parameter: Example: 
+         *     {ActivateStatus} activate    Required parameter: Example: 
+         *     {string|null} responseType    Optional parameter: Example: 
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createDeleteRecording : function(input){
+        createSuspendSubAccount : function(input){
             //Assign default values
             input = input || {};
 
@@ -102,8 +116,11 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
             
             //validating required parameters
             var _missingArgs = false;
-            if (input.recordingSid == null || input.recordingSid == undefined){
-                _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+            if (input.subaccountsid == null || input.subaccountsid == undefined){
+                _deffered.reject({errorMessage: "The property 'subaccountsid' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.activate == null || input.activate == undefined){
+                _deffered.reject({errorMessage: "The property 'activate' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -112,11 +129,11 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/recording/deleterecording.{ResponseType}";
+            var _queryBuilder = _baseUri + "/user/subaccountactivation.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != input.responseType)? input.responseType: "json"
+                "ResponseType" : input.responseType
             });
 
             //validate and preprocess url
@@ -129,7 +146,8 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
 
             //prepare form data
             var _form = {
-                "RecordingSid" : input.recordingSid
+                "subaccountsid" : input.subaccountsid,
+                "activate" : (input.activate != null)?input.activate:null
             };
 
             //Remove null values
@@ -159,18 +177,19 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
             return _deffered.promise;
         },
         /**
-         * View a specific Recording
+         * Delete or Merge Sub account
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {string} recordingSid    Required parameter: Search Recording sid
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} subaccountsid    Required parameter: Example: 
+         *     {MergeNumberStatus} mergenumber    Required parameter: Example: 
+         *     {string|null} responseType    Optional parameter: Response type format either json or xml
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createViewRecording : function(input){
+        createDeleteMergeSubAccount : function(input){
             //Assign default values
             input = input || {};
 
@@ -179,8 +198,11 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
             
             //validating required parameters
             var _missingArgs = false;
-            if (input.recordingSid == null || input.recordingSid == undefined){
-                _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+            if (input.subaccountsid == null || input.subaccountsid == undefined){
+                _deffered.reject({errorMessage: "The property 'subaccountsid' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.mergenumber == null || input.mergenumber == undefined){
+                _deffered.reject({errorMessage: "The property 'mergenumber' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -189,7 +211,7 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/recording/viewrecording.{ResponseType}";
+            var _queryBuilder = _baseUri + "/user/deletesubaccount.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
@@ -206,7 +228,8 @@ angular.module('Message360').factory('RecordingController',function($q,Configura
 
             //prepare form data
             var _form = {
-                "RecordingSid" : input.recordingSid
+                "subaccountsid" : input.subaccountsid,
+                "mergenumber" : (input.mergenumber != null)?input.mergenumber:null
             };
 
             //Remove null values

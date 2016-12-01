@@ -1,37 +1,48 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/01/2016
   */
 
 'use strict';
 angular.module('Message360').factory('TranscriptionController',function($q,Configuration,HttpClient,APIHelper){
     return{
         /**
-         * Get All transcriptions
-         * @param {int|null} page    Optional parameter: Example: 
-         * @param {int|null} pageSize    Optional parameter: Example: 
-         * @param {Status|null} status    Optional parameter: Example: 
-         * @param {string|null} dateTranscribed    Optional parameter: Example: 
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * Audio URL Transcriptions
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {string} audioUrl    Required parameter: Audio url
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createListTranscription : function(page, pageSize, status, dateTranscribed, responseType){
+        createAudioURLTranscription : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
+            //validating required parameters
+            var _missingArgs = false;
+            if (input.audioUrl == null || input.audioUrl == undefined){
+                _deffered.reject({errorMessage: "The property 'audioUrl' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            }
+
+            if (_missingArgs)
+                return _deffered.promise
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/listtranscription.{ResponseType}";
+            var _queryBuilder = _baseUri + "/transcriptions/audiourltranscription.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -44,10 +55,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "Page" : page,
-                "PageSize" : pageSize,
-                "Status" : (status != null)?status:null,
-                "DateTranscribed" : dateTranscribed
+                "AudioUrl" : input.audioUrl
             };
 
             //Remove null values
@@ -78,22 +86,27 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
         },
         /**
          * Recording Transcriptions
-         * @param {string} recordingSid    Required parameter: Unique Recording sid
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {string} recordingSid    Required parameter: Unique Recording sid
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createRecordingTranscription : function(recordingSid, responseType){
+        createRecordingTranscription : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
             //validating required parameters
             var _missingArgs = false;
-            if (recordingSid == null || recordingSid == undefined){
-                _deffered.reject({errorMessage: "The parameter 'recordingSid' is a required parameter and cannot be null.", errorCode: -1});
+            if (input.recordingSid == null || input.recordingSid == undefined){
+                _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -106,7 +119,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -119,7 +132,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "RecordingSid" : recordingSid
+                "RecordingSid" : input.recordingSid
             };
 
             //Remove null values
@@ -150,22 +163,27 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
         },
         /**
          * View Specific Transcriptions
-         * @param {string} transcriptionSid    Required parameter: Unique Transcription ID
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {string} transcriptionSid    Required parameter: Unique Transcription ID
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createViewTranscription : function(transcriptionSid, responseType){
+        createViewTranscription : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
             //validating required parameters
             var _missingArgs = false;
-            if (transcriptionSid == null || transcriptionSid == undefined){
-                _deffered.reject({errorMessage: "The parameter 'transcriptionSid' is a required parameter and cannot be null.", errorCode: -1});
+            if (input.transcriptionSid == null || input.transcriptionSid == undefined){
+                _deffered.reject({errorMessage: "The property 'transcriptionSid' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -178,7 +196,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -191,7 +209,7 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "TranscriptionSid" : transcriptionSid
+                "TranscriptionSid" : input.transcriptionSid
             };
 
             //Remove null values
@@ -221,36 +239,35 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             return _deffered.promise;
         },
         /**
-         * Audio URL Transcriptions
-         * @param {string} audioUrl    Required parameter: Audio url
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * Get All transcriptions
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {int|null} page    Optional parameter: Example: 
+         *     {int|null} pageSize    Optional parameter: Example: 
+         *     {Status|null} status    Optional parameter: Example: 
+         *     {string|null} dateTranscribed    Optional parameter: Example: 
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createAudioURLTranscription : function(audioUrl, responseType){
+        createListTranscription : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
-            //validating required parameters
-            var _missingArgs = false;
-            if (audioUrl == null || audioUrl == undefined){
-                _deffered.reject({errorMessage: "The parameter 'audioUrl' is a required parameter and cannot be null.", errorCode: -1});
-                _missingArgs = true;
-            }
-
-            if (_missingArgs)
-                return _deffered.promise
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/audiourltranscription.{ResponseType}";
+            var _queryBuilder = _baseUri + "/transcriptions/listtranscription.{ResponseType}";
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -263,7 +280,10 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "AudioUrl" : audioUrl
+                "Page" : input.page,
+                "PageSize" : input.pageSize,
+                "Status" : (input.status != null)?input.status:null,
+                "DateTranscribed" : input.dateTranscribed
             };
 
             //Remove null values
