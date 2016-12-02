@@ -5,13 +5,13 @@
   */
 
 
-angular.module('Message360').factory('IfMachine', function() {
+angular.module('Message360').factory('ActivateStatus', function() {
     return {
 
         //TODO: Write general description for this element    
-        MCONTINUE : "CONTINUE",
+        ACTIVATE : 1,
 
         //TODO: Write general description for this element    
-        HANGUP : "HANGUP",
+        DE_ACTIVATE : 0,
     };
 });

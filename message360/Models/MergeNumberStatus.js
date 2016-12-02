@@ -5,13 +5,13 @@
   */
 
 
-angular.module('Message360').factory('IfMachine', function() {
+angular.module('Message360').factory('MergeNumberStatus', function() {
     return {
 
         //TODO: Write general description for this element    
-        MCONTINUE : "CONTINUE",
+        MDELETE : 0,
 
         //TODO: Write general description for this element    
-        HANGUP : "HANGUP",
+        MERGE : 1,
     };
 });

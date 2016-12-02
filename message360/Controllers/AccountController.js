@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/02/2016
   */
 
 'use strict';
@@ -9,22 +9,27 @@ angular.module('Message360').factory('AccountController',function($q,Configurati
     return{
         /**
          * Display Account Description
-         * @param {string} date    Required parameter: Example: 
-         * @param {string|null} responseType    Optional parameter: Response type format xml or json
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {string} date    Required parameter: Example: 
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createViewAccount : function(date, responseType){
+        createViewAccount : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
             //validating required parameters
             var _missingArgs = false;
-            if (date == null || date == undefined){
-                _deffered.reject({errorMessage: "The parameter 'date' is a required parameter and cannot be null.", errorCode: -1});
+            if (input.date == null || input.date == undefined){
+                _deffered.reject({errorMessage: "The property 'date' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -37,7 +42,7 @@ angular.module('Message360').factory('AccountController',function($q,Configurati
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -50,7 +55,7 @@ angular.module('Message360').factory('AccountController',function($q,Configurati
 
             //prepare form data
             var _form = {
-                "date" : date
+                "date" : input.date
             };
 
             //Remove null values

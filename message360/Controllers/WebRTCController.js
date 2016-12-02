@@ -5,21 +5,21 @@
   */
 
 'use strict';
-angular.module('Message360').factory('TranscriptionController',function($q,Configuration,HttpClient,APIHelper){
+angular.module('Message360').factory('WebRTCController',function($q,Configuration,HttpClient,APIHelper){
     return{
         /**
-         * Audio URL Transcriptions
+         * message360 webrtc
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {string} audioUrl    Required parameter: Audio url
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} accountSid    Required parameter: Your message360 Account SID
+         *     {string} authToken    Required parameter: Your message360 Token
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
-         * @return {promise<string>}
+         * @return {promise<void>}
          */
-        createAudioURLTranscription : function(input){
+        createToken : function(input){
             //Assign default values
             input = input || {};
 
@@ -28,8 +28,11 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             
             //validating required parameters
             var _missingArgs = false;
-            if (input.audioUrl == null || input.audioUrl == undefined){
-                _deffered.reject({errorMessage: "The property 'audioUrl' in the input object cannot be null.", errorCode: -1});
+            if (input.accountSid == null || input.accountSid == undefined){
+                _deffered.reject({errorMessage: "The property 'accountSid' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.authToken == null || input.authToken == undefined){
+                _deffered.reject({errorMessage: "The property 'authToken' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -38,13 +41,8 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/audiourltranscription.{ResponseType}";
+            var _queryBuilder = _baseUri + "/webrtc/createToken.json";
             
-            //Process template parameters
-            _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != input.responseType)? input.responseType: "json"
-            });
-
             //validate and preprocess url
             var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
             
@@ -55,7 +53,8 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "AudioUrl" : input.audioUrl
+                "account_sid" : input.accountSid,
+                "auth_token" : input.authToken
             };
 
             //Remove null values
@@ -76,7 +75,6 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             //process response
             _response.then(function(_result){
                 _deffered.resolve(_result);
-            
             },function(_result){
                 //Error handling for custom HTTP status codes
                 _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message},_result.getContext()));
@@ -85,18 +83,18 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             return _deffered.promise;
         },
         /**
-         * Recording Transcriptions
+         * TODO: type endpoint description here
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {string} recordingSid    Required parameter: Unique Recording sid
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} accountSid    Required parameter: Your message360 Account SID
+         *     {string} authToken    Required parameter: Your message360 Token
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
-         * @return {promise<string>}
+         * @return {promise<void>}
          */
-        createRecordingTranscription : function(input){
+        createCheckFunds : function(input){
             //Assign default values
             input = input || {};
 
@@ -105,8 +103,11 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             
             //validating required parameters
             var _missingArgs = false;
-            if (input.recordingSid == null || input.recordingSid == undefined){
-                _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+            if (input.accountSid == null || input.accountSid == undefined){
+                _deffered.reject({errorMessage: "The property 'accountSid' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.authToken == null || input.authToken == undefined){
+                _deffered.reject({errorMessage: "The property 'authToken' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -115,13 +116,8 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/recordingtranscription.{ResponseType}";
+            var _queryBuilder = _baseUri + "/webrtc/checkFunds.json";
             
-            //Process template parameters
-            _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != input.responseType)? input.responseType: "json"
-            });
-
             //validate and preprocess url
             var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
             
@@ -132,7 +128,8 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "RecordingSid" : input.recordingSid
+                "account_sid" : input.accountSid,
+                "auth_token" : input.authToken
             };
 
             //Remove null values
@@ -153,7 +150,6 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             //process response
             _response.then(function(_result){
                 _deffered.resolve(_result);
-            
             },function(_result){
                 //Error handling for custom HTTP status codes
                 _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message},_result.getContext()));
@@ -162,18 +158,19 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             return _deffered.promise;
         },
         /**
-         * View Specific Transcriptions
+         * Authenticate a message360 number for use
          * All parameters to the endpoint are supplied through the object with their names
          * being the key and their desired values being the value. A list of parameters that can be used are:
          * 
-         *     {string} transcriptionSid    Required parameter: Unique Transcription ID
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         *     {string} phoneNumber    Required parameter: Phone number to authenticate for use
+         *     {string} accountSid    Required parameter: Your message360 Account SID
+         *     {string} authToken    Required parameter: Your message360 token
          * 
          * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
-         * @return {promise<string>}
+         * @return {promise<void>}
          */
-        createViewTranscription : function(input){
+        createAuthenticateNumber : function(input){
             //Assign default values
             input = input || {};
 
@@ -182,8 +179,14 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             
             //validating required parameters
             var _missingArgs = false;
-            if (input.transcriptionSid == null || input.transcriptionSid == undefined){
-                _deffered.reject({errorMessage: "The property 'transcriptionSid' in the input object cannot be null.", errorCode: -1});
+            if (input.phoneNumber == null || input.phoneNumber == undefined){
+                _deffered.reject({errorMessage: "The property 'phoneNumber' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.accountSid == null || input.accountSid == undefined){
+                _deffered.reject({errorMessage: "The property 'accountSid' in the input object cannot be null.", errorCode: -1});
+                _missingArgs = true;
+            } else if (input.authToken == null || input.authToken == undefined){
+                _deffered.reject({errorMessage: "The property 'authToken' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -192,13 +195,8 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare query string for API call
             var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/viewtranscription.{ResponseType}";
+            var _queryBuilder = _baseUri + "/webrtc/authenticateNumber.json";
             
-            //Process template parameters
-            _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != input.responseType)? input.responseType: "json"
-            });
-
             //validate and preprocess url
             var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
             
@@ -209,7 +207,9 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
 
             //prepare form data
             var _form = {
-                "TranscriptionSid" : input.transcriptionSid
+                "phone_number" : input.phoneNumber,
+                "account_sid" : input.accountSid,
+                "auth_token" : input.authToken
             };
 
             //Remove null values
@@ -230,81 +230,6 @@ angular.module('Message360').factory('TranscriptionController',function($q,Confi
             //process response
             _response.then(function(_result){
                 _deffered.resolve(_result);
-            
-            },function(_result){
-                //Error handling for custom HTTP status codes
-                _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message},_result.getContext()));
-            });
-            
-            return _deffered.promise;
-        },
-        /**
-         * Get All transcriptions
-         * All parameters to the endpoint are supplied through the object with their names
-         * being the key and their desired values being the value. A list of parameters that can be used are:
-         * 
-         *     {int|null} page    Optional parameter: Example: 
-         *     {int|null} pageSize    Optional parameter: Example: 
-         *     {Status|null} status    Optional parameter: Example: 
-         *     {string|null} dateTranscribed    Optional parameter: Example: 
-         *     {string|null} responseType    Optional parameter: Response type format xml or json
-         * 
-         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-         *
-         * @return {promise<string>}
-         */
-        createListTranscription : function(input){
-            //Assign default values
-            input = input || {};
-
-            //Create promise to return
-            var _deffered= $q.defer();
-            
-
-            //prepare query string for API call
-            var _baseUri = Configuration.BASEURI
-            var _queryBuilder = _baseUri + "/transcriptions/listtranscription.{ResponseType}";
-            
-            //Process template parameters
-            _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != input.responseType)? input.responseType: "json"
-            });
-
-            //validate and preprocess url
-            var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-            
-            //prepare headers
-            var _headers = {
-                "user-agent" : "message360-api"
-            };
-
-            //prepare form data
-            var _form = {
-                "Page" : input.page,
-                "PageSize" : input.pageSize,
-                "Status" : (input.status != null)?input.status:null,
-                "DateTranscribed" : input.dateTranscribed
-            };
-
-            //Remove null values
-            APIHelper.cleanObject(_form);
-
-            //prepare and invoke the API call request to fetch the response
-            var _config = {
-                method : "POST",
-                queryUrl : _queryUrl,
-                headers: _headers,
-                username: Configuration.basicAuthUserName,
-                password: Configuration.basicAuthPassword,
-                form : _form,
-            };
-            
-            var _response = HttpClient(_config);
-            
-            //process response
-            _response.then(function(_result){
-                _deffered.resolve(_result);
-            
             },function(_result){
                 //Error handling for custom HTTP status codes
                 _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message},_result.getContext()));

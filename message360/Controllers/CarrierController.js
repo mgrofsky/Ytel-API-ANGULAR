@@ -1,7 +1,7 @@
 /**
   *Message360
   *
-  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/02/2016
   */
 
 'use strict';
@@ -9,22 +9,27 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
     return{
         /**
          * Get the Carrier Lookup
-         * @param {string} phonenumber    Required parameter: The number to lookup
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {string} phonenumber    Required parameter: The number to lookup
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createCarrierLookup : function(phonenumber, responseType){
+        createCarrierLookup : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
             
             //validating required parameters
             var _missingArgs = false;
-            if (phonenumber == null || phonenumber == undefined){
-                _deffered.reject({errorMessage: "The parameter 'phonenumber' is a required parameter and cannot be null.", errorCode: -1});
+            if (input.phonenumber == null || input.phonenumber == undefined){
+                _deffered.reject({errorMessage: "The property 'phonenumber' in the input object cannot be null.", errorCode: -1});
                 _missingArgs = true;
             }
 
@@ -37,7 +42,7 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -50,7 +55,7 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
 
             //prepare form data
             var _form = {
-                "phonenumber" : phonenumber
+                "phonenumber" : input.phonenumber
             };
 
             //Remove null values
@@ -81,15 +86,20 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
         },
         /**
          * Get the All Purchase Number's Carrier lookup
-         * @param {string|null} page    Optional parameter: Page Number
-         * @param {string|null} pagesize    Optional parameter: Page Size
-         * @param {string|null} responseType    Optional parameter: Response format, xml or json
+         * All parameters to the endpoint are supplied through the object with their names
+         * being the key and their desired values being the value. A list of parameters that can be used are:
+         * 
+         *     {int|null} page    Optional parameter: Page Number
+         *     {int|null} pagesize    Optional parameter: Page Size
+         *     {string|null} responseType    Optional parameter: Response type format xml or json
+         * 
+         * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
          *
          * @return {promise<string>}
          */
-        createCarrierLookupList : function(page, pagesize, responseType){
+        createCarrierLookupList : function(input){
             //Assign default values
-            responseType = responseType || "json";
+            input = input || {};
 
             //Create promise to return
             var _deffered= $q.defer();
@@ -101,7 +111,7 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
             
             //Process template parameters
             _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                "ResponseType" : (null != responseType)? responseType: "json"
+                "ResponseType" : (null != input.responseType)? input.responseType: "json"
             });
 
             //validate and preprocess url
@@ -114,8 +124,8 @@ angular.module('Message360').factory('CarrierController',function($q,Configurati
 
             //prepare form data
             var _form = {
-                "page" : page,
-                "pagesize" : pagesize
+                "page" : input.page,
+                "pagesize" : input.pagesize
             };
 
             //Remove null values
