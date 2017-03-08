@@ -1,17 +1,23 @@
 /**
-  *Message360
+  * Message360
   *
-  *This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
   */
 
+;(function (angular) {
+'use strict';
 
-angular.module('Message360').factory('AudioFormat', function() {
-    return {
+angular.module('Message360')
+    .factory('AudioFormat',
+        function () {
+            return {
+                //mp3 file
+                MP_3: "mp3",
+        
+                //wav file
+                WAV: "wav"
+            };
+        }
+    );
 
-        //mp3 file    
-        MP_3 : "mp3",
-
-        //wav file    
-        WAV : "wav",
-    };
-});
+}(angular));

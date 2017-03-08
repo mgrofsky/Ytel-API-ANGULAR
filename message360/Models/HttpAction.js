@@ -1,17 +1,23 @@
 /**
-  *Message360
+  * Message360
   *
-  *This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+  * This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
   */
 
+;(function (angular) {
+'use strict';
 
-angular.module('Message360').factory('HttpAction', function() {
-    return {
+angular.module('Message360')
+    .factory('HttpAction',
+        function () {
+            return {
+                //Get type
+                GET: "GET",
+        
+                //Post Type
+                POST: "POST"
+            };
+        }
+    );
 
-        //Get type    
-        GET : "GET",
-
-        //Post Type    
-        POST : "POST",
-    };
-});
+}(angular));

@@ -8,14 +8,11 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('SendEmailAs',
+    .factory('Servers',
         function () {
             return {
-                //Email send as text format
-                TEXT: "TEXT",
-        
-                //Email send as HTML format
-                HTML: "HTML"
+                //TODO: Write general description for this element
+                MDEFAULT: "default"
             };
         }
     );
