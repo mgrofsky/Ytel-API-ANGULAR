@@ -18,8 +18,8 @@ angular.module('Message360')
                  * 
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
-                 *     {string|null} dateCreated    Optional parameter: Example: 
-                 *     {string|null} callSid    Optional parameter: Example: 
+                 *     {string|null} dateCreated    Optional parameter: Example:
+                 *     {string|null} callSid    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -40,7 +40,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -48,10 +48,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Page": input.page,
-                        "PageSize": input.pageSize,
-                        "DateCreated": input.dateCreated,
-                        "CallSid": input.callSid
+                        'Page': input.page,
+                        'PageSize': input.pageSize,
+                        'DateCreated': input.dateCreated,
+                        'CallSid': input.callSid
                     };
 
                     // Remove null values
@@ -101,7 +101,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.recordingSid == null || input.recordingSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `recordingSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -114,7 +114,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -122,7 +122,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "RecordingSid": input.recordingSid
+                        'RecordingSid': input.recordingSid
                     };
 
                     // Remove null values
@@ -172,7 +172,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.recordingSid == null || input.recordingSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `recordingSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -185,7 +185,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -193,7 +193,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "RecordingSid": input.recordingSid
+                        'RecordingSid': input.recordingSid
                     };
 
                     // Remove null values

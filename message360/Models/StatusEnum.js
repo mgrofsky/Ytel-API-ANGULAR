@@ -8,14 +8,17 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('AudioDirection',
+    .factory('StatusEnum',
         function () {
             return {
                 //TODO: Write general description for this element
-                MIN: "IN",
+                INPROGRESS: "INPROGRESS",
         
                 //TODO: Write general description for this element
-                OUT: "OUT"
+                SUCCESS: "Success",
+        
+                //TODO: Write general description for this element
+                FAILURE: "Failure"
             };
         }
     );

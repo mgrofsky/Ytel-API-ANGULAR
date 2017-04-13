@@ -8,17 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('Direction',
+    .factory('AudioFormatEnum',
         function () {
             return {
-                //in direction
-                MIN: "IN",
+                //mp3 file
+                MP_3: "mp3",
         
-                //out direction
-                OUT: "OUT",
-        
-                //both
-                BOTH: "BOTH"
+                //wav file
+                WAV: "wav"
             };
         }
     );

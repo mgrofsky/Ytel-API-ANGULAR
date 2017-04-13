@@ -109,18 +109,18 @@ Import the reference to the generated SDK files inside your html file like:
 
 		<!-- Models -->
         <script src="scripts/message360/Models/BaseModel.js"></script>
-        <script src="scripts/message360/Models/AudioDirection.js"></script>
-        <script src="scripts/message360/Models/MergeNumberStatus.js"></script>
-        <script src="scripts/message360/Models/ActivateStatus.js"></script>
-        <script src="scripts/message360/Models/SendEmailAs.js"></script>
-        <script src="scripts/message360/Models/Status.js"></script>
-        <script src="scripts/message360/Models/NumberType.js"></script>
-        <script src="scripts/message360/Models/Direction.js"></script>
-        <script src="scripts/message360/Models/InterruptedCallStatus.js"></script>
-        <script src="scripts/message360/Models/AudioFormat.js"></script>
-        <script src="scripts/message360/Models/ProductCode.js"></script>
-        <script src="scripts/message360/Models/IfMachine.js"></script>
-        <script src="scripts/message360/Models/HttpAction.js"></script>
+        <script src="scripts/message360/Models/AudioDirectionEnum.js"></script>
+        <script src="scripts/message360/Models/MergeNumberStatusEnum.js"></script>
+        <script src="scripts/message360/Models/ActivateStatusEnum.js"></script>
+        <script src="scripts/message360/Models/SendEmailAsEnum.js"></script>
+        <script src="scripts/message360/Models/StatusEnum.js"></script>
+        <script src="scripts/message360/Models/NumberTypeEnum.js"></script>
+        <script src="scripts/message360/Models/DirectionEnum.js"></script>
+        <script src="scripts/message360/Models/InterruptedCallStatusEnum.js"></script>
+        <script src="scripts/message360/Models/AudioFormatEnum.js"></script>
+        <script src="scripts/message360/Models/ProductCodeEnum.js"></script>
+        <script src="scripts/message360/Models/IfMachineEnum.js"></script>
+        <script src="scripts/message360/Models/HttpActionEnum.js"></script>
 
 		...
 	</head>
@@ -169,6 +169,35 @@ To run the app, simply open up the `index.html` file in a browser.
 
 ![app-running](https://apidocs.io/illustration/angularjs?step=appRunning)
 
+## Initialization
+
+### Authentication
+In order to setup authentication and initialization of the Angular App, you need the following information.
+
+| Parameter | Description |
+|-----------|-------------|
+| basicAuthUserName | The username to use with basic authentication |
+| basicAuthPassword | The password to use with basic authentication |
+
+
+
+```JavaScript
+// Configuration parameters and credentials
+basicAuthUserName = "basicAuthUserName"; // The username to use with basic authentication
+basicAuthPassword = "basicAuthPassword"; // The password to use with basic authentication
+
+```
+The Angular App can be initialized as following:
+```html
+<body ng-app="myApp">
+    <div ng-controller="testController">
+        ...
+    </div>
+    ...
+</body>
+```
+> The initialization code will be added inside the `index.html` file (which is the view of the app you have created). More detail about this can be found in the [`How to Use`](#how-to-use) section
+
 ## Class Reference
 
 ### <a name="list_of_controllers"></a>List of Controllers
@@ -196,7 +225,7 @@ To run the app, simply open up the `index.html` file in a browser.
 The singleton instance of the ``` ShortCodeController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -222,7 +251,7 @@ function createViewTemplate(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["templateid"] = uniqid();
         input["responseType"] = "ResponseType";
@@ -271,7 +300,7 @@ function createSendShortCode(input, formParams)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["shortcode"] = "shortcode";
         input["tocountrycode"] = "tocountrycode";
@@ -325,10 +354,10 @@ function createListInboundShortCode(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 197;
-        input["pagesize"] = 197;
+        input["page"] = 146;
+        input["pagesize"] = 146;
         input["from"] = "from";
         input["shortcode"] = "Shortcode";
         input["dateReceived"] = "DateReceived";
@@ -376,10 +405,10 @@ function createListShortCode(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 197;
-        input["pagesize"] = 197;
+        input["page"] = 146;
+        input["pagesize"] = 146;
         input["from"] = "from";
         input["to"] = "to";
         input["datesent"] = "datesent";
@@ -425,11 +454,11 @@ function createListTemplates(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["type"] = "type";
-        input["page"] = 197;
-        input["pagesize"] = 197;
+        input["page"] = 146;
+        input["pagesize"] = 146;
         input["responseType"] = "ResponseType";
 
 
@@ -470,7 +499,7 @@ function createViewShortCode(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ShortCodeController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ShortCodeController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["messagesid"] = "messagesid";
         input["responseType"] = "ResponseType";
@@ -500,7 +529,7 @@ function createViewShortCode(input)
 The singleton instance of the ``` ConferenceController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -529,7 +558,7 @@ function createDeafMuteParticipant(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["conferenceSid"] = "conferenceSid";
         input["participantSid"] = "ParticipantSid";
@@ -580,12 +609,12 @@ function createListConference(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 197;
-        input["pageSize"] = 197;
+        input["page"] = 146;
+        input["pageSize"] = 146;
         input["friendlyName"] = "FriendlyName";
-        input["status"] = Object.keys(InterruptedCallStatus)[0];
+        input["status"] = Object.keys(InterruptedCallStatusEnum)[0];
         input["dateCreated"] = "DateCreated";
         input["dateUpdated"] = "DateUpdated";
         input["responseType"] = "ResponseType";
@@ -628,7 +657,7 @@ function createViewConference(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["conferencesid"] = "conferencesid";
         input["responseType"] = "ResponseType";
@@ -675,11 +704,11 @@ function addParticipant(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["conferencesid"] = "conferencesid";
         input["participantnumber"] = "participantnumber";
-        input["tocountrycode"] = 197;
+        input["tocountrycode"] = 146;
         input["muted"] = true;
         input["deaf"] = true;
         input["responseType"] = "ResponseType";
@@ -726,11 +755,11 @@ function createListParticipant(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["conferenceSid"] = "ConferenceSid";
-        input["page"] = 197;
-        input["pagesize"] = 197;
+        input["page"] = 146;
+        input["pagesize"] = 146;
         input["muted"] = true;
         input["deaf"] = true;
         input["responseType"] = "ResponseType";
@@ -774,7 +803,7 @@ function createViewParticipant(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, ConferenceController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, ConferenceController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["conferenceSid"] = "ConferenceSid";
         input["participantSid"] = "ParticipantSid";
@@ -805,7 +834,7 @@ function createViewParticipant(input)
 The singleton instance of the ``` EmailController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -831,7 +860,7 @@ function createDeleteInvalid(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -875,7 +904,7 @@ function createListBlocks(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["offset"] = "offset";
         input["limit"] = "limit";
@@ -920,7 +949,7 @@ function createListSpam(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["responseType"] = "ResponseType";
         input["offset"] = "offset";
@@ -965,7 +994,7 @@ function createListBounces(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["responseType"] = "ResponseType";
         input["offset"] = "offset";
@@ -1009,7 +1038,7 @@ function createDeleteBounces(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -1053,7 +1082,7 @@ function createListInvalid(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["responseType"] = "ResponseType";
         input["offet"] = "offet";
@@ -1098,7 +1127,7 @@ function createListUnsubscribes(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["responseType"] = "ResponseType";
         input["offset"] = "offset";
@@ -1142,7 +1171,7 @@ function createDeleteUnsubscribes(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -1185,7 +1214,7 @@ function addUnsubscribes(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -1228,7 +1257,7 @@ function createDeleteBlock(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -1271,7 +1300,7 @@ function createDeleteSpam(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["email"] = "email";
         input["responseType"] = "ResponseType";
@@ -1321,11 +1350,11 @@ function createSendEmail(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, EmailController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, EmailController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["to"] = "to";
         input["from"] = "from";
-        input["type"] = Object.keys(SendEmailAs)[0];
+        input["type"] = Object.keys(SendEmailAsEnum)[0];
         input["subject"] = "subject";
         input["message"] = "message";
         input["cc"] = "cc";
@@ -1358,7 +1387,7 @@ function createSendEmail(input)
 The singleton instance of the ``` NumberVerificationController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, NumberVerificationController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, NumberVerificationController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -1385,7 +1414,7 @@ function createVerifyNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, NumberVerificationController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, NumberVerificationController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phonenumber"] = "phonenumber";
         input["type"] = "type";
@@ -1416,7 +1445,7 @@ function createVerifyNumber(input)
 The singleton instance of the ``` CarrierController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, CarrierController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CarrierController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -1442,7 +1471,7 @@ function createCarrierLookup(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CarrierController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CarrierController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phonenumber"] = "phonenumber";
         input["responseType"] = "ResponseType";
@@ -1486,10 +1515,10 @@ function createCarrierLookupList(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CarrierController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CarrierController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 197;
-        input["pagesize"] = 197;
+        input["page"] = 146;
+        input["pagesize"] = 146;
         input["responseType"] = "ResponseType";
 
 
@@ -1517,7 +1546,7 @@ function createCarrierLookupList(input)
 The singleton instance of the ``` CallController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -1543,7 +1572,7 @@ function createViewCall(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callsid"] = "callsid";
         input["responseType"] = "ResponseType";
@@ -1605,26 +1634,26 @@ function createGroupCall(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["fromCountryCode"] = "FromCountryCode";
         input["from"] = "From";
         input["toCountryCode"] = "ToCountryCode";
         input["to"] = "To";
         input["url"] = "Url";
-        input["method"] = Object.keys(HttpAction)[0];
+        input["method"] = Object.keys(HttpActionEnum)[0];
         input["statusCallBackUrl"] = "StatusCallBackUrl";
-        input["statusCallBackMethod"] = Object.keys(HttpAction)[0];
+        input["statusCallBackMethod"] = Object.keys(HttpActionEnum)[0];
         input["fallBackUrl"] = "FallBackUrl";
-        input["fallBackMethod"] = Object.keys(HttpAction)[0];
+        input["fallBackMethod"] = Object.keys(HttpActionEnum)[0];
         input["heartBeatUrl"] = "HeartBeatUrl";
-        input["heartBeatMethod"] = Object.keys(HttpAction)[0];
-        input["timeout"] = 197;
+        input["heartBeatMethod"] = Object.keys(HttpActionEnum)[0];
+        input["timeout"] = 146;
         input["playDtmf"] = "PlayDtmf";
         input["hideCallerId"] = "HideCallerId";
         input["record"] = true;
         input["recordCallBackUrl"] = "RecordCallBackUrl";
-        input["recordCallBackMethod"] = Object.keys(HttpAction)[0];
+        input["recordCallBackMethod"] = Object.keys(HttpActionEnum)[0];
         input["transcribe"] = true;
         input["transcribeCallBackUrl"] = "TranscribeCallBackUrl";
         input["responseType"] = "ResponseType";
@@ -1673,15 +1702,15 @@ function createVoiceEffect(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callSid"] = "CallSid";
-        input["audioDirection"] = Object.keys(AudioDirection)[0];
-        input["pitchSemiTones"] = 197.848927633767;
-        input["pitchOctaves"] = 197.848927633767;
-        input["pitch"] = 197.848927633767;
-        input["rate"] = 197.848927633767;
-        input["tempo"] = 197.848927633767;
+        input["audioDirection"] = Object.keys(AudioDirectionEnum)[0];
+        input["pitchSemiTones"] = 146.167248415839;
+        input["pitchOctaves"] = 146.167248415839;
+        input["pitch"] = 146.167248415839;
+        input["rate"] = 146.167248415839;
+        input["tempo"] = 146.167248415839;
         input["responseType"] = "ResponseType";
 
 
@@ -1727,14 +1756,14 @@ function createRecordCall(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callSid"] = "CallSid";
         input["record"] = true;
-        input["direction"] = Object.keys(Direction)[0];
-        input["timeLimit"] = 197;
+        input["direction"] = Object.keys(DirectionEnum)[0];
+        input["timeLimit"] = 146;
         input["callBackUrl"] = "CallBackUrl";
-        input["fileformat"] = Object.keys(AudioFormat)[0];
+        input["fileformat"] = Object.keys(AudioFormatEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -1780,12 +1809,12 @@ function createPlayAudio(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callSid"] = "CallSid";
         input["audioUrl"] = "AudioUrl";
-        input["length"] = 197;
-        input["direction"] = Object.keys(Direction)[0];
+        input["length"] = 146;
+        input["direction"] = Object.keys(DirectionEnum)[0];
         input["loop"] = true;
         input["mix"] = true;
         input["responseType"] = "ResponseType";
@@ -1831,12 +1860,12 @@ function createInterruptedCall(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callSid"] = "CallSid";
         input["url"] = "Url";
-        input["method"] = Object.keys(HttpAction)[0];
-        input["status"] = Object.keys(InterruptedCallStatus)[0];
+        input["method"] = Object.keys(HttpActionEnum)[0];
+        input["status"] = Object.keys(InterruptedCallStatusEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -1879,11 +1908,11 @@ function createSendDigit(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["callSid"] = "CallSid";
         input["playDtmf"] = "PlayDtmf";
-        input["playDtmfDirection"] = Object.keys(Direction)[0];
+        input["playDtmfDirection"] = Object.keys(DirectionEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -1944,29 +1973,29 @@ function createMakeCall(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["fromCountryCode"] = "FromCountryCode";
         input["from"] = "From";
         input["toCountryCode"] = "ToCountryCode";
         input["to"] = "To";
         input["url"] = "Url";
-        input["method"] = Object.keys(HttpAction)[0];
+        input["method"] = Object.keys(HttpActionEnum)[0];
         input["statusCallBackUrl"] = "StatusCallBackUrl";
-        input["statusCallBackMethod"] = Object.keys(HttpAction)[0];
+        input["statusCallBackMethod"] = Object.keys(HttpActionEnum)[0];
         input["fallBackUrl"] = "FallBackUrl";
-        input["fallBackMethod"] = Object.keys(HttpAction)[0];
+        input["fallBackMethod"] = Object.keys(HttpActionEnum)[0];
         input["heartBeatUrl"] = "HeartBeatUrl";
-        input["heartBeatMethod"] = true;
-        input["timeout"] = 156;
+        input["heartBeatMethod"] = false;
+        input["timeout"] = 104;
         input["playDtmf"] = "PlayDtmf";
-        input["hideCallerId"] = true;
-        input["record"] = true;
+        input["hideCallerId"] = false;
+        input["record"] = false;
         input["recordCallBackUrl"] = "RecordCallBackUrl";
-        input["recordCallBackMethod"] = Object.keys(HttpAction)[0];
-        input["transcribe"] = true;
+        input["recordCallBackMethod"] = Object.keys(HttpActionEnum)[0];
+        input["transcribe"] = false;
         input["transcribeCallBackUrl"] = "TranscribeCallBackUrl";
-        input["ifMachine"] = Object.keys(IfMachine)[0];
+        input["ifMachine"] = Object.keys(IfMachineEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -2011,10 +2040,10 @@ function createListCalls(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, CallController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pageSize"] = 156;
+        input["page"] = 104;
+        input["pageSize"] = 104;
         input["to"] = "To";
         input["from"] = "From";
         input["dateCreated"] = "DateCreated";
@@ -2022,6 +2051,63 @@ function createListCalls(input)
 
 
 		var result = CallController.createListCalls(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+#### <a name="create_send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.createSendRinglessVM") createSendRinglessVM
+
+> API endpoint used to send a Ringless Voicemail
+
+
+```javascript
+function createSendRinglessVM(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| fromCountryCode |  ``` Required ```  | From country code |
+| from |  ``` Required ```  | This number to display on Caller ID as calling |
+| toCountryCode |  ``` Required ```  | To country code |
+| to |  ``` Required ```  | To number |
+| voiceMailURL |  ``` Required ```  | URL to an audio file |
+| method |  ``` Required ```  ``` DefaultValue ```  | Not currently used in this version |
+| statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
+| statsCallBackMethod |  ``` Optional ```  | POST or GET |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, CallController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
+	    var input = [];
+        input["fromCountryCode"] = "FromCountryCode";
+        input["from"] = "From";
+        input["toCountryCode"] = "ToCountryCode";
+        input["to"] = "To";
+        input["voiceMailURL"] = "VoiceMailURL";
+        input["method"] = "Method";
+        input["statusCallBackUrl"] = "StatusCallBackUrl";
+        input["statsCallBackMethod"] = "StatsCallBackMethod";
+        input["responseType"] = "ResponseType";
+
+
+		var result = CallController.createSendRinglessVM(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -2045,7 +2131,7 @@ function createListCalls(input)
 The singleton instance of the ``` WebRTCController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, WebRTCController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, WebRTCController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -2071,7 +2157,7 @@ function createCheckFunds(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, WebRTCController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, WebRTCController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["accountSid"] = account_sid;
         input["authToken"] = auth_token;
@@ -2116,7 +2202,7 @@ function createToken(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, WebRTCController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, WebRTCController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["accountSid"] = account_sid;
         input["authToken"] = auth_token;
@@ -2148,7 +2234,7 @@ function createToken(input)
 The singleton instance of the ``` SubAccountController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, SubAccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SubAccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -2176,7 +2262,7 @@ function createSubAccount(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SubAccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SubAccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["firstName"] = "FirstName";
         input["lastName"] = "LastName";
@@ -2222,10 +2308,10 @@ function createSuspendSubAccount(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SubAccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SubAccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["subAccountSID"] = "SubAccountSID";
-        input["activate"] = Object.keys(ActivateStatus)[0];
+        input["activate"] = Object.keys(ActivateStatusEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -2267,10 +2353,10 @@ function createDeleteSubAccount(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SubAccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SubAccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["subAccountSID"] = "SubAccountSID";
-        input["mergeNumber"] = Object.keys(MergeNumberStatus)[0];
+        input["mergeNumber"] = Object.keys(MergeNumberStatusEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -2298,7 +2384,7 @@ function createDeleteSubAccount(input)
 The singleton instance of the ``` AddressController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -2332,7 +2418,7 @@ function createAddress(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["name"] = "Name";
         input["address"] = "Address";
@@ -2383,7 +2469,7 @@ function createDeleteAddress(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["addressSID"] = "AddressSID";
         input["responseType"] = "ResponseType";
@@ -2426,7 +2512,7 @@ function createVerifyAddress(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["addressSID"] = "AddressSID";
         input["responseType"] = "ResponseType";
@@ -2472,10 +2558,10 @@ function createListAddress(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pageSize"] = 156;
+        input["page"] = 104;
+        input["pageSize"] = 104;
         input["addressSID"] = "AddressSID";
         input["dateCreated"] = "DateCreated";
         input["responseType"] = "ResponseType";
@@ -2518,7 +2604,7 @@ function createViewAddress(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AddressController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AddressController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["addressSID"] = "AddressSID";
         input["responseType"] = "ResponseType";
@@ -2548,7 +2634,7 @@ function createViewAddress(input)
 The singleton instance of the ``` PhoneNumberController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -2587,22 +2673,22 @@ function updatePhoneNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phoneNumber"] = "PhoneNumber";
         input["friendlyName"] = "FriendlyName";
         input["voiceUrl"] = "VoiceUrl";
-        input["voiceMethod"] = Object.keys(HttpAction)[0];
+        input["voiceMethod"] = Object.keys(HttpActionEnum)[0];
         input["voiceFallbackUrl"] = "VoiceFallbackUrl";
-        input["voiceFallbackMethod"] = Object.keys(HttpAction)[0];
+        input["voiceFallbackMethod"] = Object.keys(HttpActionEnum)[0];
         input["hangupCallback"] = "HangupCallback";
-        input["hangupCallbackMethod"] = Object.keys(HttpAction)[0];
+        input["hangupCallbackMethod"] = Object.keys(HttpActionEnum)[0];
         input["heartbeatUrl"] = "HeartbeatUrl";
-        input["heartbeatMethod"] = Object.keys(HttpAction)[0];
+        input["heartbeatMethod"] = Object.keys(HttpActionEnum)[0];
         input["smsUrl"] = "SmsUrl";
-        input["smsMethod"] = Object.keys(HttpAction)[0];
+        input["smsMethod"] = Object.keys(HttpActionEnum)[0];
         input["smsFallbackUrl"] = "SmsFallbackUrl";
-        input["smsFallbackMethod"] = Object.keys(HttpAction)[0];
+        input["smsFallbackMethod"] = Object.keys(HttpActionEnum)[0];
         input["responseType"] = "ResponseType";
 
 
@@ -2643,7 +2729,7 @@ function createBuyNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phoneNumber"] = "PhoneNumber";
         input["responseType"] = "ResponseType";
@@ -2686,7 +2772,7 @@ function createReleaseNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phoneNumber"] = "PhoneNumber";
         input["responseType"] = "ResponseType";
@@ -2729,7 +2815,7 @@ function createViewNumberDetails(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["phoneNumber"] = "PhoneNumber";
         input["responseType"] = "ResponseType";
@@ -2775,11 +2861,11 @@ function createListNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pageSize"] = 156;
-        input["numberType"] = Object.keys(NumberType)[0];
+        input["page"] = 104;
+        input["pageSize"] = 104;
+        input["numberType"] = Object.keys(NumberTypeEnum)[0];
         input["friendlyName"] = "FriendlyName";
         input["responseType"] = "ResponseType";
 
@@ -2823,11 +2909,11 @@ function createAvailablePhoneNumber(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, PhoneNumberController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, PhoneNumberController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["numberType"] = Object.keys(NumberType)[0];
+        input["numberType"] = Object.keys(NumberTypeEnum)[0];
         input["areaCode"] = "AreaCode";
-        input["pageSize"] = 156;
+        input["pageSize"] = 104;
         input["responseType"] = "ResponseType";
 
 
@@ -2855,7 +2941,7 @@ function createAvailablePhoneNumber(input)
 The singleton instance of the ``` RecordingController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, RecordingController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, RecordingController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -2884,10 +2970,10 @@ function createListRecording(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, RecordingController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, RecordingController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pageSize"] = 156;
+        input["page"] = 104;
+        input["pageSize"] = 104;
         input["dateCreated"] = "DateCreated";
         input["callSid"] = "CallSid";
         input["responseType"] = "ResponseType";
@@ -2930,7 +3016,7 @@ function createDeleteRecording(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, RecordingController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, RecordingController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["recordingSid"] = "RecordingSid";
         input["responseType"] = "ResponseType";
@@ -2973,7 +3059,7 @@ function createViewRecording(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, RecordingController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, RecordingController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["recordingSid"] = "RecordingSid";
         input["responseType"] = "ResponseType";
@@ -3003,7 +3089,7 @@ function createViewRecording(input)
 The singleton instance of the ``` SMSController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, SMSController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SMSController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -3032,9 +3118,9 @@ function createListInboundSMS(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SMSController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SMSController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
+        input["page"] = 104;
         input["pagesize"] = "pagesize";
         input["from"] = "from";
         input["to"] = "to";
@@ -3082,10 +3168,10 @@ function createListSMS(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SMSController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SMSController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pagesize"] = 156;
+        input["page"] = 104;
+        input["pagesize"] = 104;
         input["from"] = "from";
         input["to"] = "to";
         input["datesent"] = "datesent";
@@ -3135,14 +3221,14 @@ function createSendSMS(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SMSController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SMSController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["fromcountrycode"] = 156;
+        input["fromcountrycode"] = 104;
         input["from"] = "from";
-        input["tocountrycode"] = 156;
+        input["tocountrycode"] = 104;
         input["to"] = "to";
         input["body"] = "body";
-        input["method"] = Object.keys(HttpAction)[0];
+        input["method"] = Object.keys(HttpActionEnum)[0];
         input["messagestatuscallback"] = "messagestatuscallback";
         input["responseType"] = "ResponseType";
 
@@ -3184,7 +3270,7 @@ function createViewSMS(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, SMSController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, SMSController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["messagesid"] = "messagesid";
         input["responseType"] = "ResponseType";
@@ -3214,7 +3300,7 @@ function createViewSMS(input)
 The singleton instance of the ``` TranscriptionController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, TranscriptionController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, TranscriptionController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -3240,7 +3326,7 @@ function createAudioURLTranscription(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, TranscriptionController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, TranscriptionController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["audioUrl"] = "AudioUrl";
         input["responseType"] = "ResponseType";
@@ -3283,7 +3369,7 @@ function createRecordingTranscription(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, TranscriptionController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, TranscriptionController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["recordingSid"] = "RecordingSid";
         input["responseType"] = "ResponseType";
@@ -3326,7 +3412,7 @@ function createViewTranscription(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, TranscriptionController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, TranscriptionController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["transcriptionSid"] = "TranscriptionSid";
         input["responseType"] = "ResponseType";
@@ -3372,11 +3458,11 @@ function createListTranscription(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, TranscriptionController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, TranscriptionController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["page"] = 156;
-        input["pageSize"] = 156;
-        input["status"] = Object.keys(Status)[0];
+        input["page"] = 104;
+        input["pageSize"] = 104;
+        input["status"] = Object.keys(StatusEnum)[0];
         input["dateTranscribed"] = "DateTranscribed";
         input["responseType"] = "ResponseType";
 
@@ -3405,7 +3491,7 @@ function createListTranscription(input)
 The singleton instance of the ``` UsageController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, UsageController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, UsageController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -3433,9 +3519,9 @@ function createListUsage(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, UsageController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, UsageController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
-        input["productCode"] = Object.keys(ProductCode)[0];
+        input["productCode"] = Object.keys(ProductCodeEnum)[0];
         input["startDate"] = "startDate";
         input["endDate"] = "endDate";
         input["responseType"] = "ResponseType";
@@ -3465,7 +3551,7 @@ function createListUsage(input)
 The singleton instance of the ``` AccountController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, AccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	});
 ```
 
@@ -3491,7 +3577,7 @@ function createViewAccount(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, AccountController,AudioDirection,MergeNumberStatus,ActivateStatus,SendEmailAs,Status,NumberType,Direction,InterruptedCallStatus,AudioFormat,ProductCode,IfMachine,HttpAction){
+	app.controller("testController", function($scope, AccountController,AudioDirectionEnum,MergeNumberStatusEnum,ActivateStatusEnum,SendEmailAsEnum,StatusEnum,NumberTypeEnum,DirectionEnum,InterruptedCallStatusEnum,AudioFormatEnum,ProductCodeEnum,IfMachineEnum,HttpActionEnum){
 	    var input = [];
         input["date"] = "Date";
         input["responseType"] = "ResponseType";

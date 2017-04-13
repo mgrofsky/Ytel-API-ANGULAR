@@ -16,8 +16,8 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string} phonenumber    Required parameter: Example: 
-                 *     {string} type    Required parameter: Example: 
+                 *     {string} phonenumber    Required parameter: Example:
+                 *     {string} type    Required parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -34,10 +34,10 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phonenumber == null || input.phonenumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phonenumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phonenumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.type == null || input.type == undefined) {
-                        _deffered.reject({errorMessage: "The property 'type' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `type` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -50,7 +50,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -58,8 +58,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "phonenumber": input.phonenumber,
-                        "type": input.type
+                        'phonenumber': input.phonenumber,
+                        'type': input.type
                     };
 
                     // Remove null values

@@ -8,7 +8,7 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('IfMachine',
+    .factory('IfMachineEnum',
         function () {
             return {
                 //TODO: Write general description for this element

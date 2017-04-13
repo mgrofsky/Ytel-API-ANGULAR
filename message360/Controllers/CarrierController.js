@@ -33,7 +33,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phonenumber == null || input.phonenumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phonenumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phonenumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -46,7 +46,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "phonenumber": input.phonenumber
+                        'phonenumber': input.phonenumber
                     };
 
                     // Remove null values
@@ -109,7 +109,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -117,8 +117,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "page": input.page,
-                        "pagesize": input.pagesize
+                        'page': input.page,
+                        'pagesize': input.pagesize
                     };
 
                     // Remove null values

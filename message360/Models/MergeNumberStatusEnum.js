@@ -8,17 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('Status',
+    .factory('MergeNumberStatusEnum',
         function () {
             return {
                 //TODO: Write general description for this element
-                INPROGRESS: "INPROGRESS",
+                MDELETE: 0,
         
                 //TODO: Write general description for this element
-                SUCCESS: "Success",
-        
-                //TODO: Write general description for this element
-                FAILURE: "Failure"
+                MERGE: 1
             };
         }
     );

@@ -8,7 +8,7 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('ProductCode',
+    .factory('ProductCodeEnum',
         function () {
             return {
                 //TODO: Write general description for this element

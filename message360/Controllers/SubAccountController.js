@@ -35,13 +35,13 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.firstName == null || input.firstName == undefined) {
-                        _deffered.reject({errorMessage: "The property 'firstName' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `firstName` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.lastName == null || input.lastName == undefined) {
-                        _deffered.reject({errorMessage: "The property 'lastName' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `lastName` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.email == null || input.email == undefined) {
-                        _deffered.reject({errorMessage: "The property 'email' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `email` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -62,9 +62,9 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "FirstName": input.firstName,
-                        "LastName": input.lastName,
-                        "Email": input.email
+                        'FirstName': input.firstName,
+                        'LastName': input.lastName,
+                        'Email': input.email
                     };
 
                     // Remove null values
@@ -98,8 +98,8 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} subAccountSID    Required parameter: The SubaccountSid to be activated or suspended
-                 *     {ActivateStatus} activate    Required parameter: 0 to suspend or 1 to activate
-                 *     {string|null} responseType    Optional parameter: Example: 
+                 *     {ActivateStatusEnum} activate    Required parameter: 0 to suspend or 1 to activate
+                 *     {string|null} responseType    Optional parameter: Example:
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -115,7 +115,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.subAccountSID == null || input.subAccountSID == undefined) {
-                        _deffered.reject({errorMessage: "The property 'subAccountSID' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `subAccountSID` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -128,7 +128,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": input.responseType
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -136,8 +136,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "SubAccountSID": input.subAccountSID,
-                        "Activate": input.activate
+                        'SubAccountSID': input.subAccountSID,
+                        'Activate': input.activate
                     };
 
                     // Remove null values
@@ -171,7 +171,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} subAccountSID    Required parameter: The SubaccountSid to be deleted
-                 *     {MergeNumberStatus} mergeNumber    Required parameter: 0 to delete or 1 to merge numbers to parent account.
+                 *     {MergeNumberStatusEnum} mergeNumber    Required parameter: 0 to delete or 1 to merge numbers to parent account.
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -188,7 +188,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.subAccountSID == null || input.subAccountSID == undefined) {
-                        _deffered.reject({errorMessage: "The property 'subAccountSID' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `subAccountSID` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -201,7 +201,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -209,8 +209,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "SubAccountSID": input.subAccountSID,
-                        "MergeNumber": input.mergeNumber
+                        'SubAccountSID': input.subAccountSID,
+                        'MergeNumber': input.mergeNumber
                     };
 
                     // Remove null values

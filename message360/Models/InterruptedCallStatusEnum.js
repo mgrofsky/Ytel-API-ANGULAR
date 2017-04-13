@@ -8,14 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('MergeNumberStatus',
+    .factory('InterruptedCallStatusEnum',
         function () {
             return {
-                //TODO: Write general description for this element
-                MDELETE: 0,
+                //Interrupt Call will be cancel
+                CANCELED: "CANCELED",
         
-                //TODO: Write general description for this element
-                MERGE: 1
+                //Interrupt Call is complete
+                COMPLETED: "COMPLETED"
             };
         }
     );

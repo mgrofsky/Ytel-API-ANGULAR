@@ -8,14 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('InterruptedCallStatus',
+    .factory('ActivateStatusEnum',
         function () {
             return {
-                //Interrupt Call will be cancel
-                CANCELED: "CANCELED",
+                //TODO: Write general description for this element
+                ACTIVATE: 1,
         
-                //Interrupt Call is complete
-                COMPLETED: "COMPLETED"
+                //TODO: Write general description for this element
+                DE_ACTIVATE: 0
             };
         }
     );

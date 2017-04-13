@@ -16,10 +16,10 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string} conferenceSid    Required parameter: Example: 
-                 *     {string} participantSid    Required parameter: Example: 
-                 *     {bool|null} muted    Optional parameter: Example: 
-                 *     {bool|null} deaf    Optional parameter: Example: 
+                 *     {string} conferenceSid    Required parameter: Example:
+                 *     {string} participantSid    Required parameter: Example:
+                 *     {bool|null} muted    Optional parameter: Example:
+                 *     {bool|null} deaf    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -36,10 +36,10 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.conferenceSid == null || input.conferenceSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'conferenceSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `conferenceSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.participantSid == null || input.participantSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'participantSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `participantSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -52,7 +52,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -60,10 +60,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "conferenceSid": input.conferenceSid,
-                        "ParticipantSid": input.participantSid,
-                        "Muted": input.muted,
-                        "Deaf": input.deaf
+                        'conferenceSid': input.conferenceSid,
+                        'ParticipantSid': input.participantSid,
+                        'Muted': input.muted,
+                        'Deaf': input.deaf
                     };
 
                     // Remove null values
@@ -99,9 +99,9 @@ angular.module('Message360')
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
                  *     {string|null} friendlyName    Optional parameter: Only return conferences with the specified FriendlyName
-                 *     {InterruptedCallStatus|null} status    Optional parameter: Example: 
-                 *     {string|null} dateCreated    Optional parameter: Example: 
-                 *     {string|null} dateUpdated    Optional parameter: Example: 
+                 *     {InterruptedCallStatusEnum|null} status    Optional parameter: Example:
+                 *     {string|null} dateCreated    Optional parameter: Example:
+                 *     {string|null} dateUpdated    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -122,7 +122,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -130,12 +130,12 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Page": input.page,
-                        "PageSize": input.pageSize,
-                        "FriendlyName": input.friendlyName,
-                        "Status": (input.status != null) ? input.status : null,
-                        "DateCreated": input.dateCreated,
-                        "DateUpdated": input.dateUpdated
+                        'Page': input.page,
+                        'PageSize': input.pageSize,
+                        'FriendlyName': input.friendlyName,
+                        'Status': (input.status !== null) ? input.status : null,
+                        'DateCreated': input.dateCreated,
+                        'DateUpdated': input.dateUpdated
                     };
 
                     // Remove null values
@@ -185,7 +185,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.conferencesid == null || input.conferencesid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'conferencesid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `conferencesid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -198,7 +198,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -206,7 +206,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "conferencesid": input.conferencesid
+                        'conferencesid': input.conferencesid
                     };
 
                     // Remove null values
@@ -241,9 +241,9 @@ angular.module('Message360')
                  * 
                  *     {string} conferencesid    Required parameter: Unique Conference Sid
                  *     {string} participantnumber    Required parameter: Particiant Number
-                 *     {int} tocountrycode    Required parameter: Example: 
-                 *     {bool|null} muted    Optional parameter: Example: 
-                 *     {bool|null} deaf    Optional parameter: Example: 
+                 *     {int} tocountrycode    Required parameter: Example:
+                 *     {bool|null} muted    Optional parameter: Example:
+                 *     {bool|null} deaf    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -260,13 +260,13 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.conferencesid == null || input.conferencesid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'conferencesid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `conferencesid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.participantnumber == null || input.participantnumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'participantnumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `participantnumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.tocountrycode == null || input.tocountrycode == undefined) {
-                        _deffered.reject({errorMessage: "The property 'tocountrycode' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `tocountrycode` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -279,7 +279,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -287,11 +287,11 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "conferencesid": input.conferencesid,
-                        "participantnumber": input.participantnumber,
-                        "tocountrycode": input.tocountrycode,
-                        "muted": input.muted,
-                        "deaf": input.deaf
+                        'conferencesid': input.conferencesid,
+                        'participantnumber': input.participantnumber,
+                        'tocountrycode': input.tocountrycode,
+                        'muted': input.muted,
+                        'deaf': input.deaf
                     };
 
                     // Remove null values
@@ -326,9 +326,9 @@ angular.module('Message360')
                  * 
                  *     {string} conferenceSid    Required parameter: unique conference sid
                  *     {int|null} page    Optional parameter: page number
-                 *     {int|null} pagesize    Optional parameter: Example: 
-                 *     {bool|null} muted    Optional parameter: Example: 
-                 *     {bool|null} deaf    Optional parameter: Example: 
+                 *     {int|null} pagesize    Optional parameter: Example:
+                 *     {bool|null} muted    Optional parameter: Example:
+                 *     {bool|null} deaf    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response format, xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -345,7 +345,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.conferenceSid == null || input.conferenceSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'conferenceSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `conferenceSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -358,7 +358,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -366,11 +366,11 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "ConferenceSid": input.conferenceSid,
-                        "Page": input.page,
-                        "Pagesize": input.pagesize,
-                        "Muted": input.muted,
-                        "Deaf": input.deaf
+                        'ConferenceSid': input.conferenceSid,
+                        'Page': input.page,
+                        'Pagesize': input.pagesize,
+                        'Muted': input.muted,
+                        'Deaf': input.deaf
                     };
 
                     // Remove null values
@@ -404,7 +404,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} conferenceSid    Required parameter: unique conference sid
-                 *     {string} participantSid    Required parameter: Example: 
+                 *     {string} participantSid    Required parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -421,10 +421,10 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.conferenceSid == null || input.conferenceSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'conferenceSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `conferenceSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.participantSid == null || input.participantSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'participantSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `participantSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -437,7 +437,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -445,8 +445,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "ConferenceSid": input.conferenceSid,
-                        "ParticipantSid": input.participantSid
+                        'ConferenceSid': input.conferenceSid,
+                        'ParticipantSid': input.participantSid
                     };
 
                     // Remove null values

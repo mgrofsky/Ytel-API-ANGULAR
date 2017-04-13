@@ -16,20 +16,20 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string} phoneNumber    Required parameter: Example: 
-                 *     {string|null} friendlyName    Optional parameter: Example: 
+                 *     {string} phoneNumber    Required parameter: Example:
+                 *     {string|null} friendlyName    Optional parameter: Example:
                  *     {string|null} voiceUrl    Optional parameter: URL requested once the call connects
-                 *     {HttpAction|null} voiceMethod    Optional parameter: Example: 
+                 *     {HttpActionEnum|null} voiceMethod    Optional parameter: Example:
                  *     {string|null} voiceFallbackUrl    Optional parameter: URL requested if the voice URL is not available
-                 *     {HttpAction|null} voiceFallbackMethod    Optional parameter: Example: 
-                 *     {string|null} hangupCallback    Optional parameter: Example: 
-                 *     {HttpAction|null} hangupCallbackMethod    Optional parameter: Example: 
+                 *     {HttpActionEnum|null} voiceFallbackMethod    Optional parameter: Example:
+                 *     {string|null} hangupCallback    Optional parameter: Example:
+                 *     {HttpActionEnum|null} hangupCallbackMethod    Optional parameter: Example:
                  *     {string|null} heartbeatUrl    Optional parameter: URL requested once the call connects
-                 *     {HttpAction|null} heartbeatMethod    Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time
+                 *     {HttpActionEnum|null} heartbeatMethod    Optional parameter: URL that can be requested every 60 seconds during the call to notify of elapsed time
                  *     {string|null} smsUrl    Optional parameter: URL requested when an SMS is received
-                 *     {HttpAction|null} smsMethod    Optional parameter: Example: 
+                 *     {HttpActionEnum|null} smsMethod    Optional parameter: Example:
                  *     {string|null} smsFallbackUrl    Optional parameter: URL requested once the call connects
-                 *     {HttpAction|null} smsFallbackMethod    Optional parameter: URL requested if the sms URL is not available
+                 *     {HttpActionEnum|null} smsFallbackMethod    Optional parameter: URL requested if the sms URL is not available
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -46,7 +46,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phoneNumber == null || input.phoneNumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phoneNumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phoneNumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -59,7 +59,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -67,20 +67,20 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "PhoneNumber": input.phoneNumber,
-                        "FriendlyName": input.friendlyName,
-                        "VoiceUrl": input.voiceUrl,
-                        "VoiceMethod": (input.voiceMethod != null) ? input.voiceMethod : null,
-                        "VoiceFallbackUrl": input.voiceFallbackUrl,
-                        "VoiceFallbackMethod": (input.voiceFallbackMethod != null) ? input.voiceFallbackMethod : null,
-                        "HangupCallback": input.hangupCallback,
-                        "HangupCallbackMethod": (input.hangupCallbackMethod != null) ? input.hangupCallbackMethod : null,
-                        "HeartbeatUrl": input.heartbeatUrl,
-                        "HeartbeatMethod": (input.heartbeatMethod != null) ? input.heartbeatMethod : null,
-                        "SmsUrl": input.smsUrl,
-                        "SmsMethod": (input.smsMethod != null) ? input.smsMethod : null,
-                        "SmsFallbackUrl": input.smsFallbackUrl,
-                        "SmsFallbackMethod": (input.smsFallbackMethod != null) ? input.smsFallbackMethod : null
+                        'PhoneNumber': input.phoneNumber,
+                        'FriendlyName': input.friendlyName,
+                        'VoiceUrl': input.voiceUrl,
+                        'VoiceMethod': (input.voiceMethod !== null) ? input.voiceMethod : null,
+                        'VoiceFallbackUrl': input.voiceFallbackUrl,
+                        'VoiceFallbackMethod': (input.voiceFallbackMethod !== null) ? input.voiceFallbackMethod : null,
+                        'HangupCallback': input.hangupCallback,
+                        'HangupCallbackMethod': (input.hangupCallbackMethod !== null) ? input.hangupCallbackMethod : null,
+                        'HeartbeatUrl': input.heartbeatUrl,
+                        'HeartbeatMethod': (input.heartbeatMethod !== null) ? input.heartbeatMethod : null,
+                        'SmsUrl': input.smsUrl,
+                        'SmsMethod': (input.smsMethod !== null) ? input.smsMethod : null,
+                        'SmsFallbackUrl': input.smsFallbackUrl,
+                        'SmsFallbackMethod': (input.smsFallbackMethod !== null) ? input.smsFallbackMethod : null
                     };
 
                     // Remove null values
@@ -130,7 +130,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phoneNumber == null || input.phoneNumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phoneNumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phoneNumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -143,7 +143,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -151,7 +151,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "PhoneNumber": input.phoneNumber
+                        'PhoneNumber': input.phoneNumber
                     };
 
                     // Remove null values
@@ -201,7 +201,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phoneNumber == null || input.phoneNumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phoneNumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phoneNumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -214,7 +214,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -222,7 +222,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "PhoneNumber": input.phoneNumber
+                        'PhoneNumber': input.phoneNumber
                     };
 
                     // Remove null values
@@ -272,7 +272,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.phoneNumber == null || input.phoneNumber == undefined) {
-                        _deffered.reject({errorMessage: "The property 'phoneNumber' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `phoneNumber` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -285,7 +285,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -293,7 +293,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "PhoneNumber": input.phoneNumber
+                        'PhoneNumber': input.phoneNumber
                     };
 
                     // Remove null values
@@ -328,8 +328,8 @@ angular.module('Message360')
                  * 
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
-                 *     {NumberType|null} numberType    Optional parameter: Example: 
-                 *     {string|null} friendlyName    Optional parameter: Example: 
+                 *     {NumberTypeEnum|null} numberType    Optional parameter: Example:
+                 *     {string|null} friendlyName    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -350,7 +350,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -358,10 +358,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Page": input.page,
-                        "PageSize": (input.pageSize != null) ? input.pageSize : 10,
-                        "NumberType": (input.numberType != null) ? input.numberType : null,
-                        "FriendlyName": input.friendlyName
+                        'Page': input.page,
+                        'PageSize': (input.pageSize !== null) ? input.pageSize : 10,
+                        'NumberType': (input.numberType !== null) ? input.numberType : null,
+                        'FriendlyName': input.friendlyName
                     };
 
                     // Remove null values
@@ -394,7 +394,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {NumberType} numberType    Required parameter: Number type either SMS,Voice or all
+                 *     {NumberTypeEnum} numberType    Required parameter: Number type either SMS,Voice or all
                  *     {string} areaCode    Required parameter: Phone Number Area Code
                  *     {int|null} pageSize    Optional parameter: Page Size
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
@@ -413,10 +413,10 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.numberType == null || input.numberType == undefined) {
-                        _deffered.reject({errorMessage: "The property 'numberType' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `numberType` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.areaCode == null || input.areaCode == undefined) {
-                        _deffered.reject({errorMessage: "The property 'areaCode' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `areaCode` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -429,7 +429,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -437,9 +437,9 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "NumberType": (input.numberType != null) ? input.numberType : null,
-                        "AreaCode": input.areaCode,
-                        "PageSize": (input.pageSize != null) ? input.pageSize : 10
+                        'NumberType': (input.numberType !== null) ? input.numberType : null,
+                        'AreaCode': input.areaCode,
+                        'PageSize': (input.pageSize !== null) ? input.pageSize : 10
                     };
 
                     // Remove null values

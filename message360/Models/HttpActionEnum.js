@@ -8,14 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('SendEmailAs',
+    .factory('HttpActionEnum',
         function () {
             return {
-                //Email send as text format
-                TEXT: "TEXT",
+                //Get type
+                GET: "GET",
         
-                //Email send as HTML format
-                HTML: "HTML"
+                //Post Type
+                POST: "POST"
             };
         }
     );

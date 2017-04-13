@@ -16,7 +16,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {ProductCode} productCode    Required parameter: Product Code
+                 *     {ProductCodeEnum} productCode    Required parameter: Product Code
                  *     {string} startDate    Required parameter: Start Usage Date
                  *     {string} endDate    Required parameter: End Usage Date
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
@@ -39,7 +39,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -47,9 +47,9 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "ProductCode": input.productCode,
-                        "startDate": input.startDate,
-                        "endDate": input.endDate
+                        'ProductCode': input.productCode,
+                        'startDate': input.startDate,
+                        'endDate': input.endDate
                     };
 
                     // Remove null values

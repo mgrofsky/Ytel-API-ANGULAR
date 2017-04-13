@@ -19,7 +19,7 @@ angular.module('Message360')
             environmentsMap[e.PREPRODUCTION] = [];
             environmentsMap[e.DEVELOPMENT] = [];
         
-            environmentsMap[e.PRODUCTION][s.MDEFAULT] = "https://api.message360.com/api/v2";
+            environmentsMap[e.PRODUCTION][s.MDEFAULT] = "https://api.message360.com/api/v3";
             environmentsMap[e.PREPRODUCTION][s.MDEFAULT] = "https://api-preprod.message360.com/api/v2";
             environmentsMap[e.DEVELOPMENT][s.MDEFAULT] = "https://lara-dev.message360.com/api/v2";
 

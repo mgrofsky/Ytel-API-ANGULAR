@@ -16,7 +16,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string} date    Required parameter: Example: 
+                 *     {string} date    Required parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -33,7 +33,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.date == null || input.date == undefined) {
-                        _deffered.reject({errorMessage: "The property 'date' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `date` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -46,7 +46,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Date": input.date
+                        'Date': input.date
                     };
 
                     // Remove null values

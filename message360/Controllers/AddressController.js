@@ -41,22 +41,22 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.name == null || input.name == undefined) {
-                        _deffered.reject({errorMessage: "The property 'name' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `name` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.address == null || input.address == undefined) {
-                        _deffered.reject({errorMessage: "The property 'address' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `address` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.country == null || input.country == undefined) {
-                        _deffered.reject({errorMessage: "The property 'country' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `country` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.state == null || input.state == undefined) {
-                        _deffered.reject({errorMessage: "The property 'state' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `state` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.city == null || input.city == undefined) {
-                        _deffered.reject({errorMessage: "The property 'city' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `city` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.zip == null || input.zip == undefined) {
-                        _deffered.reject({errorMessage: "The property 'zip' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `zip` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -69,7 +69,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -77,15 +77,15 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Name": input.name,
-                        "Address": input.address,
-                        "Country": input.country,
-                        "State": input.state,
-                        "City": input.city,
-                        "Zip": input.zip,
-                        "Description": input.description,
-                        "email": input.email,
-                        "Phone": input.phone
+                        'Name': input.name,
+                        'Address': input.address,
+                        'Country': input.country,
+                        'State': input.state,
+                        'City': input.city,
+                        'Zip': input.zip,
+                        'Description': input.description,
+                        'email': input.email,
+                        'Phone': input.phone
                     };
 
                     // Remove null values
@@ -135,7 +135,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.addressSID == null || input.addressSID == undefined) {
-                        _deffered.reject({errorMessage: "The property 'addressSID' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `addressSID` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -148,7 +148,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -156,7 +156,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "AddressSID": input.addressSID
+                        'AddressSID': input.addressSID
                     };
 
                     // Remove null values
@@ -206,7 +206,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.addressSID == null || input.addressSID == undefined) {
-                        _deffered.reject({errorMessage: "The property 'addressSID' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `addressSID` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -219,7 +219,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -227,7 +227,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "AddressSID": input.addressSID
+                        'AddressSID': input.addressSID
                     };
 
                     // Remove null values
@@ -284,7 +284,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -292,10 +292,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Page": (input.page != null) ? input.page : 1,
-                        "PageSize": (input.pageSize != null) ? input.pageSize : 10,
-                        "AddressSID": input.addressSID,
-                        "DateCreated": input.dateCreated
+                        'Page': (input.page !== null) ? input.page : 1,
+                        'PageSize': (input.pageSize !== null) ? input.pageSize : 10,
+                        'AddressSID': input.addressSID,
+                        'DateCreated': input.dateCreated
                     };
 
                     // Remove null values
@@ -345,7 +345,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.addressSID == null || input.addressSID == undefined) {
-                        _deffered.reject({errorMessage: "The property 'addressSID' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `addressSID` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -358,7 +358,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -366,7 +366,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "AddressSID": input.addressSID
+                        'AddressSID': input.addressSID
                     };
 
                     // Remove null values

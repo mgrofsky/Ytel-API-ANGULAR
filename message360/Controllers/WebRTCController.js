@@ -33,10 +33,10 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.accountSid == null || input.accountSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'accountSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `accountSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.authToken == null || input.authToken == undefined) {
-                        _deffered.reject({errorMessage: "The property 'authToken' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `authToken` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -52,8 +52,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "account_sid": input.accountSid,
-                        "auth_token": input.authToken
+                        'account_sid': input.accountSid,
+                        'auth_token': input.authToken
                     };
 
                     // Remove null values
@@ -105,16 +105,16 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.accountSid == null || input.accountSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'accountSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `accountSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.authToken == null || input.authToken == undefined) {
-                        _deffered.reject({errorMessage: "The property 'authToken' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `authToken` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.username == null || input.username == undefined) {
-                        _deffered.reject({errorMessage: "The property 'username' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `username` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.password == null || input.password == undefined) {
-                        _deffered.reject({errorMessage: "The property 'password' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `password` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -130,10 +130,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "account_sid": input.accountSid,
-                        "auth_token": input.authToken,
-                        "username": input.username,
-                        "password": input.password
+                        'account_sid': input.accountSid,
+                        'auth_token': input.authToken,
+                        'username': input.username,
+                        'password': input.password
                     };
 
                     // Remove null values

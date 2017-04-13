@@ -8,17 +8,14 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('NumberType',
+    .factory('SendEmailAsEnum',
         function () {
             return {
-                //Get all phone Number type
-                ALL: "ALL",
+                //Email send as text format
+                TEXT: "TEXT",
         
-                //Get only voice number type
-                VOICE: "Voice",
-        
-                //Get Only SMs number type
-                SMS: "SMS"
+                //Email send as HTML format
+                HTML: "HTML"
             };
         }
     );

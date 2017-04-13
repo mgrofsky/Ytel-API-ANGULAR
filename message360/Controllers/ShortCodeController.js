@@ -33,7 +33,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.templateid == null || input.templateid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'templateid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `templateid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -46,7 +46,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": input.responseType
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "templateid": input.templateid
+                        'templateid': input.templateid
                     };
 
                     // Remove null values
@@ -111,13 +111,13 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.shortcode == null || input.shortcode == undefined) {
-                        _deffered.reject({errorMessage: "The property 'shortcode' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `shortcode` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.to == null || input.to == undefined) {
-                        _deffered.reject({errorMessage: "The property 'to' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `to` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     } else if (input.templateid == null || input.templateid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'templateid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `templateid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -130,7 +130,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -138,12 +138,12 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "shortcode": input.shortcode,
-                        "tocountrycode": input.tocountrycode,
-                        "to": input.to,
-                        "templateid": input.templateid,
-                        "Method": (input.method != null) ? input.method : "GET",
-                        "MessageStatusCallback": input.messageStatusCallback
+                        'shortcode': input.shortcode,
+                        'tocountrycode': input.tocountrycode,
+                        'to': input.to,
+                        'templateid': input.templateid,
+                        'Method': (input.method !== null) ? input.method : "GET",
+                        'MessageStatusCallback': input.messageStatusCallback
                     };
 
                     // prepare optional form fields
@@ -204,12 +204,12 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     // Process query parameters
                     _queryBuilder = APIHelper.appendUrlWithQueryParameters(_queryBuilder, {
-                        "DateReceived": input.dateReceived
+                        'DateReceived': input.dateReceived
                     });
 
                     //validate and preprocess url
@@ -217,10 +217,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "page": input.page,
-                        "pagesize": (input.pagesize != null) ? input.pagesize : 10,
-                        "from": input.from,
-                        "Shortcode": input.shortcode
+                        'page': input.page,
+                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10,
+                        'from': input.from,
+                        'Shortcode': input.shortcode
                     };
 
                     // Remove null values
@@ -278,7 +278,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -286,11 +286,11 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "page": input.page,
-                        "pagesize": (input.pagesize != null) ? input.pagesize : 10,
-                        "from": input.from,
-                        "to": input.to,
-                        "datesent": input.datesent
+                        'page': input.page,
+                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10,
+                        'from': input.from,
+                        'to': input.to,
+                        'datesent': input.datesent
                     };
 
                     // Remove null values
@@ -346,7 +346,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -354,9 +354,9 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "type": (input.type != null) ? input.type : "authorization",
-                        "page": input.page,
-                        "pagesize": (input.pagesize != null) ? input.pagesize : 10
+                        'type': (input.type !== null) ? input.type : "authorization",
+                        'page': input.page,
+                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10
                     };
 
                     // Remove null values
@@ -406,7 +406,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.messagesid == null || input.messagesid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'messagesid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `messagesid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -419,7 +419,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -427,7 +427,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "messagesid": input.messagesid
+                        'messagesid': input.messagesid
                     };
 
                     // Remove null values

@@ -33,7 +33,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.audioUrl == null || input.audioUrl == undefined) {
-                        _deffered.reject({errorMessage: "The property 'audioUrl' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `audioUrl` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -46,7 +46,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "AudioUrl": input.audioUrl
+                        'AudioUrl': input.audioUrl
                     };
 
                     // Remove null values
@@ -104,7 +104,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.recordingSid == null || input.recordingSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'recordingSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `recordingSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -117,7 +117,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -125,7 +125,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "RecordingSid": input.recordingSid
+                        'RecordingSid': input.recordingSid
                     };
 
                     // Remove null values
@@ -175,7 +175,7 @@ angular.module('Message360')
                     // validating required parameters
                     var _missingArgs = false;
                     if (input.transcriptionSid == null || input.transcriptionSid == undefined) {
-                        _deffered.reject({errorMessage: "The property 'transcriptionSid' in the input object cannot be null.", errorCode: -1});
+                        _deffered.reject({errorMessage: "The property `transcriptionSid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -188,7 +188,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -196,7 +196,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "TranscriptionSid": input.transcriptionSid
+                        'TranscriptionSid': input.transcriptionSid
                     };
 
                     // Remove null values
@@ -229,10 +229,10 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {int|null} page    Optional parameter: Example: 
-                 *     {int|null} pageSize    Optional parameter: Example: 
-                 *     {Status|null} status    Optional parameter: Example: 
-                 *     {string|null} dateTranscribed    Optional parameter: Example: 
+                 *     {int|null} page    Optional parameter: Example:
+                 *     {int|null} pageSize    Optional parameter: Example:
+                 *     {StatusEnum|null} status    Optional parameter: Example:
+                 *     {string|null} dateTranscribed    Optional parameter: Example:
                  *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
@@ -253,7 +253,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        "ResponseType": (input.responseType != null) ? input.responseType : "json"
+                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
                     });
 
                     //validate and preprocess url
@@ -261,10 +261,10 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        "Page": input.page,
-                        "PageSize": input.pageSize,
-                        "Status": (input.status != null) ? input.status : null,
-                        "DateTranscribed": input.dateTranscribed
+                        'Page': input.page,
+                        'PageSize': input.pageSize,
+                        'Status': (input.status !== null) ? input.status : null,
+                        'DateTranscribed': input.dateTranscribed
                     };
 
                     // Remove null values
