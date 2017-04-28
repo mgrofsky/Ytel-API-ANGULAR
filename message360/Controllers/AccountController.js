@@ -17,7 +17,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} date    Required parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -46,7 +46,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url

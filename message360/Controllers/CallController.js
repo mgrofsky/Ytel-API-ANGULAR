@@ -12,77 +12,6 @@ angular.module('Message360')
         function($q, Configuration, Servers, HttpClient, APIHelper) {
             return {
                 /**
-                 * View Call Response
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} callsid    Required parameter: Call Sid id for particular Call
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createViewCall: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.callsid == null || input.callsid == undefined) {
-                        _deffered.reject({errorMessage: "The property `callsid` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
-
-                    if (_missingArgs)
-                        return _deffered.promise
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/calls/viewcalls.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'callsid': input.callsid
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
                  * Group Call
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
@@ -92,6 +21,7 @@ angular.module('Message360')
                  *     {string} toCountryCode    Required parameter: Example: 1
                  *     {string} to    Required parameter: Example:
                  *     {string} url    Required parameter: Example:
+                 *     {string} responseType    Required parameter: Example: json
                  *     {HttpActionEnum|null} method    Optional parameter: Example:
                  *     {string|null} statusCallBackUrl    Optional parameter: Example:
                  *     {HttpActionEnum|null} statusCallBackMethod    Optional parameter: Example:
@@ -107,7 +37,6 @@ angular.module('Message360')
                  *     {HttpActionEnum|null} recordCallBackMethod    Optional parameter: Example:
                  *     {bool|null} transcribe    Optional parameter: Example:
                  *     {string|null} transcribeCallBackUrl    Optional parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Example: json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -142,7 +71,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -203,13 +132,13 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} callSid    Required parameter: Example:
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {AudioDirectionEnum|null} audioDirection    Optional parameter: Example:
                  *     {double|null} pitchSemiTones    Optional parameter: value between -14 and 14
                  *     {double|null} pitchOctaves    Optional parameter: value between -1 and 1
                  *     {double|null} pitch    Optional parameter: value greater than 0
                  *     {double|null} rate    Optional parameter: value greater than 0
                  *     {double|null} tempo    Optional parameter: value greater than 0
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -238,7 +167,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -287,11 +216,11 @@ angular.module('Message360')
                  * 
                  *     {string} callSid    Required parameter: The unique identifier of each call resource
                  *     {bool} record    Required parameter: Set true to initiate recording or false to terminate recording
+                 *     {string} responseType    Required parameter: Response format, xml or json
                  *     {DirectionEnum|null} direction    Optional parameter: The leg of the call to record
                  *     {int|null} timeLimit    Optional parameter: Time in seconds the recording duration should not exceed
                  *     {string|null} callBackUrl    Optional parameter: URL consulted after the recording completes
                  *     {AudioFormatEnum|null} fileformat    Optional parameter: Format of the recording file. Can be .mp3 or .wav
-                 *     {string|null} responseType    Optional parameter: Response format, xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -323,7 +252,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -371,11 +300,11 @@ angular.module('Message360')
                  * 
                  *     {string} callSid    Required parameter: The unique identifier of each call resource
                  *     {string} audioUrl    Required parameter: URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {int|null} length    Optional parameter: Time limit in seconds for audio play back
                  *     {DirectionEnum|null} direction    Optional parameter: The leg of the call audio will be played to
                  *     {bool|null} loop    Optional parameter: Repeat audio playback indefinitely
                  *     {bool|null} mix    Optional parameter: If false, all other audio will be muted
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -407,7 +336,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -454,10 +383,10 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} callSid    Required parameter: Call SId
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} url    Optional parameter: URL the in-progress call will be redirected to
                  *     {HttpActionEnum|null} method    Optional parameter: The method used to request the above Url parameter
                  *     {InterruptedCallStatusEnum|null} status    Optional parameter: Status to set the in-progress call to
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -486,7 +415,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -532,8 +461,8 @@ angular.module('Message360')
                  * 
                  *     {string} callSid    Required parameter: The unique identifier of each call resource
                  *     {string} playDtmf    Required parameter: DTMF digits to play to the call. 0-9, #, *, W, or w
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {DirectionEnum|null} playDtmfDirection    Optional parameter: The leg of the call DTMF digits should be sent to
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -565,7 +494,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -613,6 +542,7 @@ angular.module('Message360')
                  *     {string} toCountryCode    Required parameter: To cuntry code number
                  *     {string} to    Required parameter: To number
                  *     {string} url    Required parameter: URL requested once the call connects
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {HttpActionEnum|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once call connects.
                  *     {string|null} statusCallBackUrl    Optional parameter: specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
                  *     {HttpActionEnum|null} statusCallBackMethod    Optional parameter: Specifies the HTTP methodlinkclass used to request StatusCallbackUrl.
@@ -629,7 +559,6 @@ angular.module('Message360')
                  *     {bool|null} transcribe    Optional parameter: Specifies if the call recording should be transcribed
                  *     {string|null} transcribeCallBackUrl    Optional parameter: Transcription parameters will be sent here upon completion
                  *     {IfMachineEnum|null} ifMachine    Optional parameter: How Message360 should handle the receiving numbers voicemail machine
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -670,7 +599,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     // Process query parameters
@@ -735,12 +664,12 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
                  *     {string|null} to    Optional parameter: Only list calls to this number
                  *     {string|null} from    Optional parameter: Only list calls from this number
                  *     {string|null} dateCreated    Optional parameter: Only list calls starting within the specified date range
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -760,7 +689,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -811,9 +740,9 @@ angular.module('Message360')
                  *     {string} to    Required parameter: To number
                  *     {string} voiceMailURL    Required parameter: URL to an audio file
                  *     {string} method    Required parameter: Not currently used in this version
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} statusCallBackUrl    Optional parameter: URL to post the status of the Ringless request
                  *     {string|null} statsCallBackMethod    Optional parameter: POST or GET
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -854,7 +783,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -870,6 +799,77 @@ angular.module('Message360')
                         'Method': input.method,
                         'StatusCallBackUrl': input.statusCallBackUrl,
                         'StatsCallBackMethod': input.statsCallBackMethod
+                    };
+
+                    // Remove null values
+                    APIHelper.cleanObject(_form);
+
+                    // prepare and invoke the API call request to fetch the response
+                    var _config = {
+                        method: "POST",
+                        queryUrl: _queryUrl,
+                        username: Configuration.basicAuthUserName,
+                        password: Configuration.basicAuthPassword,
+                        form: _form,
+                    };
+                    
+                    var _response = HttpClient(_config);
+                    
+                    //process response
+                    _response.then(function (_result) {
+                        _deffered.resolve(_result);
+                    
+                    }, function(_result){
+                        // Error handling for custom HTTP status codes
+                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
+                    });
+                    
+                    return _deffered.promise;
+                },
+                /**
+                 * View Call Response
+                 * All parameters to the endpoint are supplied through the object with their names
+                 * being the key and their desired values being the value. A list of parameters that can be used are:
+                 * 
+                 *     {string} callsid    Required parameter: Call Sid id for particular Call
+                 *     {string} responseType    Required parameter: Response type format xml or json
+                 * 
+                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
+                 *
+                 * @return {promise<string>}
+                 */
+                createViewCall: function (input) {
+                    // Assign default values
+                    input = input || {};
+
+                    //Create promise to return
+                    var _deffered = $q.defer();
+                    
+                    // validating required parameters
+                    var _missingArgs = false;
+                    if (input.callsid == null || input.callsid == undefined) {
+                        _deffered.reject({errorMessage: "The property `callsid` in the input object cannot be null.", errorCode: -1});
+                        _missingArgs = true;
+                    }
+
+                    if (_missingArgs)
+                        return _deffered.promise
+
+                    //prepare query string for API call
+                    var _baseUri = Configuration.getBaseUri()
+                    var _queryBuilder = _baseUri + "/calls/viewcalls.{ResponseType}";
+                    
+                    // Process template parameters
+                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                        'ResponseType': input.responseType
+                    });
+
+                    //validate and preprocess url
+                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                    
+                    // prepare form data
+                    var _form = {
+                        'callsid': input.callsid
                     };
 
                     // Remove null values

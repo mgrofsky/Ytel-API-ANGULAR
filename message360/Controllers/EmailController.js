@@ -12,84 +12,13 @@ angular.module('Message360')
         function($q, Configuration, Servers, HttpClient, APIHelper) {
             return {
                 /**
-                 * This endpoint allows you to delete entries in the Invalid Emails list.
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} email    Required parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Example: json
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createDeleteInvalid: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.email == null || input.email == undefined) {
-                        _deffered.reject({errorMessage: "The property `email` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
-
-                    if (_missingArgs)
-                        return _deffered.promise
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/email/deleteinvalidemail.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'email': input.email
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
                  * Outputs email addresses on your blocklist
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} offset    Optional parameter: Where to start in the output list
                  *     {string|null} limit    Optional parameter: Maximum number of records to return
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -109,7 +38,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -151,7 +80,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} offset    Optional parameter: The record number to start the list at
                  *     {string|null} limit    Optional parameter: Maximum number of records to return
                  * 
@@ -173,7 +102,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -215,7 +144,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} offset    Optional parameter: The record to start the list at
                  *     {string|null} limit    Optional parameter: The maximum number of records to return
                  * 
@@ -237,7 +166,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -279,8 +208,8 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string} email    Required parameter: The email address to remove from the bounce list
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -309,7 +238,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -350,7 +279,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} offet    Optional parameter: Starting record for listing out emails
                  *     {string|null} limit    Optional parameter: Maximum number of records to return
                  * 
@@ -372,7 +301,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -414,7 +343,7 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} offset    Optional parameter: Starting record of the list
                  *     {string|null} limit    Optional parameter: Maximum number of records to be returned
                  * 
@@ -436,7 +365,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -479,7 +408,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} email    Required parameter: The email to remove from the unsubscribe list
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -508,7 +437,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -550,7 +479,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} email    Required parameter: The email to add to the unsubscribe list
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -579,7 +508,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -621,7 +550,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} email    Required parameter: Email address to remove from block list
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -650,7 +579,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -691,8 +620,8 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string} email    Required parameter: Email address
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -721,7 +650,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -767,10 +696,10 @@ angular.module('Message360')
                  *     {SendEmailAsEnum} type    Required parameter: email format type, html or text
                  *     {string} subject    Required parameter: Email subject
                  *     {string} message    Required parameter: The body of the email message
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} cc    Optional parameter: CC Email address
                  *     {string|null} bcc    Optional parameter: BCC Email address
                  *     {string|null} attachment    Optional parameter: File to be attached.File must be less than 7MB.
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -808,7 +737,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -824,6 +753,77 @@ angular.module('Message360')
                         'cc': input.cc,
                         'bcc': input.bcc,
                         'attachment': input.attachment
+                    };
+
+                    // Remove null values
+                    APIHelper.cleanObject(_form);
+
+                    // prepare and invoke the API call request to fetch the response
+                    var _config = {
+                        method: "POST",
+                        queryUrl: _queryUrl,
+                        username: Configuration.basicAuthUserName,
+                        password: Configuration.basicAuthPassword,
+                        form: _form,
+                    };
+                    
+                    var _response = HttpClient(_config);
+                    
+                    //process response
+                    _response.then(function (_result) {
+                        _deffered.resolve(_result);
+                    
+                    }, function(_result){
+                        // Error handling for custom HTTP status codes
+                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
+                    });
+                    
+                    return _deffered.promise;
+                },
+                /**
+                 * This endpoint allows you to delete entries in the Invalid Emails list.
+                 * All parameters to the endpoint are supplied through the object with their names
+                 * being the key and their desired values being the value. A list of parameters that can be used are:
+                 * 
+                 *     {string} email    Required parameter: Example:
+                 *     {string} responseType    Required parameter: Example: json
+                 * 
+                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
+                 *
+                 * @return {promise<string>}
+                 */
+                createDeleteInvalid: function (input) {
+                    // Assign default values
+                    input = input || {};
+
+                    //Create promise to return
+                    var _deffered = $q.defer();
+                    
+                    // validating required parameters
+                    var _missingArgs = false;
+                    if (input.email == null || input.email == undefined) {
+                        _deffered.reject({errorMessage: "The property `email` in the input object cannot be null.", errorCode: -1});
+                        _missingArgs = true;
+                    }
+
+                    if (_missingArgs)
+                        return _deffered.promise
+
+                    //prepare query string for API call
+                    var _baseUri = Configuration.getBaseUri()
+                    var _queryBuilder = _baseUri + "/email/deleteinvalidemail.{ResponseType}";
+                    
+                    // Process template parameters
+                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                        'ResponseType': input.responseType
+                    });
+
+                    //validate and preprocess url
+                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                    
+                    // prepare form data
+                    var _form = {
+                        'email': input.email
                     };
 
                     // Remove null values

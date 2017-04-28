@@ -18,7 +18,7 @@ angular.module('Message360')
                  * 
                  *     {string} phonenumber    Required parameter: Example:
                  *     {string} type    Required parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response Type either json or xml
+                 *     {string} responseType    Required parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -50,7 +50,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url

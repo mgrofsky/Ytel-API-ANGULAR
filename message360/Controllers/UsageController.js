@@ -19,7 +19,7 @@ angular.module('Message360')
                  *     {ProductCodeEnum} productCode    Required parameter: Product Code
                  *     {string} startDate    Required parameter: Start Usage Date
                  *     {string} endDate    Required parameter: End Usage Date
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -39,7 +39,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url

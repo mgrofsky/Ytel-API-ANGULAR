@@ -22,10 +22,10 @@ angular.module('Message360')
                  *     {string} state    Required parameter: Must be a 2 letter State eg. CA for US. For Some Countries it can be greater than 2 letters.
                  *     {string} city    Required parameter: City Name.
                  *     {string} zip    Required parameter: Zip code of city.
+                 *     {string} responseType    Required parameter: Response type either json or xml
                  *     {string|null} description    Optional parameter: Description of addresses.
                  *     {string|null} email    Optional parameter: Email Id of user.
                  *     {string|null} phone    Optional parameter: Phone number of user.
-                 *     {string|null} responseType    Optional parameter: Response type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -69,7 +69,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -119,7 +119,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} addressSID    Required parameter: The identifier of the address to be deleted.
-                 *     {string|null} responseType    Optional parameter: Response type either json or xml
+                 *     {string} responseType    Required parameter: Response type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -148,7 +148,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -190,7 +190,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} addressSID    Required parameter: The identifier of the address to be verified.
-                 *     {string|null} responseType    Optional parameter: Response type either json or xml
+                 *     {string} responseType    Required parameter: Response type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -219,7 +219,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -260,11 +260,11 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response Type either json or xml
                  *     {int|null} page    Optional parameter: Return requested # of items starting the value, default=0, must be an integer
                  *     {int|null} pageSize    Optional parameter: How many results to return, default is 10, max is 100, must be an integer
                  *     {string|null} addressSID    Optional parameter: addresses Sid
                  *     {string|null} dateCreated    Optional parameter: date created address.
-                 *     {string|null} responseType    Optional parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -284,7 +284,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -329,7 +329,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} addressSID    Required parameter: The identifier of the address to be retrieved.
-                 *     {string|null} responseType    Optional parameter: Response Type either json or xml
+                 *     {string} responseType    Required parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -358,7 +358,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
