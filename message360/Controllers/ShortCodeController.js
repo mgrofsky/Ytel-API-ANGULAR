@@ -91,19 +91,18 @@ angular.module('Message360')
                  *     {string} tocountrycode    Required parameter: The country code for sending this message
                  *     {string} to    Required parameter: A valid 10-digit number that should receive the message+
                  *     {uuid|string} templateid    Required parameter: The unique identifier for the template used for the message
+                 *     {string} responseType    Required parameter: Response type format xml or json
+                 *     {string} data    Required parameter: format of your data, example: {companyname}:test,{otpcode}:1234
                  *     {string|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once the Short Code message is sent.
                  *     {string|null} messageStatusCallback    Optional parameter: URL that can be requested to receive notification when Short Code message was sent.
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
-                 *     {Dictionary} fieldParameters    Optional parameter: Additional optional form parameters are supported by this endpoint
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
                  * @return {promise<string>}
                  */
-                createSendShortCode: function (input, fieldParameters) {
+                createSendShortCode: function (input) {
                     // Assign default values
                     input = input || {};
-                    fieldParameters = fieldParameters || null;
 
                     //Create promise to return
                     var _deffered = $q.defer();
@@ -119,6 +118,9 @@ angular.module('Message360')
                     } else if (input.templateid == null || input.templateid == undefined) {
                         _deffered.reject({errorMessage: "The property `templateid` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
+                    } else if (input.data == null || input.data == undefined) {
+                        _deffered.reject({errorMessage: "The property `data` in the input object cannot be null.", errorCode: -1});
+                        _missingArgs = true;
                     }
 
                     if (_missingArgs)
@@ -130,7 +132,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -142,12 +144,10 @@ angular.module('Message360')
                         'tocountrycode': input.tocountrycode,
                         'to': input.to,
                         'templateid': input.templateid,
+                        'data': input.data,
                         'Method': (input.method !== null) ? input.method : "GET",
                         'MessageStatusCallback': input.messageStatusCallback
                     };
-
-                    // prepare optional form fields
-                    APIHelper.merge(_form, fieldParameters)
 
                     // Remove null values
                     APIHelper.cleanObject(_form);
@@ -179,12 +179,12 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pagesize    Optional parameter: Number of individual resources listed in the response per page
                  *     {string|null} from    Optional parameter: From Number to Inbound ShortCode
                  *     {string|null} shortcode    Optional parameter: Only list messages sent to this Short Code
                  *     {string|null} dateReceived    Optional parameter: Only list messages sent with the specified date
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -204,7 +204,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     // Process query parameters
@@ -253,12 +253,12 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pagesize    Optional parameter: Number of individual resources listed in the response per page
                  *     {string|null} from    Optional parameter: Messages sent from this number
                  *     {string|null} to    Optional parameter: Messages sent to this number
                  *     {string|null} datesent    Optional parameter: Only list SMS messages sent in the specified date range
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -278,7 +278,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -323,10 +323,10 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {string|null} type    Optional parameter: The type (category) of template Valid values: marketing, authorization
                  *     {int|null} page    Optional parameter: The page count to retrieve from the total results in the collection. Page indexing starts at 1.
                  *     {int|null} pagesize    Optional parameter: The count of objects to return per page.
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -346,7 +346,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -390,7 +390,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} messagesid    Required parameter: Message sid
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -419,7 +419,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url

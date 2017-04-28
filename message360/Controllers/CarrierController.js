@@ -12,41 +12,33 @@ angular.module('Message360')
         function($q, Configuration, Servers, HttpClient, APIHelper) {
             return {
                 /**
-                 * Get the Carrier Lookup
+                 * Get the All Purchase Number's Carrier lookup
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {string} phonenumber    Required parameter: The number to lookup
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
+                 *     {int|null} page    Optional parameter: Page Number
+                 *     {int|null} pagesize    Optional parameter: Page Size
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
                  * @return {promise<string>}
                  */
-                createCarrierLookup: function (input) {
+                createCarrierLookupList: function (input) {
                     // Assign default values
                     input = input || {};
 
                     //Create promise to return
                     var _deffered = $q.defer();
                     
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.phonenumber == null || input.phonenumber == undefined) {
-                        _deffered.reject({errorMessage: "The property `phonenumber` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
-
-                    if (_missingArgs)
-                        return _deffered.promise
 
                     //prepare query string for API call
                     var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/carrier/lookup.{ResponseType}";
+                    var _queryBuilder = _baseUri + "/carrier/lookuplist.{ResponseType}";
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -54,7 +46,8 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        'phonenumber': input.phonenumber
+                        'page': input.page,
+                        'pagesize': input.pagesize
                     };
 
                     // Remove null values
@@ -83,33 +76,41 @@ angular.module('Message360')
                     return _deffered.promise;
                 },
                 /**
-                 * Get the All Purchase Number's Carrier lookup
+                 * Get the Carrier Lookup
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
-                 *     {int|null} page    Optional parameter: Page Number
-                 *     {int|null} pagesize    Optional parameter: Page Size
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} phonenumber    Required parameter: The number to lookup
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
                  * @return {promise<string>}
                  */
-                createCarrierLookupList: function (input) {
+                createCarrierLookup: function (input) {
                     // Assign default values
                     input = input || {};
 
                     //Create promise to return
                     var _deffered = $q.defer();
                     
+                    // validating required parameters
+                    var _missingArgs = false;
+                    if (input.phonenumber == null || input.phonenumber == undefined) {
+                        _deffered.reject({errorMessage: "The property `phonenumber` in the input object cannot be null.", errorCode: -1});
+                        _missingArgs = true;
+                    }
+
+                    if (_missingArgs)
+                        return _deffered.promise
 
                     //prepare query string for API call
                     var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/carrier/lookuplist.{ResponseType}";
+                    var _queryBuilder = _baseUri + "/carrier/lookup.{ResponseType}";
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -117,8 +118,7 @@ angular.module('Message360')
                     
                     // prepare form data
                     var _form = {
-                        'page': input.page,
-                        'pagesize': input.pagesize
+                        'phonenumber': input.phonenumber
                     };
 
                     // Remove null values

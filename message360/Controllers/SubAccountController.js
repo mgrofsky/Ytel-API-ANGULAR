@@ -19,7 +19,7 @@ angular.module('Message360')
                  *     {string} firstName    Required parameter: Sub account user first name
                  *     {string} lastName    Required parameter: sub account user last name
                  *     {string} email    Required parameter: Sub account email address
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -54,7 +54,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -99,7 +99,7 @@ angular.module('Message360')
                  * 
                  *     {string} subAccountSID    Required parameter: The SubaccountSid to be activated or suspended
                  *     {ActivateStatusEnum} activate    Required parameter: 0 to suspend or 1 to activate
-                 *     {string|null} responseType    Optional parameter: Example:
+                 *     {string} responseType    Required parameter: Example:
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -116,6 +116,9 @@ angular.module('Message360')
                     var _missingArgs = false;
                     if (input.subAccountSID == null || input.subAccountSID == undefined) {
                         _deffered.reject({errorMessage: "The property `subAccountSID` in the input object cannot be null.", errorCode: -1});
+                        _missingArgs = true;
+                    } else if (input.responseType == null || input.responseType == undefined) {
+                        _deffered.reject({errorMessage: "The property `responseType` in the input object cannot be null.", errorCode: -1});
                         _missingArgs = true;
                     }
 
@@ -172,7 +175,7 @@ angular.module('Message360')
                  * 
                  *     {string} subAccountSID    Required parameter: The SubaccountSid to be deleted
                  *     {MergeNumberStatusEnum} mergeNumber    Required parameter: 0 to delete or 1 to merge numbers to parent account.
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -201,7 +204,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url

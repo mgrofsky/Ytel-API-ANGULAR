@@ -18,9 +18,9 @@ angular.module('Message360')
                  * 
                  *     {string} conferenceSid    Required parameter: Example:
                  *     {string} participantSid    Required parameter: Example:
+                 *     {string} responseType    Required parameter: Response Type either json or xml
                  *     {bool|null} muted    Optional parameter: Example:
                  *     {bool|null} deaf    Optional parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response Type either json or xml
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -52,7 +52,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -96,13 +96,13 @@ angular.module('Message360')
                  * All parameters to the endpoint are supplied through the object with their names
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
                  *     {int|null} pageSize    Optional parameter: Number of individual resources listed in the response per page
                  *     {string|null} friendlyName    Optional parameter: Only return conferences with the specified FriendlyName
                  *     {InterruptedCallStatusEnum|null} status    Optional parameter: Example:
                  *     {string|null} dateCreated    Optional parameter: Example:
                  *     {string|null} dateUpdated    Optional parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -122,7 +122,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -169,7 +169,7 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} conferencesid    Required parameter: The unique identifier of each conference resource
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -198,7 +198,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -242,9 +242,9 @@ angular.module('Message360')
                  *     {string} conferencesid    Required parameter: Unique Conference Sid
                  *     {string} participantnumber    Required parameter: Particiant Number
                  *     {int} tocountrycode    Required parameter: Example:
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  *     {bool|null} muted    Optional parameter: Example:
                  *     {bool|null} deaf    Optional parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -279,7 +279,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -325,11 +325,11 @@ angular.module('Message360')
                  * being the key and their desired values being the value. A list of parameters that can be used are:
                  * 
                  *     {string} conferenceSid    Required parameter: unique conference sid
+                 *     {string} responseType    Required parameter: Response format, xml or json
                  *     {int|null} page    Optional parameter: page number
                  *     {int|null} pagesize    Optional parameter: Example:
                  *     {bool|null} muted    Optional parameter: Example:
                  *     {bool|null} deaf    Optional parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response format, xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -358,7 +358,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
@@ -405,7 +405,7 @@ angular.module('Message360')
                  * 
                  *     {string} conferenceSid    Required parameter: unique conference sid
                  *     {string} participantSid    Required parameter: Example:
-                 *     {string|null} responseType    Optional parameter: Response type format xml or json
+                 *     {string} responseType    Required parameter: Response type format xml or json
                  * 
                  * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
                  *
@@ -437,7 +437,7 @@ angular.module('Message360')
                     
                     // Process template parameters
                     _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': (input.responseType !== null) ? input.responseType : "json"
+                        'ResponseType': input.responseType
                     });
 
                     //validate and preprocess url
