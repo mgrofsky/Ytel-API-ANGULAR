@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('IfMachineEnum',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                MCONTINUE: "CONTINUE",
-        
-                //TODO: Write general description for this element
-                HANGUP: "HANGUP"
-            };
-        }
-    );
+    .factory('IfMachineEnum', [IfMachineEnumModel]);
+
+    function IfMachineEnumModel() {
+        return {
+            //TODO: Write general description for this element
+            MCONTINUE: 'continue',
+    
+            //TODO: Write general description for this element
+            HANGUP: 'hangup'
+        };
+    }
 
 }(angular));

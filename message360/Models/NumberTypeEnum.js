@@ -8,19 +8,19 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('NumberTypeEnum',
-        function () {
-            return {
-                //Get all phone Number type
-                ALL: "ALL",
-        
-                //Get only voice number type
-                VOICE: "Voice",
-        
-                //Get Only SMs number type
-                SMS: "SMS"
-            };
-        }
-    );
+    .factory('NumberTypeEnum', [NumberTypeEnumModel]);
+
+    function NumberTypeEnumModel() {
+        return {
+            //Get all phone Number type
+            ALL: 'all',
+    
+            //Get only voice number type
+            VOICE: 'voice',
+    
+            //Get Only SMs number type
+            SMS: 'sms'
+        };
+    }
 
 }(angular));

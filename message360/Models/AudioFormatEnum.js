@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('AudioFormatEnum',
-        function () {
-            return {
-                //mp3 file
-                MP_3: "mp3",
-        
-                //wav file
-                WAV: "wav"
-            };
-        }
-    );
+    .factory('AudioFormatEnum', [AudioFormatEnumModel]);
+
+    function AudioFormatEnumModel() {
+        return {
+            //mp3 file
+            MP_3: 'mp3',
+    
+            //wav file
+            WAV: 'wav'
+        };
+    }
 
 }(angular));

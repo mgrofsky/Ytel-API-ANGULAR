@@ -8,19 +8,19 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('DirectionEnum',
-        function () {
-            return {
-                //in direction
-                MIN: "IN",
-        
-                //out direction
-                OUT: "OUT",
-        
-                //both
-                BOTH: "BOTH"
-            };
-        }
-    );
+    .factory('DirectionEnum', [DirectionEnumModel]);
+
+    function DirectionEnumModel() {
+        return {
+            //in direction
+            MIN: 'in',
+    
+            //out direction
+            OUT: 'out',
+    
+            //both
+            BOTH: 'both'
+        };
+    }
 
 }(angular));

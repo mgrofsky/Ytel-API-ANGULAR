@@ -10,15 +10,15 @@
  *
  * @constructor
  */
-angular.module('TesterLib')
-    .factory('HttpResponse',
-        function () {
-            return function HttpResponse() {
-                this.statusCode = null;
-                this.body = null;
-                this.headers = null;
-            }
-        }
-    );
+angular.module('Message360')
+    .factory('HttpResponse', [HttpResponseService]);
+
+    function HttpResponseService() {
+        return function HttpResponse() {
+            this.statusCode = null;
+            this.body = null;
+            this.headers = null;
+        };
+    }
 
 }(angular));

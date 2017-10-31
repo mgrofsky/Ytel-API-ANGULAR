@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('AudioDirectionEnum',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                MIN: "IN",
-        
-                //TODO: Write general description for this element
-                OUT: "OUT"
-            };
-        }
-    );
+    .factory('AudioDirectionEnum', [AudioDirectionEnumModel]);
+
+    function AudioDirectionEnumModel() {
+        return {
+            //TODO: Write general description for this element
+            MIN: 'in',
+    
+            //TODO: Write general description for this element
+            OUT: 'out'
+        };
+    }
 
 }(angular));

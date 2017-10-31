@@ -10,14 +10,14 @@
  *
  * @constructor
  */
-angular.module('TesterLib')
-    .factory('HttpContext',
-        function () {
-            return function HttpContext() {
-                this.request = null;
-                this.response = null;
-            }
-        }
-    );
+angular.module('Message360')
+    .factory('HttpContext', [HttpContextService]);
+
+    function HttpContextService() {
+        return function HttpContext() {
+            this.request = null;
+            this.response = null;
+        };
+    }
 
 }(angular));

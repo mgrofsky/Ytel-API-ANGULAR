@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('SendEmailAsEnum',
-        function () {
-            return {
-                //Email send as text format
-                TEXT: "TEXT",
-        
-                //Email send as HTML format
-                HTML: "HTML"
-            };
-        }
-    );
+    .factory('SendEmailAsEnum', [SendEmailAsEnumModel]);
+
+    function SendEmailAsEnumModel() {
+        return {
+            //Email send as text format
+            TEXT: 'text',
+    
+            //Email send as HTML format
+            HTML: 'html'
+        };
+    }
 
 }(angular));

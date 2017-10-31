@@ -8,19 +8,19 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('StatusEnum',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                INPROGRESS: "INPROGRESS",
-        
-                //TODO: Write general description for this element
-                SUCCESS: "Success",
-        
-                //TODO: Write general description for this element
-                FAILURE: "Failure"
-            };
-        }
-    );
+    .factory('StatusEnum', [StatusEnumModel]);
+
+    function StatusEnumModel() {
+        return {
+            //TODO: Write general description for this element
+            INPROGRESS: 'inprogress',
+    
+            //TODO: Write general description for this element
+            SUCCESS: 'success',
+    
+            //TODO: Write general description for this element
+            FAILURE: 'failure'
+        };
+    }
 
 }(angular));
