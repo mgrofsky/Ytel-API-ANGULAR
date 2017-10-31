@@ -8,13 +8,13 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('Servers',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                MDEFAULT: "default"
-            };
-        }
-    );
+    .factory('Servers', [ServersModel]);
+
+    function ServersModel() {
+        return {
+            //TODO: Write general description for this element
+            MDEFAULT: 'default'
+        };
+    }
 
 }(angular));

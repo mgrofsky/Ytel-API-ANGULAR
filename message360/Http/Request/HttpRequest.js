@@ -10,20 +10,20 @@
  *
  * @constructor
  */
-angular.module('TesterLib')
-    .factory('HttpRequest',
-        function () {
-            return function HttpRequest() {
-                this.queryUrl = null;
-                this.method = null;
-                this.headers = null;
-                this.username = null;
-                this.password = null;
-                this.body = null;
-                this.formData = null;
-                this.form = null;
-            }
-        }
-    );
+angular.module('Message360')
+    .factory('HttpRequest', [HttpRequestService]);
+
+    function HttpRequestService() {
+        return function HttpRequest() {
+            this.queryUrl = null;
+            this.method = null;
+            this.headers = null;
+            this.username = null;
+            this.password = null;
+            this.body = null;
+            this.formData = null;
+            this.form = null;
+        };
+    }
 
 }(angular));

@@ -8,455 +8,333 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('ShortCodeController', ['$q', 'Configuration', 'Servers', 'HttpClient', 'APIHelper',
-        function($q, Configuration, Servers, HttpClient, APIHelper) {
-            return {
-                /**
-                 * View a Shared ShortCode Template
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {uuid|string} templateid    Required parameter: The unique identifier for a template object
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createViewTemplate: function (input) {
-                    // Assign default values
-                    input = input || {};
+    .factory('ShortCodeController', ['$q',
+        'Configuration',
+        'Servers',
+        'HttpClient',
+        'APIHelper',
+        'BaseController',
+        'moment',
+        ShortCodeController
+    ]);
 
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.templateid == null || input.templateid == undefined) {
-                        _deffered.reject({errorMessage: "The property `templateid` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
+    function ShortCodeController($q, Configuration, Servers, HttpClient, APIHelper, BaseController, moment) {
+        return {
+            /**
+             * @todo Add general description for this endpoint
+             *
+             * @param {array}  input    Array with all options for search
+             * @param {int} input['shortcode'] Your dedicated shortcode
+             * @param {double} input['to'] The number to send your SMS to
+             * @param {string} input['body'] The body of your message
+             * @param {string} input['responseType'] Response type format xml or json
+             * @param {HttpActionEnum|null} input['method'] [Optional] Callback status method, POST or GET
+             * @param {string|null} input['messagestatuscallback'] [Optional] Callback url for SMS status
+             *
+             * @return {promise<String>}
+             */
+            sendDedicatedShortcode: function (input) {
+                // Assign default values
+                input = input || {};
 
-                    if (_missingArgs)
-                        return _deffered.promise
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/template/view.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
+                //Create promise to return
+                var _deffered = $q.defer();
+                
+                // validating required parameters
+                var _missingArgs = false;
+                if (input.shortcode === null || input.shortcode === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `shortcode` in the input object cannot be null.',
+                        errorCode: -1
                     });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'templateid': input.templateid
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
+                    _missingArgs = true;
+                } else if (input.to === null || input.to === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `to` in the input object cannot be null.',
+                        errorCode: -1
                     });
-                    
-                    return _deffered.promise;
-                },
-                /**
-                 * Send an SMS from a message360 ShortCode
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} shortcode    Required parameter: The Short Code number that is the sender of this message
-                 *     {string} tocountrycode    Required parameter: The country code for sending this message
-                 *     {string} to    Required parameter: A valid 10-digit number that should receive the message+
-                 *     {uuid|string} templateid    Required parameter: The unique identifier for the template used for the message
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 *     {string} data    Required parameter: format of your data, example: {companyname}:test,{otpcode}:1234
-                 *     {string|null} method    Optional parameter: Specifies the HTTP method used to request the required URL once the Short Code message is sent.
-                 *     {string|null} messageStatusCallback    Optional parameter: URL that can be requested to receive notification when Short Code message was sent.
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createSendShortCode: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.shortcode == null || input.shortcode == undefined) {
-                        _deffered.reject({errorMessage: "The property `shortcode` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    } else if (input.to == null || input.to == undefined) {
-                        _deffered.reject({errorMessage: "The property `to` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    } else if (input.templateid == null || input.templateid == undefined) {
-                        _deffered.reject({errorMessage: "The property `templateid` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    } else if (input.data == null || input.data == undefined) {
-                        _deffered.reject({errorMessage: "The property `data` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
-
-                    if (_missingArgs)
-                        return _deffered.promise
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/shortcode/sendsms.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
+                    _missingArgs = true;
+                } else if (input.body === null || input.body === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `body` in the input object cannot be null.',
+                        errorCode: -1
                     });
+                    _missingArgs = true;
+                }
 
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'shortcode': input.shortcode,
-                        'tocountrycode': input.tocountrycode,
-                        'to': input.to,
-                        'templateid': input.templateid,
-                        'data': input.data,
-                        'Method': (input.method !== null) ? input.method : "GET",
-                        'MessageStatusCallback': input.messageStatusCallback
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
-                 * List All Inbound ShortCode
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
-                 *     {int|null} pagesize    Optional parameter: Number of individual resources listed in the response per page
-                 *     {string|null} from    Optional parameter: From Number to Inbound ShortCode
-                 *     {string|null} shortcode    Optional parameter: Only list messages sent to this Short Code
-                 *     {string|null} dateReceived    Optional parameter: Only list messages sent with the specified date
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createListInboundShortCode: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/shortcode/getinboundsms.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
-                    });
-
-                    // Process query parameters
-                    _queryBuilder = APIHelper.appendUrlWithQueryParameters(_queryBuilder, {
-                        'DateReceived': input.dateReceived
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'page': input.page,
-                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10,
-                        'from': input.from,
-                        'Shortcode': input.shortcode
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
-                 * List ShortCode Messages
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 *     {int|null} page    Optional parameter: Which page of the overall response will be returned. Zero indexed
-                 *     {int|null} pagesize    Optional parameter: Number of individual resources listed in the response per page
-                 *     {string|null} from    Optional parameter: Messages sent from this number
-                 *     {string|null} to    Optional parameter: Messages sent to this number
-                 *     {string|null} datesent    Optional parameter: Only list SMS messages sent in the specified date range
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createListShortCode: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/shortcode/listsms.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'page': input.page,
-                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10,
-                        'from': input.from,
-                        'to': input.to,
-                        'datesent': input.datesent
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
-                 * List Shortcode Templates by Type
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 *     {string|null} type    Optional parameter: The type (category) of template Valid values: marketing, authorization
-                 *     {int|null} page    Optional parameter: The page count to retrieve from the total results in the collection. Page indexing starts at 1.
-                 *     {int|null} pagesize    Optional parameter: The count of objects to return per page.
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createListTemplates: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/template/lists.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'type': (input.type !== null) ? input.type : "authorization",
-                        'page': input.page,
-                        'pagesize': (input.pagesize !== null) ? input.pagesize : 10
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
-                    return _deffered.promise;
-                },
-                /**
-                 * View a ShortCode Message
-                 * All parameters to the endpoint are supplied through the object with their names
-                 * being the key and their desired values being the value. A list of parameters that can be used are:
-                 * 
-                 *     {string} messagesid    Required parameter: Message sid
-                 *     {string} responseType    Required parameter: Response type format xml or json
-                 * 
-                 * @param {object} input    RequiredParameter: object containing any of the parameters to this API Endpoint.
-                 *
-                 * @return {promise<string>}
-                 */
-                createViewShortCode: function (input) {
-                    // Assign default values
-                    input = input || {};
-
-                    //Create promise to return
-                    var _deffered = $q.defer();
-                    
-                    // validating required parameters
-                    var _missingArgs = false;
-                    if (input.messagesid == null || input.messagesid == undefined) {
-                        _deffered.reject({errorMessage: "The property `messagesid` in the input object cannot be null.", errorCode: -1});
-                        _missingArgs = true;
-                    }
-
-                    if (_missingArgs)
-                        return _deffered.promise
-
-                    //prepare query string for API call
-                    var _baseUri = Configuration.getBaseUri()
-                    var _queryBuilder = _baseUri + "/shortcode/viewsms.{ResponseType}";
-                    
-                    // Process template parameters
-                    _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
-                        'ResponseType': input.responseType
-                    });
-
-                    //validate and preprocess url
-                    var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
-                    
-                    // prepare form data
-                    var _form = {
-                        'messagesid': input.messagesid
-                    };
-
-                    // Remove null values
-                    APIHelper.cleanObject(_form);
-
-                    // prepare and invoke the API call request to fetch the response
-                    var _config = {
-                        method: "POST",
-                        queryUrl: _queryUrl,
-                        username: Configuration.basicAuthUserName,
-                        password: Configuration.basicAuthPassword,
-                        form: _form,
-                    };
-                    
-                    var _response = HttpClient(_config);
-                    
-                    //process response
-                    _response.then(function (_result) {
-                        _deffered.resolve(_result);
-                    
-                    }, function(_result){
-                        // Error handling for custom HTTP status codes
-                        _deffered.reject(APIHelper.appendContext({errorMessage:"HTTP Response Not OK", errorCode: _result.code, errorResponse: _result.message}, _result.getContext()));
-                    });
-                    
+                if (_missingArgs) {
                     return _deffered.promise;
                 }
+
+                //prepare query string for API call
+                var _baseUri = Configuration.getBaseUri();
+                var _queryBuilder = _baseUri + '/shortcode/senddedicatedsms.{ResponseType}';
+                
+                // Process template parameters
+                _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                    'ResponseType': input.responseType
+                });
+
+                //validate and preprocess url
+                var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                
+                // prepare form data
+                var _form = {
+                    'shortcode': input.shortcode,
+                    'to': input.to,
+                    'body': input.body,
+                    'method': (input.method !== null) ? input.method : null,
+                    'messagestatuscallback': input.messagestatuscallback
+                };
+
+                // Remove null values
+                APIHelper.cleanObject(_form);
+
+                // prepare and invoke the API call request to fetch the response
+                var _config = {
+                    method: 'POST',
+                    queryUrl: _queryUrl,
+                    username: Configuration.basicAuthUserName,
+                    password: Configuration.basicAuthPassword,
+                    form: _form,
+                };
+                
+                var _response = new HttpClient(_config);
+                
+                //process response
+                _response.then(function success(_result) {
+                    _deffered.resolve(_result);
+                }, function error(_result){
+                    // Error handling for custom HTTP status codes
+                    _deffered.reject(APIHelper.appendContext({
+                        errorMessage:'HTTP Response Not OK',
+                        errorCode: _result.code,
+                        errorResponse: _result.message
+                    }, _result.getContext()));
+                });
+                
+                return _deffered.promise;
+            },
+            /**
+             * View a single Sms Short Code message.
+             *
+             * @param {array}  input    Array with all options for search
+             * @param {string} input['messageSid'] The unique identifier for the sms resource
+             * @param {string} input['responseType'] Response type format xml or json
+             *
+             * @return {promise<String>}
+             */
+            viewShortcode: function (input) {
+                // Assign default values
+                input = input || {};
+
+                //Create promise to return
+                var _deffered = $q.defer();
+                
+                // validating required parameters
+                var _missingArgs = false;
+                if (input.messageSid === null || input.messageSid === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `messageSid` in the input object cannot be null.',
+                        errorCode: -1
+                    });
+                    _missingArgs = true;
+                }
+
+                if (_missingArgs) {
+                    return _deffered.promise;
+                }
+
+                //prepare query string for API call
+                var _baseUri = Configuration.getBaseUri();
+                var _queryBuilder = _baseUri + '/shortcode/viewsms..{ResponseType}';
+                
+                // Process template parameters
+                _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                    'ResponseType': input.responseType
+                });
+
+                //validate and preprocess url
+                var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                
+                // prepare form data
+                var _form = {
+                    'MessageSid': input.messageSid
+                };
+
+                // Remove null values
+                APIHelper.cleanObject(_form);
+
+                // prepare and invoke the API call request to fetch the response
+                var _config = {
+                    method: 'POST',
+                    queryUrl: _queryUrl,
+                    username: Configuration.basicAuthUserName,
+                    password: Configuration.basicAuthPassword,
+                    form: _form,
+                };
+                
+                var _response = new HttpClient(_config);
+                
+                //process response
+                _response.then(function success(_result) {
+                    _deffered.resolve(_result);
+                }, function error(_result){
+                    // Error handling for custom HTTP status codes
+                    _deffered.reject(APIHelper.appendContext({
+                        errorMessage:'HTTP Response Not OK',
+                        errorCode: _result.code,
+                        errorResponse: _result.message
+                    }, _result.getContext()));
+                });
+                
+                return _deffered.promise;
+            },
+            /**
+             * Retrieve a list of Short Code message objects.
+             *
+             * @param {array}  input    Array with all options for search
+             * @param {string} input['responseType'] Response type format xml or json
+             * @param {string|null} input['shortcode'] [Optional] Only list messages sent from this Short Code
+             * @param {string|null} input['to'] [Optional] Only list messages sent to this number
+             * @param {date|null} input['dateSent'] [Optional] Only list messages sent with the specified date
+             * @param {int|null} input['page'] [Optional] The page count to retrieve from the total results in the
+             * collection. Page indexing starts at 1.
+             * @param {int|null} input['pageSize'] [Optional] The count of objects to return per page.
+             *
+             * @return {promise<String>}
+             */
+            listShortcode: function (input) {
+                // Assign default values
+                input = input || {};
+
+                //Create promise to return
+                var _deffered = $q.defer();
+                
+
+                //prepare query string for API call
+                var _baseUri = Configuration.getBaseUri();
+                var _queryBuilder = _baseUri + '/shortcode/listsms.{ResponseType}';
+                
+                // Process template parameters
+                _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                    'ResponseType': input.responseType
+                });
+
+                //validate and preprocess url
+                var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                
+                // prepare form data
+                var _form = {
+                    'Shortcode': input.shortcode,
+                    'To': input.to,
+                    'DateSent': APIHelper.stringifyDateTime(dateSent, 'date'),
+                    'Page': (input.page !== null) ? input.page : 1,
+                    'PageSize': (input.pageSize !== null) ? input.pageSize : 10
+                };
+
+                // Remove null values
+                APIHelper.cleanObject(_form);
+
+                // prepare and invoke the API call request to fetch the response
+                var _config = {
+                    method: 'POST',
+                    queryUrl: _queryUrl,
+                    username: Configuration.basicAuthUserName,
+                    password: Configuration.basicAuthPassword,
+                    form: _form,
+                };
+                
+                var _response = new HttpClient(_config);
+                
+                //process response
+                _response.then(function success(_result) {
+                    _deffered.resolve(_result);
+                }, function error(_result){
+                    // Error handling for custom HTTP status codes
+                    _deffered.reject(APIHelper.appendContext({
+                        errorMessage:'HTTP Response Not OK',
+                        errorCode: _result.code,
+                        errorResponse: _result.message
+                    }, _result.getContext()));
+                });
+                
+                return _deffered.promise;
+            },
+            /**
+             * Retrive a list of inbound Sms Short Code messages associated with your message360 account.
+             *
+             * @param {array}  input    Array with all options for search
+             * @param {string} input['responseType'] Response type format xml or json
+             * @param {int|null} input['page'] [Optional] Which page of the overall response will be returned. Zero
+             * indexed
+             * @param {int|null} input['pageSize'] [Optional] Number of individual resources listed in the response
+             * per page
+             * @param {string|null} input['from'] [Optional] Only list SMS messages sent from this number
+             * @param {string|null} input['shortcode'] [Optional] Only list SMS messages sent to Shortcode
+             * @param {string|null} input['dateReceived'] [Optional] Only list SMS messages sent in the specified
+             * date MAKE REQUEST
+             *
+             * @return {promise<String>}
+             */
+            listInboundShortcode: function (input) {
+                // Assign default values
+                input = input || {};
+
+                //Create promise to return
+                var _deffered = $q.defer();
+                
+
+                //prepare query string for API call
+                var _baseUri = Configuration.getBaseUri();
+                var _queryBuilder = _baseUri + '/shortcode/getinboundsms.{ResponseType}';
+                
+                // Process template parameters
+                _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
+                    'ResponseType': input.responseType
+                });
+
+                //validate and preprocess url
+                var _queryUrl = APIHelper.cleanUrl(_queryBuilder);
+                
+                // prepare form data
+                var _form = {
+                    'Page': (input.page !== null) ? input.page : 1,
+                    'PageSize': (input.pageSize !== null) ? input.pageSize : 10,
+                    'From': input.from,
+                    'Shortcode': input.shortcode,
+                    'DateReceived': input.dateReceived
+                };
+
+                // Remove null values
+                APIHelper.cleanObject(_form);
+
+                // prepare and invoke the API call request to fetch the response
+                var _config = {
+                    method: 'POST',
+                    queryUrl: _queryUrl,
+                    username: Configuration.basicAuthUserName,
+                    password: Configuration.basicAuthPassword,
+                    form: _form,
+                };
+                
+                var _response = new HttpClient(_config);
+                
+                //process response
+                _response.then(function success(_result) {
+                    _deffered.resolve(_result);
+                }, function error(_result){
+                    // Error handling for custom HTTP status codes
+                    _deffered.reject(APIHelper.appendContext({
+                        errorMessage:'HTTP Response Not OK',
+                        errorCode: _result.code,
+                        errorResponse: _result.message
+                    }, _result.getContext()));
+                });
+                
+                return _deffered.promise;
             }
-        }
-    ]);
+        };
+    }
 
 }(angular));

@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('ActivateStatusEnum',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                ACTIVATE: 1,
-        
-                //TODO: Write general description for this element
-                DE_ACTIVATE: 0
-            };
-        }
-    );
+    .factory('ActivateStatusEnum', [ActivateStatusEnumModel]);
+
+    function ActivateStatusEnumModel() {
+        return {
+            //TODO: Write general description for this element
+            ACTIVATE: 1,
+    
+            //TODO: Write general description for this element
+            DE_ACTIVATE: 0
+        };
+    }
 
 }(angular));

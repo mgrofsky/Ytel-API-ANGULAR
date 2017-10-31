@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('MergeNumberStatusEnum',
-        function () {
-            return {
-                //TODO: Write general description for this element
-                MDELETE: 0,
-        
-                //TODO: Write general description for this element
-                MERGE: 1
-            };
-        }
-    );
+    .factory('MergeNumberStatusEnum', [MergeNumberStatusEnumModel]);
+
+    function MergeNumberStatusEnumModel() {
+        return {
+            //TODO: Write general description for this element
+            MDELETE: 0,
+    
+            //TODO: Write general description for this element
+            MERGE: 1
+        };
+    }
 
 }(angular));

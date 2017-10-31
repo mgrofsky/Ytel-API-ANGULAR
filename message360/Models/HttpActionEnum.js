@@ -8,16 +8,16 @@
 'use strict';
 
 angular.module('Message360')
-    .factory('HttpActionEnum',
-        function () {
-            return {
-                //Get type
-                GET: "GET",
-        
-                //Post Type
-                POST: "POST"
-            };
-        }
-    );
+    .factory('HttpActionEnum', [HttpActionEnumModel]);
+
+    function HttpActionEnumModel() {
+        return {
+            //Get type
+            GET: 'GET',
+    
+            //Post Type
+            POST: 'POST'
+        };
+    }
 
 }(angular));
