@@ -361,8 +361,8 @@ function listOutboundSharedShortcodes(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pagesize'] = 195;
+        input['page'] = 41;
+        input['pagesize'] = 41;
         input['from'] = 'from';
         input['to'] = 'to';
         input['datesent'] = 'datesent';
@@ -412,8 +412,8 @@ function listInboundSharedShortcodes(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pagesize'] = 195;
+        input['page'] = 41;
+        input['pagesize'] = 41;
         input['from'] = 'from';
         input['shortcode'] = 'Shortcode';
         input['dateReceived'] = 'DateReceived';
@@ -516,8 +516,8 @@ function listTemplates(input)
         var input = [];
         input['responseType'] = 'ResponseType';
         input['type'] = 'type';
-        input['page'] = 195;
-        input['pagesize'] = 195;
+        input['page'] = 41;
+        input['pagesize'] = 41;
         input['shortcode'] = 'Shortcode';
 
 
@@ -607,10 +607,10 @@ function listKeyword(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pageSize'] = 195;
+        input['page'] = 41;
+        input['pageSize'] = 41;
         input['keyword'] = 'Keyword';
-        input['shortcode'] = 195;
+        input['shortcode'] = 41;
 
 
 		var result = SharedShortCodeController.listKeyword(input);
@@ -698,8 +698,8 @@ function listAssignment(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pageSize'] = 195;
+        input['page'] = 41;
+        input['pageSize'] = 41;
         input['shortcode'] = 'Shortcode';
 
 
@@ -814,8 +814,8 @@ function deafMuteParticipant(input)
         input['conferenceSid'] = 'conferenceSid';
         input['participantSid'] = 'ParticipantSid';
         input['responseType'] = 'ResponseType';
-        input['muted'] = true;
-        input['deaf'] = true;
+        input['muted'] = false;
+        input['deaf'] = false;
 
 
 		var result = ConferenceController.deafMuteParticipant(input);
@@ -908,8 +908,8 @@ function addParticipant(input)
         input['conferencesid'] = 'conferencesid';
         input['participantnumber'] = 'participantnumber';
         input['responseType'] = 'ResponseType';
-        input['muted'] = true;
-        input['deaf'] = true;
+        input['muted'] = false;
+        input['deaf'] = false;
 
 
 		var result = ConferenceController.addParticipant(input);
@@ -1016,10 +1016,10 @@ function createConference(input)
         input['statusCallBackMethod'] = Object.keys(HttpActionEnum)[0];
         input['fallBackUrl'] = 'FallBackUrl';
         input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['record'] = true;
+        input['record'] = false;
         input['recordCallbackMethod'] = Object.keys(HttpActionEnum)[0];
         input['schdeuleTime'] = 'SchdeuleTime';
-        input['timeout'] = 195;
+        input['timeout'] = 41;
 
 
 		var result = ConferenceController.createConference(input);
@@ -1159,10 +1159,10 @@ function listParticipant(input)
         var input = [];
         input['conferenceSid'] = 'ConferenceSid';
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pagesize'] = 195;
-        input['muted'] = true;
-        input['deaf'] = true;
+        input['page'] = 41;
+        input['pagesize'] = 41;
+        input['muted'] = false;
+        input['deaf'] = false;
 
 
 		var result = ConferenceController.listParticipant(input);
@@ -1208,8 +1208,8 @@ function listConference(input)
 	app.controller("testController", function($scope, ConferenceController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pageSize'] = 195;
+        input['page'] = 41;
+        input['pageSize'] = 41;
         input['friendlyName'] = 'FriendlyName';
         input['dateCreated'] = 'DateCreated';
 
@@ -1270,8 +1270,8 @@ function listTranscription(input)
 	app.controller("testController", function($scope, TranscriptionController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 195;
-        input['pageSize'] = 195;
+        input['page'] = 41;
+        input['pageSize'] = 41;
         input['status'] = Object.keys(StatusEnum)[0];
         input['dateTranscribed'] = 'DateTranscribed';
 
@@ -1462,7 +1462,7 @@ function availablePhoneNumber(input)
         input['numberType'] = Object.keys(NumberTypeEnum)[0];
         input['areaCode'] = 'AreaCode';
         input['responseType'] = 'ResponseType';
-        input['pageSize'] = 195;
+        input['pageSize'] = 41;
 
 
 		var result = PhoneNumberController.availablePhoneNumber(input);
@@ -1508,8 +1508,8 @@ function listNumber(input)
 	app.controller("testController", function($scope, PhoneNumberController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['page'] = 41;
+        input['pageSize'] = 41;
         input['numberType'] = Object.keys(NumberTypeEnum)[0];
         input['friendlyName'] = 'FriendlyName';
 
@@ -2017,8 +2017,8 @@ function listRecording(input)
 	app.controller("testController", function($scope, RecordingController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['page'] = 254;
+        input['pageSize'] = 254;
         input['dateCreated'] = 'DateCreated';
         input['callSid'] = 'CallSid';
 
@@ -2639,7 +2639,7 @@ function sendSMS(input)
         input['responseType'] = 'ResponseType';
         input['method'] = Object.keys(HttpActionEnum)[0];
         input['messagestatuscallback'] = 'messagestatuscallback';
-        input['smartsms'] = false;
+        input['smartsms'] = true;
 
 
 		var result = SMSController.sendSMS(input);
@@ -2729,8 +2729,8 @@ function listSMS(input)
 	app.controller("testController", function($scope, SMSController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pagesize'] = 31;
+        input['page'] = 254;
+        input['pagesize'] = 254;
         input['from'] = 'from';
         input['to'] = 'to';
         input['datesent'] = 'datesent';
@@ -2780,8 +2780,8 @@ function listInboundSMS(input)
 	app.controller("testController", function($scope, SMSController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pagesize'] = 31;
+        input['page'] = 254;
+        input['pagesize'] = 254;
         input['from'] = 'from';
         input['to'] = 'to';
         input['dateSent'] = 'DateSent';
@@ -2872,18 +2872,18 @@ function makeCall(input)
         input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
         input['heartBeatUrl'] = 'HeartBeatUrl';
         input['heartBeatMethod'] = Object.keys(HttpActionEnum)[0];
-        input['timeout'] = 31;
+        input['timeout'] = 254;
         input['playDtmf'] = 'PlayDtmf';
-        input['hideCallerId'] = false;
-        input['record'] = false;
+        input['hideCallerId'] = true;
+        input['record'] = true;
         input['recordCallBackUrl'] = 'RecordCallBackUrl';
         input['recordCallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['transcribe'] = false;
+        input['transcribe'] = true;
         input['transcribeCallBackUrl'] = 'TranscribeCallBackUrl';
         input['ifMachine'] = Object.keys(IfMachineEnum)[0];
         input['ifMachineUrl'] = 'IfMachineUrl';
         input['ifMachineMethod'] = Object.keys(HttpActionEnum)[0];
-        input['feedback'] = false;
+        input['feedback'] = true;
         input['surveyId'] = 'SurveyId';
 
 
@@ -2935,9 +2935,9 @@ function playAudio(input)
         input['audioUrl'] = 'AudioUrl';
         input['sayText'] = 'SayText';
         input['responseType'] = 'ResponseType';
-        input['length'] = 31;
+        input['length'] = 254;
         input['direction'] = Object.keys(DirectionEnum)[0];
-        input['mix'] = false;
+        input['mix'] = true;
 
 
 		var result = CallController.playAudio(input);
@@ -2985,10 +2985,10 @@ function recordCall(input)
 	app.controller("testController", function($scope, CallController){
         var input = [];
         input['callSid'] = 'CallSid';
-        input['record'] = false;
+        input['record'] = true;
         input['responseType'] = 'ResponseType';
         input['direction'] = Object.keys(DirectionEnum)[0];
-        input['timeLimit'] = 31;
+        input['timeLimit'] = 254;
         input['callBackUrl'] = 'CallBackUrl';
         input['fileformat'] = Object.keys(AudioFormatEnum)[0];
 
@@ -3041,11 +3041,11 @@ function voiceEffect(input)
         input['callSid'] = 'CallSid';
         input['responseType'] = 'ResponseType';
         input['audioDirection'] = Object.keys(AudioDirectionEnum)[0];
-        input['pitchSemiTones'] = 31.5080694977697;
-        input['pitchOctaves'] = 31.5080694977697;
-        input['pitch'] = 31.5080694977697;
-        input['rate'] = 31.5080694977697;
-        input['tempo'] = 31.5080694977697;
+        input['pitchSemiTones'] = 254.547453189524;
+        input['pitchOctaves'] = 254.547453189524;
+        input['pitch'] = 254.547453189524;
+        input['rate'] = 254.547453189524;
+        input['tempo'] = 254.547453189524;
 
 
 		var result = CallController.voiceEffect(input);
@@ -3215,13 +3215,13 @@ function groupCall(input)
         input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
         input['heartBeatUrl'] = 'HeartBeatUrl';
         input['heartBeatMethod'] = Object.keys(HttpActionEnum)[0];
-        input['timeout'] = 31;
+        input['timeout'] = 254;
         input['playDtmf'] = 'PlayDtmf';
         input['hideCallerId'] = 'HideCallerId';
-        input['record'] = false;
+        input['record'] = true;
         input['recordCallBackUrl'] = 'RecordCallBackUrl';
         input['recordCallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['transcribe'] = false;
+        input['transcribe'] = true;
         input['transcribeCallBackUrl'] = 'TranscribeCallBackUrl';
 
 
@@ -3269,8 +3269,8 @@ function listCalls(input)
 	app.controller("testController", function($scope, CallController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['page'] = 254;
+        input['pageSize'] = 254;
         input['to'] = 'To';
         input['from'] = 'From';
         input['dateCreated'] = 'DateCreated';
@@ -3428,8 +3428,8 @@ function carrierLookupList(input)
 	app.controller("testController", function($scope, CarrierController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pagesize'] = 31;
+        input['page'] = 254;
+        input['pagesize'] = 254;
 
 
 		var result = CarrierController.carrierLookupList(input);
@@ -3633,8 +3633,8 @@ function listAddress(input)
 	app.controller("testController", function($scope, AddressController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['page'] = 254;
+        input['pageSize'] = 254;
         input['addressSID'] = 'AddressSID';
         input['dateCreated'] = 'DateCreated';
 
@@ -3858,6 +3858,8 @@ function createSubAccount(input)
 | firstName |  ``` Required ```  | Sub account user first name |
 | lastName |  ``` Required ```  | sub account user last name |
 | email |  ``` Required ```  | Sub account email address |
+| friendlyName |  ``` Required ```  | Descriptive name of the sub account |
+| password |  ``` Required ```  | The password of the sub account.  Please make sure to make as password that is at least 8 characters long, contain a symbol, uppercase and a number. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3872,6 +3874,8 @@ function createSubAccount(input)
         input['firstName'] = 'FirstName';
         input['lastName'] = 'LastName';
         input['email'] = 'Email';
+        input['friendlyName'] = 'FriendlyName';
+        input['password'] = 'Password';
         input['responseType'] = 'ResponseType';
 
 
@@ -3987,8 +3991,8 @@ function sendDedicatedShortcode(input)
 
 	app.controller("testController", function($scope, ShortCodeController){
         var input = [];
-        input['shortcode'] = 31;
-        input['to'] = 31.5080694977697;
+        input['shortcode'] = 254;
+        input['to'] = 254.547453189524;
         input['body'] = 'body';
         input['responseType'] = 'ResponseType';
         input['method'] = Object.keys(HttpActionEnum)[0];
@@ -4084,9 +4088,9 @@ function listShortcode(input)
         input['responseType'] = 'ResponseType';
         input['shortcode'] = 'Shortcode';
         input['to'] = 'To';
-        input['dateSent'] = date("D M d, Y G:i");
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['dateSent'] = 'DateSent';
+        input['page'] = 254;
+        input['pageSize'] = 254;
 
 
 		var result = ShortCodeController.listShortcode(input);
@@ -4133,8 +4137,8 @@ function listInboundShortcode(input)
 	app.controller("testController", function($scope, ShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 31;
-        input['pageSize'] = 31;
+        input['page'] = 254;
+        input['pageSize'] = 254;
         input['from'] = 'From';
         input['shortcode'] = 'Shortcode';
         input['dateReceived'] = 'DateReceived';

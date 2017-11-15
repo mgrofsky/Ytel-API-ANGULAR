@@ -911,7 +911,7 @@ angular.module('Message360')
 
                 //prepare query string for API call
                 var _baseUri = Configuration.getBaseUri();
-                var _queryBuilder = _baseUri + '/calls/makeringlessvoicemailcall.{ResponseType}';
+                var _queryBuilder = _baseUri + '/calls/makervm.{ResponseType}';
                 
                 // Process template parameters
                 _queryBuilder = APIHelper.appendUrlWithTemplateParameters(_queryBuilder, {
