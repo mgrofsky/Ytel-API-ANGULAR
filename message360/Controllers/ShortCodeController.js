@@ -14,11 +14,10 @@ angular.module('Message360')
         'HttpClient',
         'APIHelper',
         'BaseController',
-        'moment',
         ShortCodeController
     ]);
 
-    function ShortCodeController($q, Configuration, Servers, HttpClient, APIHelper, BaseController, moment) {
+    function ShortCodeController($q, Configuration, Servers, HttpClient, APIHelper, BaseController) {
         return {
             /**
              * @todo Add general description for this endpoint
@@ -197,7 +196,7 @@ angular.module('Message360')
              * @param {string} input['responseType'] Response type format xml or json
              * @param {string|null} input['shortcode'] [Optional] Only list messages sent from this Short Code
              * @param {string|null} input['to'] [Optional] Only list messages sent to this number
-             * @param {date|null} input['dateSent'] [Optional] Only list messages sent with the specified date
+             * @param {string|null} input['dateSent'] [Optional] Only list messages sent with the specified date
              * @param {int|null} input['page'] [Optional] The page count to retrieve from the total results in the
              * collection. Page indexing starts at 1.
              * @param {int|null} input['pageSize'] [Optional] The count of objects to return per page.
@@ -228,7 +227,7 @@ angular.module('Message360')
                 var _form = {
                     'Shortcode': input.shortcode,
                     'To': input.to,
-                    'DateSent': APIHelper.stringifyDateTime(dateSent, 'date'),
+                    'DateSent': input.dateSent,
                     'Page': (input.page !== null) ? input.page : 1,
                     'PageSize': (input.pageSize !== null) ? input.pageSize : 10
                 };

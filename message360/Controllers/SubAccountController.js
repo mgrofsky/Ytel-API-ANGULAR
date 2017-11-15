@@ -181,6 +181,10 @@ angular.module('Message360')
              * @param {string} input['firstName'] Sub account user first name
              * @param {string} input['lastName'] sub account user last name
              * @param {string} input['email'] Sub account email address
+             * @param {string} input['friendlyName'] Descriptive name of the sub account
+             * @param {string} input['password'] The password of the sub account.  Please make sure to make as
+             * password that is at least 8 characters long, contain a symbol,
+             * uppercase and a number.
              * @param {string} input['responseType'] Response type format xml or json
              *
              * @return {promise<String>}
@@ -212,6 +216,18 @@ angular.module('Message360')
                         errorCode: -1
                     });
                     _missingArgs = true;
+                } else if (input.friendlyName === null || input.friendlyName === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `friendlyName` in the input object cannot be null.',
+                        errorCode: -1
+                    });
+                    _missingArgs = true;
+                } else if (input.password === null || input.password === undefined) {
+                    _deffered.reject({
+                        errorMessage: 'The property `password` in the input object cannot be null.',
+                        errorCode: -1
+                    });
+                    _missingArgs = true;
                 }
 
                 if (_missingArgs) {
@@ -234,7 +250,9 @@ angular.module('Message360')
                 var _form = {
                     'FirstName': input.firstName,
                     'LastName': input.lastName,
-                    'Email': input.email
+                    'Email': input.email,
+                    'FriendlyName': input.friendlyName,
+                    'Password': input.password
                 };
 
                 // Remove null values
