@@ -1,11 +1,11 @@
 # Getting started
 
-message360 API version 3
+Ytel API version 3
 
 ## How to Build
 
 The generated SDK requires AngularJS framework to work. If you do not already have angular downloaded, please go ahead and do it from [here](https://angularjs.org/).
-If any of your models have `Date` or `Datetime` type fields or your endpoints have `Date`/`Datetime` type response, you will need to download and link [angular-moment](https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js) and [moment.js](https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js) with your project.
+You will also need to download and link [angular-moment](https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js) and [moment.js](https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js) with your project because the SDK internally uses moment.js.
 
 ## How to Use
 
@@ -15,10 +15,10 @@ The following section describes how to use the generated SDK in an existing/new 
 Perform the following steps to configure angular and the SDK:
 + Make a `scripts` folder inside the root folder of the project. If you already have a `scripts` folder, skip to the next step.
 + Move the `angular.min.js` file inside the scripts folder. 
-+ Move the `Message360` folder inside the scripts folder.
++ Move the `Ytel` folder inside the scripts folder.
 + If any of the Custom Types in your API have `Date`/`Datetime` type fields or any endpoint has `Date`/`Datetime` response, you will need to download angular-moment and moment.js. Move these 2 files into the `scripts` folder as well.
 
-![folder-structure-image](https://apidocs.io/illustration/angularjs?step=folderStructure&workspaceFolder=Message360-Angular&projectName=Message360)
+![folder-structure-image](https://apidocs.io/illustration/angularjs?step=folderStructure&workspaceFolder=Ytel-Angular&projectName=Ytel)
 
 ### 2. Open Project Folder
 Open an IDE/Text Editor for JavaScript like Sublime Text. The basic workflow presented here is also applicable if you prefer using a different editor or IDE.  
@@ -26,7 +26,7 @@ Click on `File` and select `Open Folder`
 
 Select the folder of your SDK and click on `Select Folder` to open it up in Sublime Text. The folder will become visible in the bar on the left.
 
-![open-folder-image](https://apidocs.io/illustration/angularjs?step=openFolder&workspaceFolder=Message360-Angular)
+![open-folder-image](https://apidocs.io/illustration/angularjs?step=openFolder&workspaceFolder=Ytel-Angular)
 
 ### 3. Create an Angular Application
 Since Angular JS is used for client-side web development, in order to use the generated library, you will have to develop an application first.
@@ -63,7 +63,7 @@ Skip to the next step if you are working with an existing project and already ha
 </html>
 ```
 
-![initial-html-code-image](https://apidocs.io/illustration/angularjs?step=initialCode&workspaceFolder=Message360-Angular)
+![initial-html-code-image](https://apidocs.io/illustration/angularjs?step=initialCode&workspaceFolder=Ytel-Angular)
 
 ### 5. Including links to Angular in HTML file
 Your HTML file needs to have a link to `angular.min.js` file to use Angular-JS. Add the link using `script` tags inside the `head` section of `index.html` like:
@@ -83,53 +83,56 @@ Import the reference to the generated SDK files inside your html file like:
 <head>
     ...
     <!-- Helper files -->
-    <script src="scripts/Message360/Module.js"></script>
-    <script src="scripts/Message360/Configuration.js"></script>
-    <script src="scripts/Message360/ModelFactory.js"></script>
-    <script src="scripts/Message360/ObjectMapper.js"></script>
-    <script src="scripts/Message360/APIHelper.js"></script>
-    <script src="scripts/Message360/Http/Client/HttpContext.js"></script>
-    <script src="scripts/Message360/Http/Client/RequestClient.js"></script>
-    <script src="scripts/Message360/Http/Request/HttpRequest.js"></script>
-    <script src="scripts/Message360/Http/Response/HttpResponse.js"></script>
+    <script src="scripts/Ytel/Module.js"></script>
+    <script src="scripts/Ytel/Configuration.js"></script>
+    <script src="scripts/Ytel/ModelFactory.js"></script>
+    <script src="scripts/Ytel/ObjectMapper.js"></script>
+    <script src="scripts/Ytel/APIHelper.js"></script>
+    <script src="scripts/Ytel/Http/Client/HttpContext.js"></script>
+    <script src="scripts/Ytel/Http/Client/HttpClient.js"></script>
+    <script src="scripts/Ytel/Http/Request/HttpRequest.js"></script>
+    <script src="scripts/Ytel/Http/Response/HttpResponse.js"></script>
 
     <!-- API Controllers -->
-    <script src="scripts/Message360/Controllers/BaseController.js"></script>
-    <script src="scripts/Message360/Controllers/SharedShortCodeController.js"></script>
-    <script src="scripts/Message360/Controllers/ConferenceController.js"></script>
-    <script src="scripts/Message360/Controllers/TranscriptionController.js"></script>
-    <script src="scripts/Message360/Controllers/PhoneNumberController.js"></script>
-    <script src="scripts/Message360/Controllers/UsageController.js"></script>
-    <script src="scripts/Message360/Controllers/WebRTCController.js"></script>
-    <script src="scripts/Message360/Controllers/RecordingController.js"></script>
-    <script src="scripts/Message360/Controllers/EmailController.js"></script>
-    <script src="scripts/Message360/Controllers/SMSController.js"></script>
-    <script src="scripts/Message360/Controllers/CallController.js"></script>
-    <script src="scripts/Message360/Controllers/CarrierController.js"></script>
-    <script src="scripts/Message360/Controllers/AddressController.js"></script>
-    <script src="scripts/Message360/Controllers/SubAccountController.js"></script>
-    <script src="scripts/Message360/Controllers/AccountController.js"></script>
-    <script src="scripts/Message360/Controllers/ShortCodeController.js"></script>
+    <script src="scripts/Ytel/Controllers/BaseController.js"></script>
+    <script src="scripts/Ytel/Controllers/WebRTCController.js"></script>
+    <script src="scripts/Ytel/Controllers/SharedShortCodeController.js"></script>
+    <script src="scripts/Ytel/Controllers/ConferenceController.js"></script>
+    <script src="scripts/Ytel/Controllers/PhoneNumberController.js"></script>
+    <script src="scripts/Ytel/Controllers/TranscriptionController.js"></script>
+    <script src="scripts/Ytel/Controllers/RecordingController.js"></script>
+    <script src="scripts/Ytel/Controllers/EmailController.js"></script>
+    <script src="scripts/Ytel/Controllers/SMSController.js"></script>
+    <script src="scripts/Ytel/Controllers/CallController.js"></script>
+    <script src="scripts/Ytel/Controllers/CarrierController.js"></script>
+    <script src="scripts/Ytel/Controllers/AddressController.js"></script>
+    <script src="scripts/Ytel/Controllers/SubAccountController.js"></script>
+    <script src="scripts/Ytel/Controllers/AccountController.js"></script>
+    <script src="scripts/Ytel/Controllers/UsageController.js"></script>
+    <script src="scripts/Ytel/Controllers/ShortCodeController.js"></script>
+    <script src="scripts/Ytel/Controllers/PostCardController.js"></script>
+    <script src="scripts/Ytel/Controllers/LetterController.js"></script>
+    <script src="scripts/Ytel/Controllers/AreaMailController.js"></script>
 
 
     <!-- Models -->
-    <script src="scripts/Message360/Models/BaseModel.js"></script>
-    <script src="scripts/Message360/Models/MessageModel.js"></script>
-    <script src="scripts/Message360/Models/DirectionEnum.js"></script>
-    <script src="scripts/Message360/Models/NumberTypeEnum.js"></script>
-    <script src="scripts/Message360/Models/StatusEnum.js"></script>
-    <script src="scripts/Message360/Models/SendEmailAsEnum.js"></script>
-    <script src="scripts/Message360/Models/ActivateStatusEnum.js"></script>
-    <script src="scripts/Message360/Models/MergeNumberStatusEnum.js"></script>
-    <script src="scripts/Message360/Models/AudioDirectionEnum.js"></script>
-    <script src="scripts/Message360/Models/ProductCodeEnum.js"></script>
-    <script src="scripts/Message360/Models/HttpActionEnum.js"></script>
-    <script src="scripts/Message360/Models/IfMachineEnum.js"></script>
-    <script src="scripts/Message360/Models/TemplateDataModel.js"></script>
-    <script src="scripts/Message360/Models/InterruptedCallStatusEnum.js"></script>
-    <script src="scripts/Message360/Models/AudioFormatEnum.js"></script>
-    <script src="scripts/Message360/Models/ErrorsModel.js"></script>
-    <script src="scripts/Message360/Models/ErrorModel.js"></script>
+    <script src="scripts/Ytel/Models/BaseModel.js"></script>
+    <script src="scripts/Ytel/Models/ErrorsModel.js"></script>
+    <script src="scripts/Ytel/Models/MessageModel.js"></script>
+    <script src="scripts/Ytel/Models/DirectionEnum.js"></script>
+    <script src="scripts/Ytel/Models/NumberTypeEnum.js"></script>
+    <script src="scripts/Ytel/Models/StatusEnum.js"></script>
+    <script src="scripts/Ytel/Models/SendEmailAsEnum.js"></script>
+    <script src="scripts/Ytel/Models/ActivateStatusEnum.js"></script>
+    <script src="scripts/Ytel/Models/MergeNumberStatusEnum.js"></script>
+    <script src="scripts/Ytel/Models/AudioDirectionEnum.js"></script>
+    <script src="scripts/Ytel/Models/ProductCodeEnum.js"></script>
+    <script src="scripts/Ytel/Models/HttpActionEnum.js"></script>
+    <script src="scripts/Ytel/Models/IfMachineEnum.js"></script>
+    <script src="scripts/Ytel/Models/TemplateDataModel.js"></script>
+    <script src="scripts/Ytel/Models/InterruptedCallStatusEnum.js"></script>
+    <script src="scripts/Ytel/Models/AudioFormatEnum.js"></script>
+    <script src="scripts/Ytel/Models/ErrorModel.js"></script>
 
     ...
 </head>
@@ -170,7 +173,7 @@ In order to use the generated SDK's modules, controllers and factories, the proj
 Add the dependency like this:
 
 ```js
-var app = angular.module('myApp', ['Message360']);
+var app = angular.module('myApp', ['Ytel']);
 ```
 At this point, the SDK has been successfully included in your project. Further steps include using a service/factory from the generated SDK. To see working example of this, please head on [over here](#list-of-controllers) and choose any class to see its functions and example usage.  
 
@@ -184,7 +187,7 @@ To run the app, simply open up the `index.html` file in a browser.
 
 The Angular Application can be initialized as following:
 ```JavaScript
-var app = angular.module('myApp', [Message360]);
+var app = angular.module('myApp', [Ytel]);
 // now controllers/services can be created which import
 // the factories provided by the sdk
 ```
@@ -198,18 +201,14 @@ In order to setup authentication and initialization of the Angular App, you need
 
 
 
-```JavaScript
-var app = angular.module('myApp', [Message360]);
-app.factory('config', function($scope, Configuration) 
-{
-    return {
-        setConfigVars: function() {
-            // Configuration parameters and credentials
-            Configuration.basicAuthUserName = 'basicAuthUserName'; // The username to use with basic authentication
-            Configuration.basicAuthPassword = 'basicAuthPassword'; // The password to use with basic authentication
-            
-        }
-    };
+```js
+var app = angular.module('myApp', [Ytel]);
+
+app.run(function(Configuration) {
+    // Configuration parameters and credentials
+    Configuration.basicAuthUserName = 'basicAuthUserName'; // The username to use with basic authentication
+    Configuration.basicAuthPassword = 'basicAuthPassword'; // The password to use with basic authentication
+    
 });
 ```
 
@@ -219,12 +218,11 @@ app.factory('config', function($scope, Configuration)
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [WebRTCController](#web_rtc_controller)
 * [SharedShortCodeController](#shared_short_code_controller)
 * [ConferenceController](#conference_controller)
-* [TranscriptionController](#transcription_controller)
 * [PhoneNumberController](#phone_number_controller)
-* [UsageController](#usage_controller)
-* [WebRTCController](#web_rtc_controller)
+* [TranscriptionController](#transcription_controller)
 * [RecordingController](#recording_controller)
 * [EmailController](#email_controller)
 * [SMSController](#sms_controller)
@@ -233,7 +231,114 @@ app.factory('config', function($scope, Configuration)
 * [AddressController](#address_controller)
 * [SubAccountController](#sub_account_controller)
 * [AccountController](#account_controller)
+* [UsageController](#usage_controller)
 * [ShortCodeController](#short_code_controller)
+* [PostCardController](#post_card_controller)
+* [LetterController](#letter_controller)
+* [AreaMailController](#area_mail_controller)
+
+## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+
+### Get singleton instance
+
+The singleton instance of the ``` WebRTCController ``` class can be accessed via Dependency Injection.
+
+```js
+	app.controller("testController", function($scope, WebRTCController){
+	});
+```
+
+### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.createToken") createToken
+
+> Ytel webrtc
+
+
+```javascript
+function createToken(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your Ytel Account SID |
+| authToken |  ``` Required ```  | Your Ytel Token |
+| username |  ``` Required ```  | WebRTC username authentication |
+| password |  ``` Required ```  | WebRTC password authentication |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, WebRTCController){
+        var input = [];
+        input['accountSid'] = account_sid;
+        input['authToken'] = auth_token;
+        input['username'] = 'username';
+        input['password'] = 'password';
+
+
+		var result = WebRTCController.createToken(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.checkFunds") checkFunds
+
+> TODO: Add a method description
+
+
+```javascript
+function checkFunds(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your Ytel Account SID |
+| authToken |  ``` Required ```  | Your Ytel Token |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, WebRTCController){
+        var input = [];
+        input['accountSid'] = account_sid;
+        input['authToken'] = auth_token;
+
+
+		var result = WebRTCController.checkFunds(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="shared_short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SharedShortCodeController") SharedShortCodeController
 
@@ -258,7 +363,7 @@ function viewTemplate(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| templateid |  ``` Required ```  | The unique identifier for a template object |
+| templateId |  ``` Required ```  | The unique identifier for a template object |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -270,7 +375,7 @@ function viewTemplate(input)
 
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
-        input['templateid'] = uniqid();
+        input['templateId'] = uniqid();
         input['responseType'] = 'ResponseType';
 
 
@@ -345,10 +450,10 @@ function listOutboundSharedShortcodes(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
 | pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| from |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
+| shortcode |  ``` Optional ```  | Only list messages sent from this Short Code |
+| to |  ``` Optional ```  | Only list messages sent to this number |
 | datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
 
 
@@ -361,9 +466,9 @@ function listOutboundSharedShortcodes(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pagesize'] = 41;
-        input['from'] = 'from';
+        input['page'] = 149;
+        input['pagesize'] = 149;
+        input['shortcode'] = 'Shortcode';
         input['to'] = 'to';
         input['datesent'] = 'datesent';
 
@@ -396,11 +501,11 @@ function listInboundSharedShortcodes(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
 | pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | from |  ``` Optional ```  | From Number to Inbound ShortCode |
 | shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
-| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
+| datecreated |  ``` Optional ```  | Only list messages sent with the specified date |
 
 
 
@@ -412,11 +517,11 @@ function listInboundSharedShortcodes(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pagesize'] = 41;
+        input['page'] = 149;
+        input['pagesize'] = 149;
         input['from'] = 'from';
         input['shortcode'] = 'Shortcode';
-        input['dateReceived'] = 'DateReceived';
+        input['datecreated'] = 'Datecreated';
 
 
 		var result = SharedShortCodeController.listInboundSharedShortcodes(input);
@@ -436,7 +541,7 @@ function listInboundSharedShortcodes(input)
 
 ### <a name="send_shared_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.sendSharedShortcode") sendSharedShortcode
 
-> Send an SMS from a message360 ShortCode
+> Send an SMS from a Ytel ShortCode
 
 
 ```javascript
@@ -516,8 +621,8 @@ function listTemplates(input)
         var input = [];
         input['responseType'] = 'ResponseType';
         input['type'] = 'type';
-        input['page'] = 41;
-        input['pagesize'] = 41;
+        input['page'] = 149;
+        input['pagesize'] = 149;
         input['shortcode'] = 'Shortcode';
 
 
@@ -581,7 +686,7 @@ function viewKeyword(input)
 
 ### <a name="list_keyword"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.listKeyword") listKeyword
 
-> Retrieve a list of keywords associated with your message360 account.
+> Retrieve a list of keywords associated with your Ytel account.
 
 
 ```javascript
@@ -592,8 +697,8 @@ function listKeyword(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | keyword |  ``` Optional ```  | Only list keywords of keyword |
 | shortcode |  ``` Optional ```  | Only list keywords of shortcode |
 
@@ -607,10 +712,10 @@ function listKeyword(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pageSize'] = 41;
+        input['page'] = 149;
+        input['pagesize'] = 149;
         input['keyword'] = 'Keyword';
-        input['shortcode'] = 41;
+        input['shortcode'] = 149;
 
 
 		var result = SharedShortCodeController.listKeyword(input);
@@ -640,7 +745,7 @@ function viewAssignement(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid Shortcode to your message360 account |
+| shortcode |  ``` Required ```  | List of valid Shortcode to your Ytel account |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -673,7 +778,7 @@ function viewAssignement(input)
 
 ### <a name="list_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.listAssignment") listAssignment
 
-> Retrieve a list of shortcode assignment associated with your message360 account.
+> Retrieve a list of shortcode assignment associated with your Ytel account.
 
 
 ```javascript
@@ -684,8 +789,8 @@ function listAssignment(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | shortcode |  ``` Optional ```  | Only list keywords of shortcode |
 
 
@@ -698,8 +803,8 @@ function listAssignment(input)
 	app.controller("testController", function($scope, SharedShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pageSize'] = 41;
+        input['page'] = 149;
+        input['pagesize'] = 149;
         input['shortcode'] = 'Shortcode';
 
 
@@ -730,7 +835,7 @@ function updateAssignment(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid shortcode to your message360 account |
+| shortcode |  ``` Required ```  | List of valid shortcode to your Ytel account |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | User generated name of the shortcode |
 | callbackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
@@ -814,8 +919,8 @@ function deafMuteParticipant(input)
         input['conferenceSid'] = 'conferenceSid';
         input['participantSid'] = 'ParticipantSid';
         input['responseType'] = 'ResponseType';
-        input['muted'] = false;
-        input['deaf'] = false;
+        input['muted'] = true;
+        input['deaf'] = true;
 
 
 		var result = ConferenceController.deafMuteParticipant(input);
@@ -835,7 +940,7 @@ function deafMuteParticipant(input)
 
 ### <a name="view_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.viewParticipant") viewParticipant
 
-> View Participant
+> Retrieve information about a participant by its ParticipantSid.
 
 
 ```javascript
@@ -845,8 +950,8 @@ function viewParticipant(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
-| participantSid |  ``` Required ```  | TODO: Add a parameter description |
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantSid |  ``` Required ```  | The unique identifier for a participant object. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -878,58 +983,9 @@ function viewParticipant(input)
 
 
 
-### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.addParticipant") addParticipant
-
-> Add Participant in conference 
-
-
-```javascript
-function addParticipant(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| conferencesid |  ``` Required ```  | Unique Conference Sid |
-| participantnumber |  ``` Required ```  | Particiant Number |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| muted |  ``` Optional ```  | add muted |
-| deaf |  ``` Optional ```  | add without volume |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, ConferenceController){
-        var input = [];
-        input['conferencesid'] = 'conferencesid';
-        input['participantnumber'] = 'participantnumber';
-        input['responseType'] = 'ResponseType';
-        input['muted'] = false;
-        input['deaf'] = false;
-
-
-		var result = ConferenceController.addParticipant(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
 ### <a name="view_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.viewConference") viewConference
 
-> View Conference
+> Retrieve information about a conference by its ConferenceSid.
 
 
 ```javascript
@@ -939,7 +995,7 @@ function viewConference(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferencesid |  ``` Required ```  | The unique identifier of each conference resource |
+| conferenceSid |  ``` Required ```  | The unique identifier of each conference resource |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -951,7 +1007,7 @@ function viewConference(input)
 
 	app.controller("testController", function($scope, ConferenceController){
         var input = [];
-        input['conferencesid'] = 'conferencesid';
+        input['conferenceSid'] = 'ConferenceSid';
         input['responseType'] = 'ResponseType';
 
 
@@ -970,9 +1026,58 @@ function viewConference(input)
 
 
 
+### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.addParticipant") addParticipant
+
+> Add Participant in conference 
+
+
+```javascript
+function addParticipant(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantNumber |  ``` Required ```  | The phone number of the participant to be added. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| muted |  ``` Optional ```  | Specifies if participant should be muted. |
+| deaf |  ``` Optional ```  | Specifies if the participant should hear audio in the conference. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, ConferenceController){
+        var input = [];
+        input['conferenceSid'] = 'ConferenceSid';
+        input['participantNumber'] = 'ParticipantNumber';
+        input['responseType'] = 'ResponseType';
+        input['muted'] = true;
+        input['deaf'] = true;
+
+
+		var result = ConferenceController.addParticipant(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
 ### <a name="create_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.createConference") createConference
 
-> Here you can experiment with initiating a conference call through message360 and view the request response generated when doing so.
+> Here you can experiment with initiating a conference call through Ytel and view the request response generated when doing so.
 
 
 ```javascript
@@ -982,19 +1087,19 @@ function createConference(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| from |  ``` Required ```  | This number to display on Caller ID as calling |
-| to |  ``` Required ```  | To number |
-| url |  ``` Required ```  | URL requested once the call connects |
-| method |  ``` Required ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| recordCallbackUrl |  ``` Required ```  | Recording parameters will be sent here upon completion. |
+| from |  ``` Required ```  | A valid 10-digit number (E.164 format) that will be initiating the conference call. |
+| to |  ``` Required ```  | A valid 10-digit number (E.164 format) that is to receive the conference call. |
+| url |  ``` Required ```  | URL requested once the conference connects |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once call connects. |
 | statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the conference is finished. |
 | statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
-| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
-| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| fallbackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
 | record |  ``` Optional ```  | Specifies if the conference should be recorded. |
-| recordCallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once conference connects. |
-| schdeuleTime |  ``` Optional ```  | Schedule conference in future. Schedule time must be greater than current time |
+| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion. |
+| recordCallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once conference connects. |
+| scheduleTime |  ``` Optional ```  | Schedule conference in future. Schedule time must be greater than current time |
 | timeout |  ``` Optional ```  | The number of seconds the call stays on the line while waiting for an answer. The max time limit is 999 and the default limit is 60 seconds but lower times can be set. |
 
 
@@ -1009,17 +1114,17 @@ function createConference(input)
         input['from'] = 'From';
         input['to'] = 'To';
         input['url'] = 'Url';
-        input['method'] = Object.keys(HttpActionEnum)[0];
-        input['recordCallbackUrl'] = 'RecordCallbackUrl';
         input['responseType'] = 'ResponseType';
+        input['method'] = Object.keys(HttpActionEnum)[0];
         input['statusCallBackUrl'] = 'StatusCallBackUrl';
         input['statusCallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['fallBackUrl'] = 'FallBackUrl';
-        input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['record'] = false;
-        input['recordCallbackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['schdeuleTime'] = 'SchdeuleTime';
-        input['timeout'] = 41;
+        input['fallbackUrl'] = 'FallbackUrl';
+        input['fallbackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['record'] = true;
+        input['recordCallBackUrl'] = 'RecordCallBackUrl';
+        input['recordCallBackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['scheduleTime'] = 'ScheduleTime';
+        input['timeout'] = 149;
 
 
 		var result = ConferenceController.createConference(input);
@@ -1131,7 +1236,7 @@ function playConferenceAudio(input)
 
 ### <a name="list_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.listParticipant") listParticipant
 
-> List Participant
+> Retrieve a list of participants for an in-progress conference.
 
 
 ```javascript
@@ -1141,12 +1246,12 @@ function listParticipant(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Amount of records to return per page |
-| muted |  ``` Optional ```  | Participants that are muted |
-| deaf |  ``` Optional ```  | Participants cant hear |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| muted |  ``` Optional ```  | Specifies if participant should be muted. |
+| deaf |  ``` Optional ```  | Specifies if the participant should hear audio in the conference. |
 
 
 
@@ -1159,10 +1264,10 @@ function listParticipant(input)
         var input = [];
         input['conferenceSid'] = 'ConferenceSid';
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pagesize'] = 41;
-        input['muted'] = false;
-        input['deaf'] = false;
+        input['page'] = 149;
+        input['pagesize'] = 149;
+        input['muted'] = true;
+        input['deaf'] = true;
 
 
 		var result = ConferenceController.listParticipant(input);
@@ -1182,7 +1287,7 @@ function listParticipant(input)
 
 ### <a name="list_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.listConference") listConference
 
-> List Conference
+> Retrieve a list of conference objects.
 
 
 ```javascript
@@ -1193,8 +1298,8 @@ function listConference(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | friendlyName |  ``` Optional ```  | Only return conferences with the specified FriendlyName |
 | dateCreated |  ``` Optional ```  | Conference created date |
 
@@ -1208,204 +1313,13 @@ function listConference(input)
 	app.controller("testController", function($scope, ConferenceController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pageSize'] = 41;
+        input['page'] = 149;
+        input['pagesize'] = 149;
         input['friendlyName'] = 'FriendlyName';
         input['dateCreated'] = 'DateCreated';
 
 
 		var result = ConferenceController.listConference(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
-
-### Get singleton instance
-
-The singleton instance of the ``` TranscriptionController ``` class can be accessed via Dependency Injection.
-
-```js
-	app.controller("testController", function($scope, TranscriptionController){
-	});
-```
-
-### <a name="list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.listTranscription") listTranscription
-
-> Get All transcriptions
-
-
-```javascript
-function listTranscription(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Amount of data per page |
-| status |  ``` Optional ```  | Transcription status |
-| dateTranscribed |  ``` Optional ```  | Transcription date |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, TranscriptionController){
-        var input = [];
-        input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pageSize'] = 41;
-        input['status'] = Object.keys(StatusEnum)[0];
-        input['dateTranscribed'] = 'DateTranscribed';
-
-
-		var result = TranscriptionController.listTranscription(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
-### <a name="view_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.viewTranscription") viewTranscription
-
-> View Specific Transcriptions
-
-
-```javascript
-function viewTranscription(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| transcriptionSid |  ``` Required ```  | Unique Transcription ID |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, TranscriptionController){
-        var input = [];
-        input['transcriptionSid'] = 'TranscriptionSid';
-        input['responseType'] = 'ResponseType';
-
-
-		var result = TranscriptionController.viewTranscription(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
-### <a name="recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.recordingTranscription") recordingTranscription
-
-> Recording Transcriptions
-
-
-```javascript
-function recordingTranscription(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, TranscriptionController){
-        var input = [];
-        input['recordingSid'] = 'RecordingSid';
-        input['responseType'] = 'ResponseType';
-
-
-		var result = TranscriptionController.recordingTranscription(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
-### <a name="audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.audioURLTranscription") audioURLTranscription
-
-> Audio URL Transcriptions
-
-
-```javascript
-function audioURLTranscription(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| audioUrl |  ``` Required ```  | Audio url |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, TranscriptionController){
-        var input = [];
-        input['audioUrl'] = 'AudioUrl';
-        input['responseType'] = 'ResponseType';
-
-
-		var result = TranscriptionController.audioURLTranscription(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -1435,7 +1349,7 @@ The singleton instance of the ``` PhoneNumberController ``` class can be accesse
 
 ### <a name="available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.availablePhoneNumber") availablePhoneNumber
 
-> Available Phone Number
+> Retrieve a list of available phone numbers that can be purchased and used for your Ytel account.
 
 
 ```javascript
@@ -1445,10 +1359,10 @@ function availablePhoneNumber(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| numberType |  ``` Required ```  | Number type either SMS,Voice or all |
-| areaCode |  ``` Required ```  | Phone Number Area Code |
+| numbertype |  ``` Required ```  | Number type either SMS,Voice or all |
+| areacode |  ``` Required ```  | Specifies the area code for the returned list of available numbers. Only available for North American numbers. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return. |
 
 
 
@@ -1459,10 +1373,10 @@ function availablePhoneNumber(input)
 
 	app.controller("testController", function($scope, PhoneNumberController){
         var input = [];
-        input['numberType'] = Object.keys(NumberTypeEnum)[0];
-        input['areaCode'] = 'AreaCode';
+        input['numbertype'] = Object.keys(NumberTypeEnum)[0];
+        input['areacode'] = 'areacode';
         input['responseType'] = 'ResponseType';
-        input['pageSize'] = 41;
+        input['pagesize'] = 149;
 
 
 		var result = PhoneNumberController.availablePhoneNumber(input);
@@ -1480,23 +1394,20 @@ function availablePhoneNumber(input)
 
 
 
-### <a name="list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.listNumber") listNumber
+### <a name="mass_release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.massReleaseNumber") massReleaseNumber
 
-> List Account's Phone number details
+> Remove a purchased Ytel number from your account.
 
 
 ```javascript
-function listNumber(input)
+function massReleaseNumber(input)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | A valid Ytel comma separated numbers (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| numberType |  ``` Optional ```  | SMS or Voice |
-| friendlyName |  ``` Optional ```  | Friendly name of the number |
 
 
 
@@ -1507,14 +1418,11 @@ function listNumber(input)
 
 	app.controller("testController", function($scope, PhoneNumberController){
         var input = [];
+        input['phoneNumber'] = 'PhoneNumber';
         input['responseType'] = 'ResponseType';
-        input['page'] = 41;
-        input['pageSize'] = 41;
-        input['numberType'] = Object.keys(NumberTypeEnum)[0];
-        input['friendlyName'] = 'FriendlyName';
 
 
-		var result = PhoneNumberController.listNumber(input);
+		var result = PhoneNumberController.massReleaseNumber(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -1531,7 +1439,7 @@ function listNumber(input)
 
 ### <a name="view_number_details"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.viewNumberDetails") viewNumberDetails
 
-> Get Phone Number Details
+> Retrieve the details for a phone number by its number.
 
 
 ```javascript
@@ -1541,7 +1449,7 @@ function viewNumberDetails(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Get Phone number Detail |
+| phoneNumber |  ``` Required ```  | A valid Ytel 10-digit phone number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1574,7 +1482,7 @@ function viewNumberDetails(input)
 
 ### <a name="release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.releaseNumber") releaseNumber
 
-> Release number from account
+> Remove a purchased Ytel number from your account.
 
 
 ```javascript
@@ -1584,7 +1492,7 @@ function releaseNumber(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be relase |
+| phoneNumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1617,7 +1525,7 @@ function releaseNumber(input)
 
 ### <a name="buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.buyNumber") buyNumber
 
-> Buy Phone Number 
+> Purchase a phone number to be used with your Ytel account
 
 
 ```javascript
@@ -1627,7 +1535,7 @@ function buyNumber(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be purchase |
+| phoneNumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1660,7 +1568,7 @@ function buyNumber(input)
 
 ### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.updatePhoneNumber") updatePhoneNumber
 
-> Update Phone Number Details
+> Update properties for a Ytel number that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
 
 
 ```javascript
@@ -1670,7 +1578,7 @@ function updatePhoneNumber(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | The phone number to update |
+| phoneNumber |  ``` Required ```  | A valid Ytel number (E.164 format). |
 | voiceUrl |  ``` Required ```  | URL requested once the call connects |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | Phone number friendly name description |
@@ -1683,8 +1591,8 @@ function updatePhoneNumber(input)
 | heartbeatMethod |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time |
 | smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
 | smsMethod |  ``` Optional ```  | Post or Get |
-| smsFallbackUrl |  ``` Optional ```  | URL requested once the call connects |
-| smsFallbackMethod |  ``` Optional ```  | URL requested if the sms URL is not available |
+| smsFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML from an SMS or at initial request of the SmsUrl. |
+| smsFallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when URL requested if the SmsUrl is not available. |
 
 
 
@@ -1727,35 +1635,70 @@ function updatePhoneNumber(input)
 
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="transfer_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.transferNumber") transferNumber
 
-## <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".UsageController") UsageController
-
-### Get singleton instance
-
-The singleton instance of the ``` UsageController ``` class can be accessed via Dependency Injection.
-
-```js
-	app.controller("testController", function($scope, UsageController){
-	});
-```
-
-### <a name="list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.listUsage") listUsage
-
-> Get all usage 
+> Transfer phone number that has been purchased for from one account to another account.
 
 
 ```javascript
-function listUsage(input)
+function transferNumber(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phonenumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
+| fromaccountsid |  ``` Required ```  | A specific Accountsid from where Number is getting transfer. |
+| toaccountsid |  ``` Required ```  | A specific Accountsid to which Number is getting transfer. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PhoneNumberController){
+        var input = [];
+        input['phonenumber'] = 'phonenumber';
+        input['fromaccountsid'] = 'fromaccountsid';
+        input['toaccountsid'] = 'toaccountsid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = PhoneNumberController.transferNumber(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.listNumber") listNumber
+
+> Retrieve a list of purchased phones numbers associated with your Ytel account.
+
+
+```javascript
+function listNumber(input)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| productCode |  ``` Optional ```  ``` DefaultValue ```  | Product Code |
-| startDate |  ``` Optional ```  ``` DefaultValue ```  | Start Usage Date |
-| endDate |  ``` Optional ```  ``` DefaultValue ```  | End Usage Date |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| numberType |  ``` Optional ```  | The capability supported by the number.Number type either SMS,Voice or all |
+| friendlyName |  ``` Optional ```  | A human-readable label added to the number object. |
 
 
 
@@ -1764,15 +1707,177 @@ function listUsage(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, UsageController){
+	app.controller("testController", function($scope, PhoneNumberController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['productCode'] = Object.keys(ProductCodeEnum)[0];
-        input['startDate'] = 'startDate';
-        input['endDate'] = 'endDate';
+        input['page'] = 149;
+        input['pageSize'] = 149;
+        input['numberType'] = Object.keys(NumberTypeEnum)[0];
+        input['friendlyName'] = 'FriendlyName';
 
 
-		var result = UsageController.listUsage(input);
+		var result = PhoneNumberController.listNumber(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="mass_update_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.massUpdateNumber") massUpdateNumber
+
+> Update properties for a Ytel numbers that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
+
+
+```javascript
+function massUpdateNumber(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | A valid comma(,) separated Ytel numbers. (E.164 format). |
+| voiceUrl |  ``` Required ```  | The URL returning InboundXML incoming calls should execute when connected. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | A human-readable value for labeling the number. |
+| voiceMethod |  ``` Optional ```  | Specifies the HTTP method used to request the VoiceUrl once incoming call connects. |
+| voiceFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML on a call or at initial request of the voice url |
+| voiceFallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the VoiceFallbackUrl once incoming call connects. |
+| hangupCallback |  ``` Optional ```  | URL that can be requested to receive notification when and how incoming call has ended. |
+| hangupCallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the HangupCallback URL. |
+| heartbeatUrl |  ``` Optional ```  | URL that can be used to monitor the phone number. |
+| heartbeatMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the HeartbeatUrl. |
+| smsUrl |  ``` Optional ```  | URL requested when an SMS is received. |
+| smsMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the SmsUrl. |
+| smsFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML from an SMS or at initial request of the SmsUrl. |
+| smsFallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when URL requested if the SmsUrl is not available. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PhoneNumberController){
+        var input = [];
+        input['phoneNumber'] = 'PhoneNumber';
+        input['voiceUrl'] = 'VoiceUrl';
+        input['responseType'] = 'ResponseType';
+        input['friendlyName'] = 'FriendlyName';
+        input['voiceMethod'] = Object.keys(HttpActionEnum)[0];
+        input['voiceFallbackUrl'] = 'VoiceFallbackUrl';
+        input['voiceFallbackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['hangupCallback'] = 'HangupCallback';
+        input['hangupCallbackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['heartbeatUrl'] = 'HeartbeatUrl';
+        input['heartbeatMethod'] = Object.keys(HttpActionEnum)[0];
+        input['smsUrl'] = 'SmsUrl';
+        input['smsMethod'] = Object.keys(HttpActionEnum)[0];
+        input['smsFallbackUrl'] = 'SmsFallbackUrl';
+        input['smsFallbackMethod'] = Object.keys(HttpActionEnum)[0];
+
+
+		var result = PhoneNumberController.massUpdateNumber(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="get_did_score_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.getDIDScoreNumber") getDIDScoreNumber
+
+> Get DID Score Number
+
+
+```javascript
+function getDIDScoreNumber(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phonenumber |  ``` Required ```  | Specifies the multiple phone numbers for check updated spamscore . |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PhoneNumberController){
+        var input = [];
+        input['phonenumber'] = 'Phonenumber';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = PhoneNumberController.getDIDScoreNumber(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="bulk_buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.bulkBuyNumber") bulkBuyNumber
+
+> Purchase a selected number of DID's from specific area codes to be used with your Ytel account.
+
+
+```javascript
+function bulkBuyNumber(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| numberType |  ``` Required ```  | The capability the number supports. |
+| areaCode |  ``` Required ```  | Specifies the area code for the returned list of available numbers. Only available for North American numbers. |
+| quantity |  ``` Required ```  | A positive integer that tells how many number you want to buy at a time. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| leftover |  ``` Optional ```  | If desired quantity is unavailable purchase what is available . |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PhoneNumberController){
+        var input = [];
+        input['numberType'] = Object.keys(NumberTypeEnum)[0];
+        input['areaCode'] = 'AreaCode';
+        input['quantity'] = 'Quantity';
+        input['responseType'] = 'ResponseType';
+        input['leftover'] = 'Leftover';
+
+
+		var result = PhoneNumberController.bulkBuyNumber(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -1789,31 +1894,31 @@ function listUsage(input)
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+## <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
 
 ### Get singleton instance
 
-The singleton instance of the ``` WebRTCController ``` class can be accessed via Dependency Injection.
+The singleton instance of the ``` TranscriptionController ``` class can be accessed via Dependency Injection.
 
 ```js
-	app.controller("testController", function($scope, WebRTCController){
+	app.controller("testController", function($scope, TranscriptionController){
 	});
 ```
 
-### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.checkFunds") checkFunds
+### <a name="view_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.viewTranscription") viewTranscription
 
-> TODO: Add a method description
+> Retrieve information about a transaction by its TranscriptionSid.
 
 
 ```javascript
-function checkFunds(input)
+function viewTranscription(input)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
+| transcriptionsid |  ``` Required ```  | The unique identifier for a transcription object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -1822,13 +1927,13 @@ function checkFunds(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, WebRTCController){
+	app.controller("testController", function($scope, TranscriptionController){
         var input = [];
-        input['accountSid'] = account_sid;
-        input['authToken'] = auth_token;
+        input['transcriptionsid'] = 'transcriptionsid';
+        input['responseType'] = 'ResponseType';
 
 
-		var result = WebRTCController.checkFunds(input);
+		var result = TranscriptionController.viewTranscription(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -1843,22 +1948,20 @@ function checkFunds(input)
 
 
 
-### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.createToken") createToken
+### <a name="recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.recordingTranscription") recordingTranscription
 
-> message360 webrtc
+> Transcribe a message360 recording by its RecordingSid.
 
 
 ```javascript
-function createToken(input)
+function recordingTranscription(input)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
-| username |  ``` Required ```  | WebRTC username authentication |
-| password |  ``` Required ```  | WebRTC password authentication |
+| recordingSid |  ``` Required ```  | The unique identifier for a recording object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -1867,15 +1970,105 @@ function createToken(input)
 ```javascript
 
 
-	app.controller("testController", function($scope, WebRTCController){
+	app.controller("testController", function($scope, TranscriptionController){
         var input = [];
-        input['accountSid'] = account_sid;
-        input['authToken'] = auth_token;
-        input['username'] = 'username';
-        input['password'] = 'password';
+        input['recordingSid'] = 'recordingSid';
+        input['responseType'] = 'ResponseType';
 
 
-		var result = WebRTCController.createToken(input);
+		var result = TranscriptionController.recordingTranscription(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.audioURLTranscription") audioURLTranscription
+
+> Transcribe an audio recording from a file.
+
+
+```javascript
+function audioURLTranscription(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| audiourl |  ``` Required ```  | URL pointing to the location of the audio file that is to be transcribed. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, TranscriptionController){
+        var input = [];
+        input['audiourl'] = 'audiourl';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = TranscriptionController.audioURLTranscription(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.listTranscription") listTranscription
+
+> Retrieve a list of transcription objects for your Ytel account.
+
+
+```javascript
+function listTranscription(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| status |  ``` Optional ```  | The state of the transcription. |
+| dateTranscribed |  ``` Optional ```  | The date the transcription took place. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, TranscriptionController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['page'] = 149;
+        input['pagesize'] = 149;
+        input['status'] = Object.keys(StatusEnum)[0];
+        input['dateTranscribed'] = 'dateTranscribed';
+
+
+		var result = TranscriptionController.listTranscription(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -1905,7 +2098,7 @@ The singleton instance of the ``` RecordingController ``` class can be accessed 
 
 ### <a name="view_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.viewRecording") viewRecording
 
-> View a specific Recording
+> Retrieve the recording of a call by its RecordingSid. This resource will return information regarding the call such as start time, end time, duration, and so forth.
 
 
 ```javascript
@@ -1915,7 +2108,7 @@ function viewRecording(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Search Recording sid |
+| recordingsid |  ``` Required ```  | The unique identifier for the recording. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1927,7 +2120,7 @@ function viewRecording(input)
 
 	app.controller("testController", function($scope, RecordingController){
         var input = [];
-        input['recordingSid'] = 'RecordingSid';
+        input['recordingsid'] = 'recordingsid';
         input['responseType'] = 'ResponseType';
 
 
@@ -1948,7 +2141,7 @@ function viewRecording(input)
 
 ### <a name="delete_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.deleteRecording") deleteRecording
 
-> Delete Recording Record
+> Remove a recording from your Ytel account.
 
 
 ```javascript
@@ -1958,7 +2151,7 @@ function deleteRecording(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
+| recordingsid |  ``` Required ```  | The unique identifier for a recording. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1970,7 +2163,7 @@ function deleteRecording(input)
 
 	app.controller("testController", function($scope, RecordingController){
         var input = [];
-        input['recordingSid'] = 'RecordingSid';
+        input['recordingsid'] = 'recordingsid';
         input['responseType'] = 'ResponseType';
 
 
@@ -1991,7 +2184,7 @@ function deleteRecording(input)
 
 ### <a name="list_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.listRecording") listRecording
 
-> List out Recordings
+> Retrieve a list of recording objects.
 
 
 ```javascript
@@ -2002,10 +2195,10 @@ function listRecording(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| dateCreated |  ``` Optional ```  | Recording date |
-| callSid |  ``` Optional ```  | Call ID |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| datecreated |  ``` Optional ```  | Filter results by creation date |
+| callsid |  ``` Optional ```  | The unique identifier for a call. |
 
 
 
@@ -2017,10 +2210,10 @@ function listRecording(input)
 	app.controller("testController", function($scope, RecordingController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pageSize'] = 254;
-        input['dateCreated'] = 'DateCreated';
-        input['callSid'] = 'CallSid';
+        input['page'] = 149;
+        input['pagesize'] = 149;
+        input['datecreated'] = 'Datecreated';
+        input['callsid'] = 'callsid';
 
 
 		var result = RecordingController.listRecording(input);
@@ -2053,7 +2246,7 @@ The singleton instance of the ``` EmailController ``` class can be accessed via 
 
 ### <a name="delete_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.deleteSpam") deleteSpam
 
-> Deletes a email address marked as spam from the spam list
+> Remove an email from the spam email list.
 
 
 ```javascript
@@ -2064,7 +2257,7 @@ function deleteSpam(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | Email address |
+| email |  ``` Required ```  | A valid email address that is to be remove from the spam list. |
 
 
 
@@ -2076,7 +2269,7 @@ function deleteSpam(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['email'] = 'email';
+        input['email'] = 'Email';
 
 
 		var result = EmailController.deleteSpam(input);
@@ -2096,7 +2289,7 @@ function deleteSpam(input)
 
 ### <a name="delete_block"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.deleteBlock") deleteBlock
 
-> Deletes a blocked email
+> Remove an email from blocked emails list.
 
 
 ```javascript
@@ -2106,7 +2299,7 @@ function deleteBlock(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| email |  ``` Required ```  | Email address to remove from block list |
+| email |  ``` Required ```  | The email address to be remove from the blocked list. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2118,7 +2311,7 @@ function deleteBlock(input)
 
 	app.controller("testController", function($scope, EmailController){
         var input = [];
-        input['email'] = 'email';
+        input['email'] = 'Email';
         input['responseType'] = 'ResponseType';
 
 
@@ -2149,7 +2342,7 @@ function addUnsubscribes(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| email |  ``` Required ```  | The email to add to the unsubscribe list |
+| email |  ``` Required ```  | A valid email address that is to be added to the unsubscribe list |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2182,7 +2375,7 @@ function addUnsubscribes(input)
 
 ### <a name="send_email"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.sendEmail") sendEmail
 
-> Send out an email
+> Create and submit an email message to one or more email addresses.
 
 
 ```javascript
@@ -2192,15 +2385,15 @@ function sendEmail(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| to |  ``` Required ```  | The to email address |
-| from |  ``` Required ```  | The from email address |
-| type |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
-| subject |  ``` Required ```  | Email subject |
-| message |  ``` Required ```  | The body of the email message |
+| to |  ``` Required ```  | A valid address that will receive the email. Multiple addresses can be separated by using commas. |
+| type |  ``` Required ```  ``` DefaultValue ```  | Specifies the type of email to be sent |
+| subject |  ``` Required ```  | The subject of the mail. Must be a valid string. |
+| message |  ``` Required ```  | The email message that is to be sent in the text. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| cc |  ``` Optional ```  | CC Email address |
-| bcc |  ``` Optional ```  | BCC Email address |
-| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
+| from |  ``` Optional ```  | A valid address that will send the email. |
+| cc |  ``` Optional ```  | Carbon copy. A valid address that will receive the email. Multiple addresses can be separated by using commas. |
+| bcc |  ``` Optional ```  | Blind carbon copy. A valid address that will receive the email. Multiple addresses can be separated by using commas. |
+| attachment |  ``` Optional ```  | A file that is attached to the email. Must be less than 7 MB in size. |
 
 
 
@@ -2211,15 +2404,15 @@ function sendEmail(input)
 
 	app.controller("testController", function($scope, EmailController){
         var input = [];
-        input['to'] = 'to';
-        input['from'] = 'from';
+        input['to'] = 'To';
         input['type'] = Object.keys(SendEmailAsEnum)[0];
-        input['subject'] = 'subject';
-        input['message'] = 'message';
+        input['subject'] = 'Subject';
+        input['message'] = 'Message';
         input['responseType'] = 'ResponseType';
-        input['cc'] = 'cc';
-        input['bcc'] = 'bcc';
-        input['attachment'] = 'attachment';
+        input['from'] = 'From';
+        input['cc'] = 'Cc';
+        input['bcc'] = 'Bcc';
+        input['attachment'] = 'Attachment';
 
 
 		var result = EmailController.sendEmail(input);
@@ -2239,7 +2432,7 @@ function sendEmail(input)
 
 ### <a name="delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.deleteUnsubscribes") deleteUnsubscribes
 
-> Delete emails from the unsubscribe list
+> Remove an email address from the list of unsubscribed emails.
 
 
 ```javascript
@@ -2249,7 +2442,7 @@ function deleteUnsubscribes(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| email |  ``` Required ```  | The email to remove from the unsubscribe list |
+| email |  ``` Required ```  | A valid email address that is to be remove from the unsubscribe list. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2282,7 +2475,7 @@ function deleteUnsubscribes(input)
 
 ### <a name="list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.listUnsubscribes") listUnsubscribes
 
-> List all unsubscribed email addresses
+> Retrieve a list of email addresses from the unsubscribe list.
 
 
 ```javascript
@@ -2293,8 +2486,8 @@ function listUnsubscribes(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Starting record of the list |
-| limit |  ``` Optional ```  | Maximum number of records to be returned |
+| offset |  ``` Optional ```  | The starting point of the list of unsubscribed emails that should be returned. |
+| limit |  ``` Optional ```  | The count of results that should be returned. |
 
 
 
@@ -2306,8 +2499,8 @@ function listUnsubscribes(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['offset'] = 'offset';
-        input['limit'] = 'limit';
+        input['offset'] = 'Offset';
+        input['limit'] = 'Limit';
 
 
 		var result = EmailController.listUnsubscribes(input);
@@ -2327,7 +2520,7 @@ function listUnsubscribes(input)
 
 ### <a name="list_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.listInvalid") listInvalid
 
-> List out all invalid email addresses
+> Retrieve a list of invalid email addresses.
 
 
 ```javascript
@@ -2338,8 +2531,8 @@ function listInvalid(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offet |  ``` Optional ```  | Starting record for listing out emails |
-| limit |  ``` Optional ```  | Maximum number of records to return |
+| offset |  ``` Optional ```  | The starting point of the list of invalid emails that should be returned. |
+| limit |  ``` Optional ```  | The count of results that should be returned. |
 
 
 
@@ -2351,8 +2544,8 @@ function listInvalid(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['offet'] = 'offet';
-        input['limit'] = 'limit';
+        input['offset'] = 'Offset';
+        input['limit'] = 'Limit';
 
 
 		var result = EmailController.listInvalid(input);
@@ -2372,7 +2565,7 @@ function listInvalid(input)
 
 ### <a name="delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.deleteBounces") deleteBounces
 
-> Delete an email address from the bounced address list
+> Remove an email address from the bounced list.
 
 
 ```javascript
@@ -2383,7 +2576,7 @@ function deleteBounces(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | The email address to remove from the bounce list |
+| email |  ``` Required ```  | The email address to be remove from the bounced email list. |
 
 
 
@@ -2395,7 +2588,7 @@ function deleteBounces(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['email'] = 'email';
+        input['email'] = 'Email';
 
 
 		var result = EmailController.deleteBounces(input);
@@ -2415,7 +2608,7 @@ function deleteBounces(input)
 
 ### <a name="list_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.listBounces") listBounces
 
-> List out all email addresses that have bounced
+> Retrieve a list of emails that have bounced.
 
 
 ```javascript
@@ -2426,8 +2619,8 @@ function listBounces(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record to start the list at |
-| limit |  ``` Optional ```  | The maximum number of records to return |
+| offset |  ``` Optional ```  | The starting point of the list of bounced emails that should be returned. |
+| limit |  ``` Optional ```  | The count of results that should be returned. |
 
 
 
@@ -2439,8 +2632,8 @@ function listBounces(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['offset'] = 'offset';
-        input['limit'] = 'limit';
+        input['offset'] = 'Offset';
+        input['limit'] = 'Limit';
 
 
 		var result = EmailController.listBounces(input);
@@ -2460,7 +2653,7 @@ function listBounces(input)
 
 ### <a name="list_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.listSpam") listSpam
 
-> List out all email addresses marked as spam
+> Retrieve a list of emails that are on the spam list.
 
 
 ```javascript
@@ -2471,8 +2664,8 @@ function listSpam(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record number to start the list at |
-| limit |  ``` Optional ```  | Maximum number of records to return |
+| offset |  ``` Optional ```  | The starting point of the list of spam emails that should be returned. |
+| limit |  ``` Optional ```  | The count of results that should be returned. |
 
 
 
@@ -2484,8 +2677,8 @@ function listSpam(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['offset'] = 'offset';
-        input['limit'] = 'limit';
+        input['offset'] = 'Offset';
+        input['limit'] = 'Limit';
 
 
 		var result = EmailController.listSpam(input);
@@ -2505,7 +2698,7 @@ function listSpam(input)
 
 ### <a name="list_blocks"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.listBlocks") listBlocks
 
-> Outputs email addresses on your blocklist
+> Retrieve a list of emails that have been blocked.
 
 
 ```javascript
@@ -2516,8 +2709,8 @@ function listBlocks(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Where to start in the output list |
-| limit |  ``` Optional ```  | Maximum number of records to return |
+| offset |  ``` Optional ```  | The starting point of the list of blocked emails that should be returned. |
+| limit |  ``` Optional ```  | The count of results that should be returned. |
 
 
 
@@ -2529,8 +2722,8 @@ function listBlocks(input)
 	app.controller("testController", function($scope, EmailController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['offset'] = 'offset';
-        input['limit'] = 'limit';
+        input['offset'] = 'Offset';
+        input['limit'] = 'Limit';
 
 
 		var result = EmailController.listBlocks(input);
@@ -2550,7 +2743,7 @@ function listBlocks(input)
 
 ### <a name="delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.deleteInvalid") deleteInvalid
 
-> This endpoint allows you to delete entries in the Invalid Emails list.
+> Remove an email from the invalid email list.
 
 
 ```javascript
@@ -2560,8 +2753,8 @@ function deleteInvalid(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| email |  ``` Required ```  | Email that was marked invalid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Json or xml |
+| email |  ``` Required ```  | A valid email address that is to be remove from the invalid email list. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
 
@@ -2572,7 +2765,7 @@ function deleteInvalid(input)
 
 	app.controller("testController", function($scope, EmailController){
         var input = [];
-        input['email'] = 'email';
+        input['email'] = 'Email';
         input['responseType'] = 'ResponseType';
 
 
@@ -2606,7 +2799,7 @@ The singleton instance of the ``` SMSController ``` class can be accessed via De
 
 ### <a name="send_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.sendSMS") sendSMS
 
-> Send an SMS from a message360 number
+> Send an SMS from a Ytel number
 
 
 ```javascript
@@ -2616,13 +2809,14 @@ function sendSMS(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| from |  ``` Required ```  | SMS enabled Message360 number to send this message from |
-| to |  ``` Required ```  | Number to send the SMS to |
-| body |  ``` Required ```  | Text Message To Send |
+| from |  ``` Required ```  | The 10-digit SMS-enabled Ytel number (E.164 format) in which the message is sent. |
+| to |  ``` Required ```  | The 10-digit phone number (E.164 format) that will receive the message. |
+| body |  ``` Required ```  | The body message that is to be sent in the text. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
-| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
+| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
 | smartsms |  ``` Optional ```  ``` DefaultValue ```  | Check's 'to' number can receive sms or not using Carrier API, if wireless = true then text sms is sent, else wireless = false then call is recieved to end user with audible message. |
+| deliveryStatus |  ``` Optional ```  ``` DefaultValue ```  | Delivery reports are a method to tell your system if the message has arrived on the destination phone. |
 
 
 
@@ -2633,13 +2827,14 @@ function sendSMS(input)
 
 	app.controller("testController", function($scope, SMSController){
         var input = [];
-        input['from'] = 'from';
-        input['to'] = 'to';
-        input['body'] = 'body';
+        input['from'] = 'From';
+        input['to'] = 'To';
+        input['body'] = 'Body';
         input['responseType'] = 'ResponseType';
         input['method'] = Object.keys(HttpActionEnum)[0];
-        input['messagestatuscallback'] = 'messagestatuscallback';
+        input['messageStatusCallback'] = 'MessageStatusCallback';
         input['smartsms'] = true;
+        input['deliveryStatus'] = true;
 
 
 		var result = SMSController.sendSMS(input);
@@ -2659,7 +2854,7 @@ function sendSMS(input)
 
 ### <a name="view_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.viewSMS") viewSMS
 
-> View a Particular SMS
+> Retrieve a single SMS message object by its SmsSid.
 
 
 ```javascript
@@ -2669,7 +2864,7 @@ function viewSMS(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
+| messageSid |  ``` Required ```  | The unique identifier for a sms message. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2681,7 +2876,7 @@ function viewSMS(input)
 
 	app.controller("testController", function($scope, SMSController){
         var input = [];
-        input['messagesid'] = 'messagesid';
+        input['messageSid'] = 'MessageSid';
         input['responseType'] = 'ResponseType';
 
 
@@ -2702,7 +2897,7 @@ function viewSMS(input)
 
 ### <a name="list_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.listSMS") listSMS
 
-> List All SMS
+> Retrieve a list of Outbound SMS message objects.
 
 
 ```javascript
@@ -2713,11 +2908,11 @@ function listSMS(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| from |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| from |  ``` Optional ```  | Filter SMS message objects from this valid 10-digit phone number (E.164 format). |
+| to |  ``` Optional ```  | Filter SMS message objects to this valid 10-digit phone number (E.164 format). |
+| dateSent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
 
 
 
@@ -2729,11 +2924,11 @@ function listSMS(input)
 	app.controller("testController", function($scope, SMSController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pagesize'] = 254;
-        input['from'] = 'from';
-        input['to'] = 'to';
-        input['datesent'] = 'datesent';
+        input['page'] = 241;
+        input['pageSize'] = 241;
+        input['from'] = 'From';
+        input['to'] = 'To';
+        input['dateSent'] = 'DateSent';
 
 
 		var result = SMSController.listSMS(input);
@@ -2753,7 +2948,7 @@ function listSMS(input)
 
 ### <a name="list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.listInboundSMS") listInboundSMS
 
-> List All Inbound SMS
+> Retrieve a list of Inbound SMS message objects.
 
 
 ```javascript
@@ -2764,10 +2959,10 @@ function listInboundSMS(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| from |  ``` Optional ```  | From Number to Inbound SMS |
-| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| from |  ``` Optional ```  | Filter SMS message objects from this valid 10-digit phone number (E.164 format). |
+| to |  ``` Optional ```  | Filter SMS message objects to this valid 10-digit phone number (E.164 format). |
 | dateSent |  ``` Optional ```  | Filter sms message objects by this date. |
 
 
@@ -2780,14 +2975,57 @@ function listInboundSMS(input)
 	app.controller("testController", function($scope, SMSController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pagesize'] = 254;
-        input['from'] = 'from';
-        input['to'] = 'to';
+        input['page'] = 241;
+        input['pageSize'] = 241;
+        input['from'] = 'From';
+        input['to'] = 'To';
         input['dateSent'] = 'DateSent';
 
 
 		var result = SMSController.listInboundSMS(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="view_detail_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.viewDetailSMS") viewDetailSMS
+
+> Retrieve a single SMS message object with details by its SmsSid.
+
+
+```javascript
+function viewDetailSMS(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messageSid |  ``` Required ```  | The unique identifier for a sms message. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, SMSController){
+        var input = [];
+        input['messageSid'] = 'MessageSid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = SMSController.viewDetailSMS(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -2817,7 +3055,7 @@ The singleton instance of the ``` CallController ``` class can be accessed via D
 
 ### <a name="make_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.makeCall") makeCall
 
-> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
+> You can experiment with initiating a call through Ytel and view the request response generated when doing so and get the response in json
 
 
 ```javascript
@@ -2827,18 +3065,18 @@ function makeCall(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| from |  ``` Required ```  | This number to display on Caller ID as calling |
+| from |  ``` Required ```  | A valid Ytel Voice enabled number (E.164 format) that will be initiating the phone call. |
 | to |  ``` Required ```  | To number |
 | url |  ``` Required ```  | URL requested once the call connects |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackUrl |  ``` Optional ```  | specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
 | statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
 | fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
 | fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
 | heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed tim |
 | heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
-| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
+| timeout |  ``` Optional ```  | Time (in seconds) Ytel should wait while the call is ringing before canceling the call |
 | playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
 | hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
 | record |  ``` Optional ```  | Specifies if the call should be recorded |
@@ -2846,7 +3084,7 @@ function makeCall(input)
 | recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
 | transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
 | transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
+| ifMachine |  ``` Optional ```  | How Ytel should handle the receiving numbers voicemail machine |
 | ifMachineUrl |  ``` Optional ```  | URL requested when IfMachine=continue |
 | ifMachineMethod |  ``` Optional ```  | Method used to request the IfMachineUrl. |
 | feedback |  ``` Optional ```  | Specify if survey should be enable or not |
@@ -2872,7 +3110,7 @@ function makeCall(input)
         input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
         input['heartBeatUrl'] = 'HeartBeatUrl';
         input['heartBeatMethod'] = Object.keys(HttpActionEnum)[0];
-        input['timeout'] = 254;
+        input['timeout'] = 241;
         input['playDtmf'] = 'PlayDtmf';
         input['hideCallerId'] = true;
         input['record'] = true;
@@ -2935,7 +3173,7 @@ function playAudio(input)
         input['audioUrl'] = 'AudioUrl';
         input['sayText'] = 'SayText';
         input['responseType'] = 'ResponseType';
-        input['length'] = 254;
+        input['length'] = 241;
         input['direction'] = Object.keys(DirectionEnum)[0];
         input['mix'] = true;
 
@@ -2957,7 +3195,7 @@ function playAudio(input)
 
 ### <a name="record_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.recordCall") recordCall
 
-> Record a Call
+> Start or stop recording of an in-progress voice call.
 
 
 ```javascript
@@ -2988,7 +3226,7 @@ function recordCall(input)
         input['record'] = true;
         input['responseType'] = 'ResponseType';
         input['direction'] = Object.keys(DirectionEnum)[0];
-        input['timeLimit'] = 254;
+        input['timeLimit'] = 241;
         input['callBackUrl'] = 'CallBackUrl';
         input['fileformat'] = Object.keys(AudioFormatEnum)[0];
 
@@ -3010,7 +3248,7 @@ function recordCall(input)
 
 ### <a name="voice_effect"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.voiceEffect") voiceEffect
 
-> Voice Effect
+> Add audio voice effects to the an in-progress voice call.
 
 
 ```javascript
@@ -3023,11 +3261,11 @@ function voiceEffect(input)
 | callSid |  ``` Required ```  | The unique identifier for the in-progress voice call. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | audioDirection |  ``` Optional ```  | The direction the audio effect should be placed on. If IN, the effects will occur on the incoming audio stream. If OUT, the effects will occur on the outgoing audio stream. |
-| pitchSemiTones |  ``` Optional ```  | value between -14 and 14 |
-| pitchOctaves |  ``` Optional ```  | value between -1 and 1 |
-| pitch |  ``` Optional ```  | value greater than 0 |
-| rate |  ``` Optional ```  | value greater than 0 |
-| tempo |  ``` Optional ```  | value greater than 0 |
+| pitchSemiTones |  ``` Optional ```  | Set the pitch in semitone (half-step) intervals. Value between -14 and 14 |
+| pitchOctaves |  ``` Optional ```  | Set the pitch in octave intervals.. Value between -1 and 1 |
+| pitch |  ``` Optional ```  | Set the pitch (lowness/highness) of the audio. The higher the value, the higher the pitch. Value greater than 0 |
+| rate |  ``` Optional ```  | Set the rate for audio. The lower the value, the lower the rate. value greater than 0 |
+| tempo |  ``` Optional ```  | Set the tempo (speed) of the audio. A higher value denotes a faster tempo. Value greater than 0 |
 
 
 
@@ -3041,11 +3279,11 @@ function voiceEffect(input)
         input['callSid'] = 'CallSid';
         input['responseType'] = 'ResponseType';
         input['audioDirection'] = Object.keys(AudioDirectionEnum)[0];
-        input['pitchSemiTones'] = 254.547453189524;
-        input['pitchOctaves'] = 254.547453189524;
-        input['pitch'] = 254.547453189524;
-        input['rate'] = 254.547453189524;
-        input['tempo'] = 254.547453189524;
+        input['pitchSemiTones'] = 241.457011092667;
+        input['pitchOctaves'] = 241.457011092667;
+        input['pitch'] = 241.457011092667;
+        input['rate'] = 241.457011092667;
+        input['tempo'] = 241.457011092667;
 
 
 		var result = CallController.voiceEffect(input);
@@ -3122,7 +3360,7 @@ function interruptedCall(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | Call SId |
+| callSid |  ``` Required ```  | The unique identifier for voice call that is in progress. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | url |  ``` Optional ```  | URL the in-progress call will be redirected to |
 | method |  ``` Optional ```  | The method used to request the above Url parameter |
@@ -3159,90 +3397,9 @@ function interruptedCall(input)
 
 
 
-### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.groupCall") groupCall
-
-> Group Call
-
-
-```javascript
-function groupCall(input)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| from |  ``` Required ```  | This number to display on Caller ID as calling |
-| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
-| url |  ``` Required ```  | URL requested once the call connects |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
-| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackUrl |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
-| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
-| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
-| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed tim |
-| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
-| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
-| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
-| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
-| record |  ``` Optional ```  | Specifies if the call should be recorded |
-| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
-| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
-| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
-| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-
-
-
-#### Example Usage
-
-```javascript
-
-
-	app.controller("testController", function($scope, CallController){
-        var input = [];
-        input['from'] = 'From';
-        input['to'] = 'To';
-        input['url'] = 'Url';
-        input['responseType'] = 'ResponseType';
-        input['groupConfirmKey'] = 'GroupConfirmKey';
-        input['groupConfirmFile'] = Object.keys(AudioFormatEnum)[0];
-        input['method'] = Object.keys(HttpActionEnum)[0];
-        input['statusCallBackUrl'] = 'StatusCallBackUrl';
-        input['statusCallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['fallBackUrl'] = 'FallBackUrl';
-        input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['heartBeatUrl'] = 'HeartBeatUrl';
-        input['heartBeatMethod'] = Object.keys(HttpActionEnum)[0];
-        input['timeout'] = 254;
-        input['playDtmf'] = 'PlayDtmf';
-        input['hideCallerId'] = 'HideCallerId';
-        input['record'] = true;
-        input['recordCallBackUrl'] = 'RecordCallBackUrl';
-        input['recordCallBackMethod'] = Object.keys(HttpActionEnum)[0];
-        input['transcribe'] = true;
-        input['transcribeCallBackUrl'] = 'TranscribeCallBackUrl';
-
-
-		var result = CallController.groupCall(input);
-        //Function call returns a promise
-        result.then(function(success){
-			//success case
-			//getting context of response
-			console.log(success.getContext());
-		},function(err){
-			//failure case
-		});
-
-	});
-```
-
-
-
 ### <a name="list_calls"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.listCalls") listCalls
 
-> A list of calls associated with your Message360 account
+> A list of calls associated with your Ytel account
 
 
 ```javascript
@@ -3253,11 +3410,11 @@ function listCalls(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
 | pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| to |  ``` Optional ```  | Only list calls to this number |
-| from |  ``` Optional ```  | Only list calls from this number |
-| dateCreated |  ``` Optional ```  | Only list calls starting within the specified date range |
+| to |  ``` Optional ```  | Filter calls that were sent to this 10-digit number (E.164 format). |
+| from |  ``` Optional ```  | Filter calls that were sent from this 10-digit number (E.164 format). |
+| dateCreated |  ``` Optional ```  | Return calls that are from a specified date. |
 
 
 
@@ -3269,8 +3426,8 @@ function listCalls(input)
 	app.controller("testController", function($scope, CallController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pageSize'] = 254;
+        input['page'] = 241;
+        input['pageSize'] = 241;
         input['to'] = 'To';
         input['from'] = 'From';
         input['dateCreated'] = 'DateCreated';
@@ -3293,7 +3450,7 @@ function listCalls(input)
 
 ### <a name="send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.sendRinglessVM") sendRinglessVM
 
-> API endpoint used to send a Ringless Voicemail
+> Initiate an outbound Ringless Voicemail through Ytel.
 
 
 ```javascript
@@ -3303,14 +3460,14 @@ function sendRinglessVM(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| from |  ``` Required ```  | This number to display on Caller ID as calling |
-| rVMCallerId |  ``` Required ```  | Alternate caller ID required for RVM |
-| to |  ``` Required ```  | To number |
-| voiceMailURL |  ``` Required ```  | URL to an audio file |
+| from |  ``` Required ```  | A valid Ytel Voice enabled number (E.164 format) that will be initiating the phone call. |
+| rVMCallerId |  ``` Required ```  | A required secondary Caller ID for RVM to work. |
+| to |  ``` Required ```  | A valid number (E.164 format) that will receive the phone call. |
+| voiceMailURL |  ``` Required ```  | The URL requested once the RVM connects. A set of default parameters will be sent here. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| method |  ``` Optional ```  ``` DefaultValue ```  | Not currently used in this version |
-| statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
-| statsCallBackMethod |  ``` Optional ```  | POST or GET |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| statsCallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required StatusCallBackUrl once call connects. |
 
 
 
@@ -3348,7 +3505,7 @@ function sendRinglessVM(input)
 
 ### <a name="view_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.viewCall") viewCall
 
-> View Call Response
+> Retrieve a single voice call’s information by its CallSid.
 
 
 ```javascript
@@ -3358,7 +3515,7 @@ function viewCall(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callsid |  ``` Required ```  | Call Sid id for particular Call |
+| callsid |  ``` Required ```  | The unique identifier for the voice call. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3389,6 +3546,129 @@ function viewCall(input)
 
 
 
+### <a name="view_call_detail"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.viewCallDetail") viewCallDetail
+
+> Retrieve a single voice call’s information by its CallSid.
+
+
+```javascript
+function viewCallDetail(callSid, responseType)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| callSid |  ``` Required ```  | The unique identifier for the voice call. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, CallController){
+        var callSid = 'callSid';
+        var responseType = 'ResponseType';
+
+
+		var result = CallController.viewCallDetail(callSid, responseType);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.groupCall") groupCall
+
+> Group Call
+
+
+```javascript
+function groupCall(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| from |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
+| url |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
+| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
+| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time and pass other general information. |
+| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
+| timeout |  ``` Optional ```  | Time (in seconds) we should wait while the call is ringing before canceling the call |
+| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
+| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
+| record |  ``` Optional ```  | Specifies if the call should be recorded |
+| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
+| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
+| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
+| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, CallController){
+        var input = [];
+        input['from'] = 'From';
+        input['to'] = 'To';
+        input['url'] = 'Url';
+        input['responseType'] = 'ResponseType';
+        input['groupConfirmKey'] = 'GroupConfirmKey';
+        input['groupConfirmFile'] = Object.keys(AudioFormatEnum)[0];
+        input['method'] = Object.keys(HttpActionEnum)[0];
+        input['statusCallBackUrl'] = 'StatusCallBackUrl';
+        input['statusCallBackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['fallBackUrl'] = 'FallBackUrl';
+        input['fallBackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['heartBeatUrl'] = 'HeartBeatUrl';
+        input['heartBeatMethod'] = Object.keys(HttpActionEnum)[0];
+        input['timeout'] = 241;
+        input['playDtmf'] = 'PlayDtmf';
+        input['hideCallerId'] = 'HideCallerId';
+        input['record'] = true;
+        input['recordCallBackUrl'] = 'RecordCallBackUrl';
+        input['recordCallBackMethod'] = Object.keys(HttpActionEnum)[0];
+        input['transcribe'] = true;
+        input['transcribeCallBackUrl'] = 'TranscribeCallBackUrl';
+
+
+		var result = CallController.groupCall(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CarrierController") CarrierController
@@ -3404,7 +3684,7 @@ The singleton instance of the ``` CarrierController ``` class can be accessed vi
 
 ### <a name="carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.carrierLookupList") carrierLookupList
 
-> Get the All Purchase Number's Carrier lookup
+> Retrieve a list of carrier lookup objects.
 
 
 ```javascript
@@ -3415,8 +3695,8 @@ function carrierLookupList(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Page Number |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
 
 
 
@@ -3428,8 +3708,8 @@ function carrierLookupList(input)
 	app.controller("testController", function($scope, CarrierController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pagesize'] = 254;
+        input['page'] = 241;
+        input['pageSize'] = 241;
 
 
 		var result = CarrierController.carrierLookupList(input);
@@ -3459,7 +3739,7 @@ function carrierLookup(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phonenumber |  ``` Required ```  | The number to lookup |
+| phoneNumber |  ``` Required ```  | A valid 10-digit number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3471,7 +3751,7 @@ function carrierLookup(input)
 
 	app.controller("testController", function($scope, CarrierController){
         var input = [];
-        input['phonenumber'] = 'phonenumber';
+        input['phoneNumber'] = 'PhoneNumber';
         input['responseType'] = 'ResponseType';
 
 
@@ -3574,7 +3854,7 @@ function viewAddress(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
+| addressid |  ``` Required ```  | The identifier of the address to be retrieved. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
@@ -3586,7 +3866,7 @@ function viewAddress(input)
 
 	app.controller("testController", function($scope, AddressController){
         var input = [];
-        input['addressSID'] = 'AddressSID';
+        input['addressid'] = 'addressid';
         input['responseType'] = 'ResponseType';
 
 
@@ -3618,9 +3898,9 @@ function listAddress(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Return requested # of items starting the value, default=0, must be an integer |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default is 10, max is 100, must be an integer |
-| addressSID |  ``` Optional ```  | addresses Sid |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default is 10, max is 100, must be an integer |
+| addressid |  ``` Optional ```  | addresses Sid |
 | dateCreated |  ``` Optional ```  | date created address. |
 
 
@@ -3633,10 +3913,10 @@ function listAddress(input)
 	app.controller("testController", function($scope, AddressController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pageSize'] = 254;
-        input['addressSID'] = 'AddressSID';
-        input['dateCreated'] = 'DateCreated';
+        input['page'] = 241;
+        input['pagesize'] = 241;
+        input['addressid'] = 'addressid';
+        input['dateCreated'] = 'dateCreated';
 
 
 		var result = AddressController.listAddress(input);
@@ -3666,7 +3946,7 @@ function verifyAddress(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
+| addressid |  ``` Required ```  | The identifier of the address to be verified. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
@@ -3678,7 +3958,7 @@ function verifyAddress(input)
 
 	app.controller("testController", function($scope, AddressController){
         var input = [];
-        input['addressSID'] = 'AddressSID';
+        input['addressid'] = 'addressid';
         input['responseType'] = 'ResponseType';
 
 
@@ -3709,7 +3989,7 @@ function deleteAddress(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
+| addressid |  ``` Required ```  | The identifier of the address to be deleted. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
@@ -3721,7 +4001,7 @@ function deleteAddress(input)
 
 	app.controller("testController", function($scope, AddressController){
         var input = [];
-        input['addressSID'] = 'AddressSID';
+        input['addressid'] = 'addressid';
         input['responseType'] = 'ResponseType';
 
 
@@ -3909,7 +4189,7 @@ The singleton instance of the ``` AccountController ``` class can be accessed vi
 
 ### <a name="view_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountController.viewAccount") viewAccount
 
-> Display Account Description
+> Retrieve information regarding your Ytel account by a specific date. The response object will contain data such as account status, balance, and account usage totals.
 
 
 ```javascript
@@ -3919,7 +4199,7 @@ function viewAccount(input)
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| date |  ``` Required ```  | TODO: Add a parameter description |
+| date |  ``` Required ```  | Filter account information based on date. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3936,6 +4216,68 @@ function viewAccount(input)
 
 
 		var result = AccountController.viewAccount(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".UsageController") UsageController
+
+### Get singleton instance
+
+The singleton instance of the ``` UsageController ``` class can be accessed via Dependency Injection.
+
+```js
+	app.controller("testController", function($scope, UsageController){
+	});
+```
+
+### <a name="list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.listUsage") listUsage
+
+> Retrieve usage metrics regarding your Ytel account. The results includes inbound/outbound voice calls and inbound/outbound SMS messages as well as carrier lookup requests.
+
+
+```javascript
+function listUsage(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| productCode |  ``` Optional ```  ``` DefaultValue ```  | Filter usage results by product type. |
+| startDate |  ``` Optional ```  ``` DefaultValue ```  | Filter usage objects by start date. |
+| endDate |  ``` Optional ```  ``` DefaultValue ```  | Filter usage objects by end date. |
+| includeSubAccounts |  ``` Optional ```  | Will include all subaccount usage data |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, UsageController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['productCode'] = Object.keys(ProductCodeEnum)[0];
+        input['startDate'] = 'startDate';
+        input['endDate'] = 'endDate';
+        input['includeSubAccounts'] = 'IncludeSubAccounts';
+
+
+		var result = UsageController.listUsage(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
@@ -3979,8 +4321,8 @@ function sendDedicatedShortcode(input)
 | to |  ``` Required ```  | The number to send your SMS to |
 | body |  ``` Required ```  | The body of your message |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| method |  ``` Optional ```  | Callback status method, POST or GET |
-| messagestatuscallback |  ``` Optional ```  | Callback url for SMS status |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent.GET or POST |
+| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
 
 
 
@@ -3991,8 +4333,8 @@ function sendDedicatedShortcode(input)
 
 	app.controller("testController", function($scope, ShortCodeController){
         var input = [];
-        input['shortcode'] = 254;
-        input['to'] = 254.547453189524;
+        input['shortcode'] = 241;
+        input['to'] = 241.457011092667;
         input['body'] = 'body';
         input['responseType'] = 'ResponseType';
         input['method'] = Object.keys(HttpActionEnum)[0];
@@ -4089,8 +4431,8 @@ function listShortcode(input)
         input['shortcode'] = 'Shortcode';
         input['to'] = 'To';
         input['dateSent'] = 'DateSent';
-        input['page'] = 254;
-        input['pageSize'] = 254;
+        input['page'] = 241;
+        input['pageSize'] = 241;
 
 
 		var result = ShortCodeController.listShortcode(input);
@@ -4110,7 +4452,7 @@ function listShortcode(input)
 
 ### <a name="list_inbound_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.listInboundShortcode") listInboundShortcode
 
-> Retrive a list of inbound Sms Short Code messages associated with your message360 account.
+> Retrive a list of inbound Sms Short Code messages associated with your Ytel account.
 
 
 ```javascript
@@ -4121,11 +4463,11 @@ function listInboundShortcode(input)
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | from |  ``` Optional ```  | Only list SMS messages sent from this number |
 | shortcode |  ``` Optional ```  | Only list SMS messages sent to Shortcode |
-| dateReceived |  ``` Optional ```  | Only list SMS messages sent in the specified date MAKE REQUEST |
+| datecreated |  ``` Optional ```  | Only list SMS messages sent in the specified date MAKE REQUEST |
 
 
 
@@ -4137,14 +4479,776 @@ function listInboundShortcode(input)
 	app.controller("testController", function($scope, ShortCodeController){
         var input = [];
         input['responseType'] = 'ResponseType';
-        input['page'] = 254;
-        input['pageSize'] = 254;
+        input['page'] = 241;
+        input['pagesize'] = 241;
         input['from'] = 'From';
         input['shortcode'] = 'Shortcode';
-        input['dateReceived'] = 'DateReceived';
+        input['datecreated'] = 'Datecreated';
 
 
 		var result = ShortCodeController.listInboundShortcode(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="view_dedicated_shortcode_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.viewDedicatedShortcodeAssignment") viewDedicatedShortcodeAssignment
+
+> Retrieve a single Short Code object by its shortcode assignment.
+
+
+```javascript
+function viewDedicatedShortcodeAssignment(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid Dedicated Short Code to your Ytel account |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, ShortCodeController){
+        var input = [];
+        input['shortcode'] = 'Shortcode';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = ShortCodeController.viewDedicatedShortcodeAssignment(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="update_dedicated_short_code_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.updateDedicatedShortCodeAssignment") updateDedicatedShortCodeAssignment
+
+> Update a dedicated shortcode.
+
+
+```javascript
+function updateDedicatedShortCodeAssignment(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid dedicated shortcode to your Ytel account. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | User generated name of the dedicated shortcode. |
+| callbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required StatusCallBackUrl once call connects. |
+| callbackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| fallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| fallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML or at initial request of the required Url provided with the POST. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, ShortCodeController){
+        var input = [];
+        input['shortcode'] = 'Shortcode';
+        input['responseType'] = 'ResponseType';
+        input['friendlyName'] = 'FriendlyName';
+        input['callbackMethod'] = 'CallbackMethod';
+        input['callbackUrl'] = 'CallbackUrl';
+        input['fallbackMethod'] = 'FallbackMethod';
+        input['fallbackUrl'] = 'FallbackUrl';
+
+
+		var result = ShortCodeController.updateDedicatedShortCodeAssignment(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_short_code_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.listShortCodeAssignment") listShortCodeAssignment
+
+> Retrieve a list of Short Code assignment associated with your Ytel account.
+
+
+```javascript
+function listShortCodeAssignment(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| shortcode |  ``` Optional ```  | Only list Short Code Assignment sent from this Short Code |
+| page |  ``` Optional ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  | The count of objects to return per page. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, ShortCodeController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['shortcode'] = 'Shortcode';
+        input['page'] = 'page';
+        input['pagesize'] = 'pagesize';
+
+
+		var result = ShortCodeController.listShortCodeAssignment(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="post_card_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PostCardController") PostCardController
+
+### Get singleton instance
+
+The singleton instance of the ``` PostCardController ``` class can be accessed via Dependency Injection.
+
+```js
+	app.controller("testController", function($scope, PostCardController){
+	});
+```
+
+### <a name="view_postcard"></a>![Method: ](https://apidocs.io/img/method.png ".PostCardController.viewPostcard") viewPostcard
+
+> Retrieve a postcard object by its PostcardId.
+
+
+```javascript
+function viewPostcard(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| postcardid |  ``` Required ```  | The unique identifier for a postcard object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PostCardController){
+        var input = [];
+        input['postcardid'] = 'postcardid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = PostCardController.viewPostcard(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="create_postcard"></a>![Method: ](https://apidocs.io/img/method.png ".PostCardController.createPostcard") createPostcard
+
+> Create, print, and mail a postcard to an address. The postcard front must be supplied as a PDF, image, or an HTML string. The back can be a PDF, image, HTML string, or it can be automatically generated by supplying a custom message.
+
+
+```javascript
+function createPostcard(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| to |  ``` Required ```  | The AddressId or an object structured when creating an address by addresses/Create. |
+| from |  ``` Required ```  | The AddressId or an object structured when creating an address by addresses/Create. |
+| attachbyid |  ``` Required ```  | Set an existing postcard by attaching its PostcardId. |
+| front |  ``` Required ```  | A 4.25"x6.25" or 6.25"x11.25" image to use as the front of the postcard.  This can be a URL, local file, or an HTML string. Supported file types are PDF, PNG, and JPEG. |
+| back |  ``` Required ```  | A 4.25"x6.25" or 6.25"x11.25" image to use as the back of the postcard, supplied as a URL, local file, or HTML string.  This allows you to customize your back design, but we will still insert the recipient address for you. |
+| message |  ``` Required ```  | The message for the back of the postcard with a maximum of 350 characters. |
+| setting |  ``` Required ```  | Code for the dimensions of the media to be printed. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| description |  ``` Optional ```  | A description for the postcard. |
+| htmldata |  ``` Optional ```  | A string value that contains HTML markup. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PostCardController){
+        var input = [];
+        input['to'] = 'to';
+        input['from'] = 'from';
+        input['attachbyid'] = 'attachbyid';
+        input['front'] = 'front';
+        input['back'] = 'back';
+        input['message'] = 'message';
+        input['setting'] = 'setting';
+        input['responseType'] = 'ResponseType';
+        input['description'] = 'description';
+        input['htmldata'] = 'htmldata';
+
+
+		var result = PostCardController.createPostcard(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_postcards"></a>![Method: ](https://apidocs.io/img/method.png ".PostCardController.listPostcards") listPostcards
+
+> Retrieve a list of postcard objects. The postcards objects are sorted by creation date, with the most recently created postcards appearing first.
+
+
+```javascript
+function listPostcards(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| postcardid |  ``` Optional ```  | The unique identifier for a postcard object. |
+| dateCreated |  ``` Optional ```  | The date the postcard was created. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PostCardController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['page'] = 241;
+        input['pagesize'] = 241;
+        input['postcardid'] = 'postcardid';
+        input['dateCreated'] = 'dateCreated';
+
+
+		var result = PostCardController.listPostcards(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="delete_postcard"></a>![Method: ](https://apidocs.io/img/method.png ".PostCardController.deletePostcard") deletePostcard
+
+> Remove a postcard object.
+
+
+```javascript
+function deletePostcard(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| postcardid |  ``` Required ```  | The unique identifier of a postcard object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, PostCardController){
+        var input = [];
+        input['postcardid'] = 'postcardid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = PostCardController.deletePostcard(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="letter_controller"></a>![Class: ](https://apidocs.io/img/class.png ".LetterController") LetterController
+
+### Get singleton instance
+
+The singleton instance of the ``` LetterController ``` class can be accessed via Dependency Injection.
+
+```js
+	app.controller("testController", function($scope, LetterController){
+	});
+```
+
+### <a name="view_letter"></a>![Method: ](https://apidocs.io/img/method.png ".LetterController.viewLetter") viewLetter
+
+> Retrieve a letter object by its LetterSid.
+
+
+```javascript
+function viewLetter(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| lettersid |  ``` Required ```  | The unique identifier for a letter object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, LetterController){
+        var input = [];
+        input['lettersid'] = 'lettersid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = LetterController.viewLetter(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="create_letter"></a>![Method: ](https://apidocs.io/img/method.png ".LetterController.createLetter") createLetter
+
+> Create, print, and mail a letter to an address. The letter file must be supplied as a PDF or an HTML string.
+
+
+```javascript
+function createLetter(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| to |  ``` Required ```  | The AddressId or an object structured when creating an address by addresses/Create. |
+| from |  ``` Required ```  | The AddressId or an object structured when creating an address by addresses/Create. |
+| attachbyid |  ``` Required ```  | Set an existing letter by attaching its LetterId. |
+| file |  ``` Required ```  | File can be a 8.5"x11" PDF uploaded file or URL that links to a file. |
+| color |  ``` Required ```  | Specify if letter should be printed in color. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| description |  ``` Optional ```  | A description for the letter. |
+| extraservice |  ``` Optional ```  | Add an extra service to your letter. Options are "certified" or "registered". Certified provides tracking and delivery confirmation for domestic destinations and is an additional $5.00. Registered provides tracking and confirmation for international addresses and is an additional $16.50. |
+| doublesided |  ``` Optional ```  | Specify if letter should be printed on both sides. |
+| template |  ``` Optional ```  | Boolean that defaults to true. When set to false, this specifies that your letter does not follow the m360 address template. In this case, a blank address page will be inserted at the beginning of your file and you will be charged for the extra page. |
+| htmldata |  ``` Optional ```  | A string value that contains HTML markup. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, LetterController){
+        var input = [];
+        input['to'] = 'to';
+        input['from'] = 'from';
+        input['attachbyid'] = 'attachbyid';
+        input['file'] = 'file';
+        input['color'] = 'color';
+        input['responseType'] = 'ResponseType';
+        input['description'] = 'description';
+        input['extraservice'] = 'extraservice';
+        input['doublesided'] = 'doublesided';
+        input['template'] = 'template';
+        input['htmldata'] = 'htmldata';
+
+
+		var result = LetterController.createLetter(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_letters"></a>![Method: ](https://apidocs.io/img/method.png ".LetterController.listLetters") listLetters
+
+> Retrieve a list of letter objects. The letter objects are sorted by creation date, with the most recently created letters appearing first.
+
+
+```javascript
+function listLetters(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| lettersid |  ``` Optional ```  | The unique identifier for a letter object. |
+| dateCreated |  ``` Optional ```  | The date the letter was created. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, LetterController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['page'] = 241;
+        input['pagesize'] = 241;
+        input['lettersid'] = 'lettersid';
+        input['dateCreated'] = 'dateCreated';
+
+
+		var result = LetterController.listLetters(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="delete_letter"></a>![Method: ](https://apidocs.io/img/method.png ".LetterController.deleteLetter") deleteLetter
+
+> Remove a letter object by its LetterId.
+
+
+```javascript
+function deleteLetter(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| lettersid |  ``` Required ```  | The unique identifier for a letter object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, LetterController){
+        var input = [];
+        input['lettersid'] = 'lettersid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = LetterController.deleteLetter(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="area_mail_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AreaMailController") AreaMailController
+
+### Get singleton instance
+
+The singleton instance of the ``` AreaMailController ``` class can be accessed via Dependency Injection.
+
+```js
+	app.controller("testController", function($scope, AreaMailController){
+	});
+```
+
+### <a name="create_area_mail"></a>![Method: ](https://apidocs.io/img/method.png ".AreaMailController.createAreaMail") createAreaMail
+
+> Create a new AreaMail object.
+
+
+```javascript
+function createAreaMail(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| routes |  ``` Required ```  | List of routes that AreaMail should be delivered to.  A single route can be either a zipcode or a carrier route.List of routes that AreaMail should be delivered to.  A single route can be either a zipcode or a carrier route. A carrier route is in the form of 92610-C043 where the carrier route is composed of 5 numbers for zipcode, 1 letter for carrier route type, and 3 numbers for carrier route code. Delivery can be sent to mutliple routes by separating them with a commas. Valid Values: 92656, 92610-C043 |
+| attachbyid |  ``` Required ```  | Set an existing areamail by attaching its AreamailId. |
+| front |  ``` Required ```  | The front of the AreaMail item to be created. This can be a URL, local file, or an HTML string. Supported file types are PDF, PNG, and JPEG. Back required |
+| back |  ``` Required ```  | The back of the AreaMail item to be created. This can be a URL, local file, or an HTML string. Supported file types are PDF, PNG, and JPEG. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| description |  ``` Optional ```  | A string value to use as a description for this AreaMail item. |
+| targettype |  ``` Optional ```  | The delivery location type. |
+| htmldata |  ``` Optional ```  | A string value that contains HTML markup. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, AreaMailController){
+        var input = [];
+        input['routes'] = 'routes';
+        input['attachbyid'] = 'attachbyid';
+        input['front'] = 'front';
+        input['back'] = 'back';
+        input['responseType'] = 'ResponseType';
+        input['description'] = 'description';
+        input['targettype'] = 'targettype';
+        input['htmldata'] = 'htmldata';
+
+
+		var result = AreaMailController.createAreaMail(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="view_area_mail"></a>![Method: ](https://apidocs.io/img/method.png ".AreaMailController.viewAreaMail") viewAreaMail
+
+> Retrieve an AreaMail object by its AreaMailId.
+
+
+```javascript
+function viewAreaMail(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| areamailid |  ``` Required ```  | The unique identifier for an AreaMail object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, AreaMailController){
+        var input = [];
+        input['areamailid'] = 'areamailid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = AreaMailController.viewAreaMail(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="list_area_mail"></a>![Method: ](https://apidocs.io/img/method.png ".AreaMailController.listAreaMail") listAreaMail
+
+> Retrieve a list of AreaMail objects.
+
+
+```javascript
+function listAreaMail(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| areamailsid |  ``` Optional ```  | The unique identifier for an AreaMail object. |
+| dateCreated |  ``` Optional ```  | The date the AreaMail was created. |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, AreaMailController){
+        var input = [];
+        input['responseType'] = 'ResponseType';
+        input['page'] = 241;
+        input['pagesize'] = 241;
+        input['areamailsid'] = 'areamailsid';
+        input['dateCreated'] = 'dateCreated';
+
+
+		var result = AreaMailController.listAreaMail(input);
+        //Function call returns a promise
+        result.then(function(success){
+			//success case
+			//getting context of response
+			console.log(success.getContext());
+		},function(err){
+			//failure case
+		});
+
+	});
+```
+
+
+
+### <a name="delete_area_mail"></a>![Method: ](https://apidocs.io/img/method.png ".AreaMailController.deleteAreaMail") deleteAreaMail
+
+> Remove an AreaMail object by its AreaMailId.
+
+
+```javascript
+function deleteAreaMail(input)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| areamailid |  ``` Required ```  | The unique identifier for an AreaMail object. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```javascript
+
+
+	app.controller("testController", function($scope, AreaMailController){
+        var input = [];
+        input['areamailid'] = 'areamailid';
+        input['responseType'] = 'ResponseType';
+
+
+		var result = AreaMailController.deleteAreaMail(input);
         //Function call returns a promise
         result.then(function(success){
 			//success case
